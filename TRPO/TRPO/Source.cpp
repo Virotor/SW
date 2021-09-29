@@ -12,7 +12,7 @@ int main()
 		cout << num % 10 << endl;
 		num /= 10;
 	}
-	system("pause");
+	
 
 
 
@@ -44,5 +44,24 @@ int day;
 	default:
 		cout << "Такого дня недели нет" << endl;
 	}
+	
+
+
+	int n, k,y,c,g;
+	c = 0;
+	cout << "Введите число\n"; cin >> n;
+	g = n;
+	cout << "Сколько первых цифр этого числа вы хотите увидеть?:"; cin >> k;
+	for (c; g > 0; c++) {
+		g /= 10;
+	}
+	if (k > c) cout << n;
+	else {
+		y = n / pow(10, c - k);
+		cout << y;
+	}
 	return 0;
+
+
+
 }
