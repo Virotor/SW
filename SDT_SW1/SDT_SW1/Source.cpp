@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cmath>
+#include <ctime>
 
 int main() {
 	using namespace std;
@@ -13,7 +13,7 @@ int main() {
 
 
 	int NumTask2;
-	cout << "Enter the day of the week"; cin >> NumTask2;
+	cout << "Enter the day of the week "; cin >> NumTask2;
 	switch (NumTask2) {
 	case 1:
 		cout << "Monday" << endl;
@@ -76,13 +76,26 @@ int main() {
 
 	switch (Unnecessary) {
 	case 0:
-		cout << "Will not enter";
+		cout << "Will not enter"<<endl;
 		break;
 	case 1:
-		cout << "Will enter";
+		cout << "Will enter"<<endl;
 		break;
 	}
 
-
+	int FirstDigit, SecondDigit, ThirdDigit, FourthDigit, Guessed;
+	srand(time(NULL));
+	FirstDigit = rand() % 10;
+	SecondDigit = rand() % 10;
+	ThirdDigit = rand() % 10;
+	FourthDigit = rand() % 10;
+	for (Guessed = 0; Guessed != FirstDigit; Guessed++){}
+		cout << Guessed;
+	for (Guessed = 0; Guessed != SecondDigit; Guessed++) {}
+		cout << Guessed;
+	for (Guessed = 0; Guessed != ThirdDigit; Guessed++) {}
+		cout << Guessed;
+	for (Guessed = 0; Guessed != FourthDigit; Guessed++) {}
+		cout << Guessed;
 	return 0;
 }
