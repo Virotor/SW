@@ -76,3 +76,21 @@ void task3() {
 	cout << endl << endl;
 }
 
+
+
+void task4() {
+	cout << "Exercises 4\n";
+	unsigned lengthB, widthB, highB, lengthH, widthH, highH;
+	cout << "lengthB = "; cin >> lengthB;
+	cout << "widthB = "; cin >> widthB;
+	cout << "highB = "; cin >> highB;
+	cout << "lengthH = "; cin >> lengthH;
+	cout << "widthH = "; cin >> widthH;
+	cout << "highH = "; cin >> highH;
+	if (widthB > widthH || lengthB > lengthH) cout << "the bar does not fit into the hole" << endl;
+	else if (highB > highH) cout << "the bar will be visible" << endl;
+	else cout << "the bar will crawl through but there will bw a depression" << endl;
+	if (widthB < widthH && lengthB < lengthH && highB < highH) cout << "the bar willcrawl through the hole" << endl;
+	cout << endl;
+}
+
