@@ -63,7 +63,7 @@ int main()
 		void third();
 		{
 			int n = 0, k = 0, a = 1;
-			cout << "Задание 3" << endl << endl;
+			cout << "Задание 3: n и k, а так же k раз первой цифры n." << endl << endl;
 			cout << "n = ";
 			cin >> n;
 			cout << "k = ";
@@ -84,7 +84,7 @@ int main()
 		void fourth();
 		{
 			int H, W, h, w, l;
-			cout << "Задание 4" << endl << endl;
+			cout << "Задание 4: отверстие и параллелепипед." << endl << endl;
 			cout << "Введите высоту и ширину отверстия: " << endl;
 			cout << "h = "; cin >> H;
 			cout << "w = "; cin >> W;
@@ -108,5 +108,32 @@ int main()
 				cout << "Параллелепипед не может пройти через отверстие.";
 		}
 		break;
+	case 5:
+		void fifth();
+		{
+			int a, b, c, d, A, B, C, D;
+			cout << "Задание 5: пароль (чере rand)." << endl << endl;
+			a = rand() % 10 + 1;
+			b = rand() % 10 + 1;
+			c = rand() % 10 + 1;
+			d = rand() % 10 + 1;
+		tryag:
+			cout << endl << "Введите пароль: ";
+			cin >> A >> B >> C >> D;
+			if (A != a or B != b or C != c or D != d)
+			{
+				cout << "Неверный пароль. " << endl << endl;
+				if (A == a) cout << "Первая цифра верна." << endl;
+				if (B == b) cout << "Вторая цифра верна." << endl;
+				if (C == c) cout << "Третья цифра верна." << endl;
+				if (D == d) cout << "Четвёртая цифра верна." << endl;
+				goto tryag;
+			}
+			else if (A == a && B == b && C == c && D == d)
+			{
+				cout << "Вы справились! Пароль: " << a << " " << b << " " << c << " " << d << endl;
+			}
+			break;
+		}
 	}
 }
