@@ -32,9 +32,9 @@ int main()
         {
             cout << huckNum1 << " " << huckNum2 << " " << huckNum3 << " " << huckNum4 << endl;
         }
-        if (huckNum1 == 9)
+        if (huckNum1 == 10)
         {
-            if (huckNum1 == 9)
+            if (huckNum1 == 10)
             {
                 huckNum1 = 0;
             }
@@ -43,9 +43,9 @@ int main()
                 {
                     cout << huckNum1 << " " << huckNum2 << " " << huckNum3 << " " << huckNum4 << endl;
                 }
-                if (huckNum2 == 9)
+                if (huckNum2 == 10)
                 {
-                    if (huckNum2 == 9)
+                    if (huckNum2 == 10)
                     {
                         huckNum2 = 0;
                     }
@@ -54,9 +54,9 @@ int main()
                     {
                         cout << huckNum1 << " " << huckNum2 << " " << huckNum3 << " " << huckNum4 << endl;
                     }
-                    if (huckNum3 == 9)
+                    if (huckNum3 == 10)
                     {
-                        if (huckNum3 == 9)
+                        if (huckNum3 == 10)
                         {
                             huckNum3 = 0;
                         }
