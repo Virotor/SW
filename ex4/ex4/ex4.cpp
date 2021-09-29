@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-	int holeLength, holeWidth; //4 задание
+	int holeLength, holeWidth;
 
 	cout << "Enter hole length: "; cin >> holeLength;
 	cout << "Enter hole width: "; cin >> holeWidth;
