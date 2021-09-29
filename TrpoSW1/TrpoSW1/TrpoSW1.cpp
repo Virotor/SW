@@ -43,8 +43,29 @@ void dayOfWeek() {
 	}
 }
 
+void firstNumbers() {
+	int number, amountOfNum;
+	cout << "enter two integers number and amount of number and ";
+	cout << "returns a number containing the first k digits of n" << endl;
+	cout << "number ";  cin >> number;
+	cout << "amount of number "; cin >> amountOfNum;
+	if (number < amountOfNum) {
+		cout << "Error";
+	}
+	else {
+		int i = 0, kk = number;
+		while (kk) {
+			kk /= 10;
+			i++;
+		}
+		cout << number / int(pow(10, (i - amountOfNum)));
+	}
+
+}
+
 int main() {
 	splittingNumbers();
 	dayOfWeek();
+	firstNumbers();
 	return 0;
 }
