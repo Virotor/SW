@@ -60,6 +60,7 @@ void task2() {
 }
 
 void task3() {
+	cout << " Task3\n";
 	setlocale(LC_ALL, "rus");
 	int number, backNumber, b;
 	cout << " Введите ваше число: "; cin >> number;
@@ -79,4 +80,29 @@ void task3() {
 		cout << " Неверный ввод " <<"\n";
 		exit(0);
 	}
+	cout << " Task3 completed\n\n ";
+}
+
+void task3() {
+	cout << " Task4\n";
+	setlocale(LC_ALL, "rus");
+	int length, width, height, lengthHole, widthHole;
+
+	cout << " Введите длину параллелепипеда: "; cin >> length;
+	cout << " Введите ширину параллелепипеда: "; cin >> width;
+	cout << " Введите высоту параллелепипеда: "; cin >> height;
+	cout << " Введите длину отверстия: "; cin >> lengthHole;
+	cout << " Введите ширину отверстия: "; cin >> widthHole;
+
+	if (length <= lengthHole && width <= widthHole ||
+		height <= lengthHole && width <= widthHole ||
+		height <= lengthHole && length <= widthHole ||
+		width <= lengthHole && length <= widthHole ||
+		width <= lengthHole && height <= widthHole ||
+		length <= lengthHole && height <= widthHole)
+		cout << " Параллелепипед влазит в отверстие ";
+	else
+		cout << " Параллелепипед не влазит в отверстие ";
+
+	cout << " Task4 completed\n\n ";
 }
