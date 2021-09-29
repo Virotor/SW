@@ -20,6 +20,8 @@ int main()
 	for (i = 0; i < 4; i++)
 		cout << randomPass[i] ;
 	cout << endl;
+	cout << "Password Sgenerirovan.";
+	cout << endl;
 
 	char iskomiPass[4] = { '0','0','0','0' };
 
