@@ -1,7 +1,5 @@
 #include <iostream>
 #include <math.h>
-#include <conio.h>
-#include <time.h>
 #include <ctime>
 #include <cstdlib>
 
@@ -32,20 +30,23 @@ int main() {
 void task1() {
 	cout << " Task1\n ";
 	setlocale(LC_ALL, "rus");
-	string s;
-	cout << " Введите число: "; cin >> s;
-	for (int i = 0; i < size(s); i++)
-		cout << s[i]<<"\n";
+	int number;
+	cout << " Введите число: "; cin >> number;
+	for (int i = 0; number > 0; i++) {
+		int oneNumber = number % 10;
+		cout << oneNumber <<'\n';
+		number = (number - number % 10) / 10;
+	}
 	cout << " Task1 completed\n\n ";
 }
 
 void task2() {
 	cout << " Task2\n";
 	setlocale(LC_ALL, "rus");
-	int a;
-	cout << " Введите номер дня недели: "; cin >> a;
+	int numberWeek;
+	cout << " Введите номер дня недели: "; cin >> numberWeek;
 
-	switch (a) {
+	switch (numberWeek) {
 	case 1: cout << " Понедельник "; break;
 	case 2: cout << " Вторник "; break;
 	case 3: cout << " Среда "; break;
@@ -56,4 +57,26 @@ void task2() {
 	default: cout << " Неверный ввод "; break;
 	}
 	cout << " Task2 completed\n\n ";
+}
+
+void task3() {
+	setlocale(LC_ALL, "rus");
+	int number, backNumber, b;
+	cout << " Введите ваше число: "; cin >> number;
+	cout << " Введите сколько чисел вернуть: "; cin >> backNumber;
+	b = number;
+	int c = 1;
+	while (b /= 10) {
+		c++;
+	}
+
+	if (number > 0 && backNumber > 0) {
+		backNumber = pow(10, c - backNumber);
+		number /= backNumber;
+		cout << number<<'\n';
+	}
+	else {
+		cout << " Неверный ввод " <<"\n";
+		exit(0);
+	}
 }
