@@ -12,7 +12,7 @@ int main() {
 		cout << num[i] << endl;
 	}*/ 
 
-	int day;
+	/*int day;
 	cout << "Day= ";    cin >> day;
 	switch (day) {
 	case 1:
@@ -38,8 +38,15 @@ int main() {
 		break;
 	default:
 		cout << "Protrite ochki" << endl;
-	}
+	}*/
 
+	string n;
+	int k;
+	cout << "n= ";     cin >> n;
+	cout << "\nk= ";     cin >> k;
+	for (int i = 0; i < k; i++) {
+		cout << n[i];
+	}
 
 	system("pause");
 	return 0;
