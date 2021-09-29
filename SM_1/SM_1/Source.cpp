@@ -51,5 +51,5 @@ void task2() {
 		case 7: cout << "Sunday" << endl; break;
 		}
 	}
-	cout << endl << endl;
+	cout << endl << endl ;
 }
