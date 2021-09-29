@@ -81,4 +81,31 @@ int main()
 		{
 			cout << "Wrong k" << endl;
 		}
+
+		int length, width, height, radius;
+
+		float diagonal;
+
+		cout << "length = ";
+		cin >> length;
+
+		cout << "width = ";
+		cin >> width;
+
+		cout << "height = ";
+		cin >> height;
+
+		cout << "radius = ";
+		cin >> radius;
+
+		diagonal = sqrt(length * length + height * height);
+
+		if (diagonal == 2 * radius)
+		{
+			cout << "The parallelepiped will pass";
+		}
+		else
+		{
+			cout << "The parallelepiped will not pass";
+		}
 }
