@@ -8,8 +8,10 @@
                                             			**/
 #include <iostream>
 #include <conio.h>
+#include <time.h>
 
 using std::cout;
+using std::string;
 using std::cin;
 
 void task1();
@@ -142,5 +144,30 @@ void task4() {
 }
 
 void task5() {
-
+    srand(time(NULL));
+    string real_pass = "";
+    for(int i = 0; i < 4; i++) {
+        real_pass += rand() % 10 + '0';
+    }
+    string my_pass = "0000";
+    cout << "Task5:\n";
+    while(my_pass[0] < '9' + 1) {
+        if(my_pass == real_pass) {
+            cout << "Password: " << my_pass << '\n';
+            cout << "Task5 is completed\n";
+            return;
+        }
+        int j = 3;
+        my_pass[j]++;
+        while(my_pass[j] > '9' && j > 0) {
+            my_pass[j - 1]++;
+            my_pass[j] = '0';
+            j--;
+        }
+        if(j == 0 && my_pass[0] == '9') {
+            my_pass[0]++;
+        }
+    }
+    cout << "Password not founded\n";
+    cout << "Task5 is completed with some error\n";
 }
