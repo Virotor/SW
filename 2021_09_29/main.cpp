@@ -44,7 +44,7 @@ void task1() {
         cout << value % 10 << '\n';
         value /= 10;
     }
-    cout << "Task1 is completed\n";
+    cout << "Task1 is completed\n\n";
 }
 
 void task2() {
@@ -78,7 +78,7 @@ void task2() {
         default:
             cout << "Input error\n";
     }
-    cout << "Task2 is completed\n";
+    cout << "Task2 is completed\n\n";
 }
 
 void task3() {
@@ -107,12 +107,12 @@ void task3() {
         if(user_answ == 'Y' || user_answ == 'y') {
             task3();
         } else {
-            cout << "Task3 is completed\n";
+            cout << "Task3 is completed\n\n";
         }
     } else {
         out_value /= mod;
         cout << out_value << '\n';
-        cout << "Task3 is completed\n";
+        cout << "Task3 is completed\n\n";
     }
 }
 
@@ -134,13 +134,13 @@ void task4() {
             }
             if(object_dimensions[i] <= hole_dimensions[0] && j[object_dimensions] <= hole_dimensions[1]) {
                 cout << "Yes, the parallelepiped will pass through the hole\n";
-                cout << "Task4 is completed\n";
+                cout << "Task4 is completed\n\n";
                 return;
             }
         }
     }
     cout << "The parallelepiped will not pass through the hole\n";
-    cout << "Task4 is completed\n";
+    cout << "Task4 is completed\n\n";
 }
 
 void task5() {
@@ -169,5 +169,5 @@ void task5() {
         }
     }
     cout << "Password not founded\n";
-    cout << "Task5 is completed with some error\n";
+    cout << "Task5 is completed with some error\n\n";
 }
