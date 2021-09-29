@@ -38,10 +38,28 @@ void week(int& day) {
         break;
     }
 }
+//next
+void NfromK(int& x) {
+    int n, k;
+    cout << "enter number n: "; cin >> n;
+    cout << "enter amount of number n: "; cin >> k;
+    if (n < k) {
+        cout << "Error\n";
+    }
+    else {
+        int i = 0, kk = n;
+        while (kk) {
+            kk /= 10;
+            i++;
+        }
+        cout << n / int(pow(10, (i - k))) << endl;
+    }
+}
 int main() {
     int x;
     number(x);
     week(x);
+    NfromK(x);
     system("pause");
     return 0;
 }
