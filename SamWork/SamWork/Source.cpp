@@ -40,13 +40,26 @@ int main() {
 		cout << "Protrite ochki" << endl;
 	}*/
 
-	string n;
+	/*string n;
 	int k;
 	cout << "n= ";     cin >> n;
 	cout << "\nk= ";     cin >> k;
 	for (int i = 0; i < k; i++) {
 		cout << n[i];
 	}
+	*/
+
+	double a, b, c, r;
+	cout << "a= ";     cin >> a;
+	cout << "b= ";     cin >> b;
+	cout << "c= ";     cin >> c;
+	cout << "r= ";     cin >> r;
+
+	double halfDiagonal;
+	halfDiagonal = (pow((a * a + b * b), 0.5) / 2.) ;
+	if (r >= halfDiagonal) { cout << "Est probitie!" << endl; }
+	else { cout << "Ne probit" << endl; }
+
 
 	system("pause");
 	return 0;
