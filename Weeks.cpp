@@ -4,11 +4,11 @@ using namespace std;
 
 int main()
 {
-    int Weeks;
-    cout<<"Enter the number: ";
-    cin>>Weeks;
+    int weeks;
+    cout << "Enter the number: ";
+    cin >> weeks;
 
-    switch (Weeks)
+    switch (weeks)
     {
 
     case 1:
