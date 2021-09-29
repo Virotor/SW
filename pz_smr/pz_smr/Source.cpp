@@ -48,4 +48,37 @@ int main()
 
 	default: cout << "Wrong number of day" << endl;
 	}
+
+	int k, n;
+
+	cout << "n = ";
+	cin >> n;
+
+	cout << "k = ";
+	cin >> k;
+
+	int digitsOfN, temp;
+
+	digitsOfN = 0;
+	temp = n;
+
+	while (temp != 0)
+	{
+		temp = temp / 10;
+		digitsOfN++;
+	}
+
+		if (k <= digitsOfN)
+		{
+			string s = to_string(n);
+
+			for (int i = 0; i < k; i++)
+			{
+				cout << s[i] << endl;
+			}
+		}
+		else
+		{
+			cout << "Wrong k" << endl;
+		}
 }
