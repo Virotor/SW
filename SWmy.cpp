@@ -4,25 +4,49 @@
 int main()
 {
 
-	std::string n;
+	double a, b, c, a1, b1;
 
-	std::cout << "Enter n:" << '\n';
-	std::cin >> n;
+	std::cout << "Enter length of figure" << '\n';
+	std::cin >> c;
 
-	int k;
+	std::cout << "Enter height of figure" << '\n';
+	std::cin >> b;
 
-	std::cout << "Enter k:" << '\n';
-	std::cin >> k;
+	std::cout << "Enter weight of figure" << '\n';
+	std::cin >> a;
 
-	if (k <= size(n)) {
+	std::cout << "Enter width of whole" << '\n';
+	std::cin >> a1;
 
-		for (int i = 0; i < k; i++) {
-			std::cout << n[i];
-		}
+	std::cout << "Enter height of whole" << '\n';
+	std::cin >> b1;
 
+	if (c <= b1 and a <= a1 or b <= a1) {
+		std::cout << "Normal" << '\n';
 	}
+
+	else if (c <= a1 and a <= b1 or b <= b1) {
+		std::cout << "Normal" << '\n';
+	}
+
+	else if (a <= b1 and a <= a1 or b <= a1) {
+		std::cout << "Normal" << '\n';
+	}
+
+	else if (a <= a1 and a <= b1 or b <= b1) {
+		std::cout << "Normal" << '\n';
+	}
+
+	else if (b <= b1 and a <= a1 or b <= a1) {
+		std::cout << "Normal" << '\n';
+	}
+
+	else if (b <= a1 and a <= b1 or b <= b1) {
+		std::cout << "Normal" << '\n';
+	}
+
 	else {
 		std::cout << "ERROR";
 	}
-   
+
 }
