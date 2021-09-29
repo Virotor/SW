@@ -38,3 +38,22 @@ void task1() {
 		cout << s[i]<<"\n";
 	cout << " Task1 completed\n\n ";
 }
+
+void task2() {
+	cout << " Task2\n";
+	setlocale(LC_ALL, "rus");
+	int a;
+	cout << " Введите номер дня недели: "; cin >> a;
+
+	switch (a) {
+	case 1: cout << " Понедельник "; break;
+	case 2: cout << " Вторник "; break;
+	case 3: cout << " Среда "; break;
+	case 4: cout << " Четверг "; break;
+	case 5: cout << " Пятница "; break;
+	case 6: cout << " Суббота "; break;
+	case 7: cout << " Воскресенье "; break;
+	default: cout << " Неверный ввод "; break;
+	}
+	cout << " Task2 completed\n\n ";
+}
