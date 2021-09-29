@@ -6,8 +6,8 @@ int main()
     cout << "a= ";
     cin >> a;
     while (a) {
-        a = a / 10; 
-        cout << a % 10 << endl;   
+        cout << a % 10 << endl; 
+        a = a / 10;        
     }
     return 0;
 }
