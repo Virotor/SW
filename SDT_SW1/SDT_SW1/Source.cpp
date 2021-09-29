@@ -57,7 +57,31 @@ int main() {
 	}
 
 
-	
+	double Length, Heigt, Winth, Radius;
+	int Unnecessary;
+	cout << "Enter Hole Radius, Length, Width, Box Height " << endl;
+	cin >> Radius;
+	cin >> Length;
+	cin >> Winth;
+	cin >> Heigt;
+	if ((pow(Length * Length + Winth * Winth, 0.5)) <= Radius * 2)
+		Unnecessary = 1;
+	else if ((pow(Heigt * Heigt + Winth * Winth, 0.5)) <= Radius * 2)
+		Unnecessary = 1;
+	else if ((pow(Length * Length + Heigt * Heigt, 0.5)) <= Radius * 2)
+		Unnecessary = 1;
+	else
+		Unnecessary = 2;
+
+	switch (Unnecessary) {
+	case 0:
+		cout << "Will not enter";
+		break;
+	case 1:
+		cout << "Will enter";
+		break;
+	}
+
 
 	return 0;
 }
