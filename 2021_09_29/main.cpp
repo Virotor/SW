@@ -28,6 +28,7 @@ int main() {
     task3();
     task4();
     task5();
+    system("pause");
     return 0;
 }
 
@@ -89,8 +90,8 @@ void task3() {
     cin >> value;
     cout << "K = ";
     cin >> out_digits;
+    out_value = value;
     while(value) {
-        out_value = out_value * 10 + value % 10;
         value /= 10;
         count_of_digits++;
     }
@@ -114,7 +115,30 @@ void task3() {
 }
 
 void task4() {
-
+    cout << "Task4:\n";
+    cout << "Enter the dimensions of the parallelepiped:\n";
+    long long object_dimensions[3] = {0, 0, 0};
+    cout << "Object height = ";     cin >> object_dimensions[0];
+    cout << "Object length = ";     cin >> object_dimensions[1];
+    cout << "Object width = ";      cin >> object_dimensions[2];
+    cout << "Enter the dimensions of hole:\n";
+    long long hole_dimensions[2] = {0, 0};
+    cout << "Hole length = ";       cin >> hole_dimensions[0];
+    cout << "Hole width = ";        cin >> hole_dimensions[1];
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            if(i == j) {
+                continue;
+            }
+            if(object_dimensions[i] <= hole_dimensions[0] && j[object_dimensions] <= hole_dimensions[1]) {
+                cout << "Yes, the parallelepiped will pass through the hole\n";
+                cout << "Task4 is completed\n";
+                return;
+            }
+        }
+    }
+    cout << "The parallelepiped will not pass through the hole\n";
+    cout << "Task4 is completed\n";
 }
 
 void task5() {
