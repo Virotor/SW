@@ -58,10 +58,10 @@ void NfromK(int& x) {
 //next
 void rectangle(int& x) {
     int l, w, h, r; // l - Lenght, w - Width, h - Height, r - Radius
-    cout << "Enter  lenght:";  cin >> l;
+    cout << "Enter  lenght: ";  cin >> l;
     cout << "Enter  width: ";  cin >> w;
     cout << "Enter  height: ";  cin >> h;
-    cout << "Enter  radius:";  cin >> r;
+    cout << "Enter  radius: ";  cin >> r;
     if (l <= 0)
         cout << "Error\n";
     else if (w <= 0)
@@ -81,12 +81,42 @@ void rectangle(int& x) {
     else
         cout << "doesn't fit\n";
 }
+//next
+void pass(int& x) {
+    srand(time(NULL));
+    string real_pass = "";
+    for (int i = 0; i < 4; i++) {
+        real_pass += rand() % 10 + '0';
+    }
+    string my_pass = "0000";
+    cout << "Password prepared\n";
+    while (my_pass[0] < '9' + 1) {
+        if (my_pass == real_pass) {
+            cout << "Password : " << my_pass << '\n';
+            cout << "Pass is completed\n";
+            return;
+        }
+        int j = 3;
+        my_pass[j]++;
+        while (my_pass[j] > '9' && j > 0) {
+            my_pass[j - 1]++;
+            my_pass[j] = '0';
+            j--;
+        }
+        if (j == 0 && my_pass[0] == '9') {
+            my_pass[0]++;
+        }
+    }
+    cout << "Password not founded\n";
+    cout << "Pass is completed with some error\n\n";
+}
 int main() {
     int x;
     number(x);
     week(x);
     NfromK(x);
     rectangle(x);
+    pass(x);
     system("pause");
     return 0;
 }
