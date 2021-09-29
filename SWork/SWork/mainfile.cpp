@@ -2,6 +2,7 @@
 #include <math.h>
 #include <ctime>
 #include <cstdlib>
+#include <sstream>
 
 using std::cout;
 using std::string;
@@ -105,4 +106,49 @@ void task3() {
 		cout << " Параллелепипед не влазит в отверстие ";
 
 	cout << " Task4 completed\n\n ";
+}
+
+void task5() {
+	cout << " Task5\n";
+	setlocale(LC_ALL, "Russian");
+	srand(time(NULL));
+	std::string sym[4];
+	string Pass;
+	for (int i = 0; i <= 3; i++) {
+		int num = 0 + rand() % 10;
+		std::ostringstream ostr;
+		ostr << num;
+		std::string numPass = ostr.str();
+		sym[i] = numPass;
+		Pass += sym[i];
+	}
+	delete[] sym;
+	cout << Pass << "\n" << "\n";
+
+	for (int Opt1 = 0; Opt1 < 10; Opt1++) {
+		std::ostringstream ostr;
+		ostr << Opt1;
+		std::string tryPass1 = ostr.str();
+		for (int Opt2 = 0; Opt2 < 10; Opt2++) {
+			std::ostringstream ostr;
+			ostr << Opt2;
+			std::string tryPass2 = ostr.str();
+			for (int Opt3 = 0; Opt3 < 10; Opt3++) {
+				std::ostringstream ostr;
+				ostr << Opt3;
+				std::string tryPass3 = ostr.str();
+				for (int Opt4 = 0; Opt4 < 10; Opt4++) {
+					std::ostringstream ostr;
+					ostr << Opt4;
+					std::string tryPass4 = ostr.str();
+					string tryPass = tryPass1 + tryPass2 + tryPass3 + tryPass4;
+					if (tryPass == Pass) {
+						cout << tryPass << "\n";
+						exit(0);
+					}
+				}
+			}
+		}
+	}
+	cout << " Task5 completed\n\n ";
 }
