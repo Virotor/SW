@@ -50,4 +50,5 @@ int main() {
 		_getch();
 		system("cls");
 	} while (_getch() == '1');
+	return 0;
 }
