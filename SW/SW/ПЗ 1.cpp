@@ -3,7 +3,7 @@ using namespace std;
 
 int main() {
 	setlocale(LC_ALL, "Russian");
-	/*cout << "Задание 1" << endl;
+	cout << "Задание 1" << endl;
 	int x;
 	cout << "Введите число" << endl;
 	cin >> x;
@@ -95,7 +95,7 @@ int main() {
 	else {
 		cout << "Параллелепипед не пройдёт в отверстие" << endl;
 	}
-	return 0;*/
+	return 0;
 
 
 
