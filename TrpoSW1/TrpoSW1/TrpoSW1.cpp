@@ -1,19 +1,21 @@
 ﻿#include <iostream>
+#include <ctime>
+#include <cstdlib>
 using namespace std;
 
 void splittingNumbers() {
 	int number;
-	cout << "enter the number, each digit of this number must be printed on a new line: ";
+	cout << "Enter the number, each digit of this number must be printed on a new line: ";
 	cin >> number;
 	while (number) {
-		cout << number % 10 << endl;
+		cout << number % 10;
 		number /= 10;
 	}
 }
 
 void dayOfWeek() {
 	int day;
-	cout << "day of the week that you want: ";
+	cout << "Day of the week that you want: ";
 	cin >> day;
 	switch (day) {
 	case 1:
@@ -90,10 +92,38 @@ void dimensions() {
 	cout << "The parallelepiped will not pass through the hole\n";
 }
 
+void password() {
+	srand(time(NULL));
+	string realPass = "";
+	for (int i = 0; i < 4; i++) {
+		realPass += rand() % 10 + '0';
+	}
+	string myPass = "0000";
+	cout << "Task5:\n";
+	while (myPass[0] < '9' + 1) {
+		if (myPass == realPass) {
+			cout << "Password: " << myPass << '\n';
+			return;
+		}
+		int j = 3;
+		myPass[j]++;
+		while (myPass[j] > '9' && j > 0) {
+			myPass[j - 1]++;
+			myPass[j] = '0';
+			j--;
+		}
+		if (j == 0 && myPass[0] == '9') {
+			myPass[0]++;
+		}
+	}
+	cout << "Password isn't founded";
+}
+
 int main() {
 	splittingNumbers();
 	dayOfWeek();
 	firstNumbers();
 	dimensions();
+	password();
 	return 0;
 }
