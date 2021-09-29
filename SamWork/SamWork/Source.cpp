@@ -1,6 +1,6 @@
 #include <iostream>
 #include "math.h"
-#include "time.h"
+#include <ctime>
 #include <cstdlib>
 #include <string>
 using namespace std;
@@ -10,7 +10,7 @@ int main() {
 	cout << "Number= ";    cin >> num;
 	for (int i = 0; i < num.length(); i++) {
 		cout << num[i] << endl;
-	}*/ 
+	}*/
 
 	/*int day;
 	cout << "Day= ";    cin >> day;
@@ -49,7 +49,7 @@ int main() {
 	}
 	*/
 
-	double a, b, c, r;
+	/*double a, b, c, r;
 	cout << "a= ";     cin >> a;
 	cout << "b= ";     cin >> b;
 	cout << "c= ";     cin >> c;
@@ -58,8 +58,21 @@ int main() {
 	double halfDiagonal;
 	halfDiagonal = (pow((a * a + b * b), 0.5) / 2.) ;
 	if (r >= halfDiagonal) { cout << "Est probitie!" << endl; }
-	else { cout << "Ne probit" << endl; }
+	else { cout << "Ne probit" << endl; }*/
 
+	srand(time(NULL));
+	string randomPassword="0000";
+	for (int i = 0; i < 4; i++) {
+		randomPassword[i] = rand() % (57-48+1)+47;
+	}
+	string password = "0000";
+	for (int j = 0; j <= randomPassword[0]; j++) { password[0] = j; }
+	for (int q = 0; q <=randomPassword[1]; q++) { password[1] = q; }
+	for (int w = 0; w <=randomPassword[2]; w++) { password[2] = w; }
+	for (int e = 0; e <=randomPassword[3]; e++) { password[3] = e; }
+	cout << randomPassword << endl;
+	cout << password << endl;
+	
 
 	system("pause");
 	return 0;
