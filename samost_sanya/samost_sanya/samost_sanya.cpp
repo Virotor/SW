@@ -74,3 +74,25 @@ void task3() {
 	cout << copyN << '\n';
 	cout << "task 3 completed\n\n";
 }
+
+void task4() {
+	cout << "task 4\n";
+	setlocale(LC_ALL, "Russian");
+	int lengthBrick, widthBrick, heightBrick, lengthWindow, widthWindow;
+	cout << "Enter length of brick\n";
+	cin >> lengthBrick;
+	cout << "Enter width of brick\n";
+	cin >> widthBrick;
+	cout << "Enter height of brick\n";
+	cin >> heightBrick;
+	cout << "Enter length of window\n";
+	cin >> lengthWindow;
+	cout << "Enter width of window\n";
+	cin >> widthWindow;
+	if ((lengthWindow * widthWindow >= lengthBrick * widthBrick && ((lengthBrick <= lengthWindow && widthBrick <= widthWindow) || (lengthBrick <= widthWindow && widthBrick <= lengthWindow))) || (lengthWindow * widthWindow >= lengthBrick * heightBrick && ((lengthBrick <= lengthWindow && heightBrick <= widthWindow) || (lengthBrick <= widthWindow && heightBrick <= lengthWindow))) || (lengthWindow * widthWindow >= heightBrick * widthBrick && ((heightBrick <= lengthWindow && widthBrick <= widthWindow) || (heightBrick <= widthWindow && widthBrick <= lengthWindow)))) {
+		cout << "пройдет\n";
+	}
+	else { cout << "не пройдет\n"; }
+
+	cout << "task 5 completed\n\n";
+}
