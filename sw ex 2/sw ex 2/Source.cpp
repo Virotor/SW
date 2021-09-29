@@ -32,7 +32,7 @@ case 7:
 	break;
 
 default:
-	printf("invalid selection");
+	printf("invalid selection");//Русски язык не работает в гитхабе
 }
 
 
