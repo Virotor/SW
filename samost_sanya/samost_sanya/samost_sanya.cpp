@@ -52,3 +52,25 @@ void task2() {
 	}
 	cout << "task 2 conpleted\n\n";
 }
+
+
+void task3() {
+	cout << "task 3\n";
+	int N, k, i, n1;
+	cout << "Enter number\n";
+	cin >> N;
+	cout << "Enter position\n";
+	cin >> k;
+	int copyN = N;
+	for (i = 0; N > 0; i++) {
+		N = (N - N % 10) / 10;
+	}
+	if (k > i) {
+		cout << "Îøèáêà\n";
+	}
+	else for (i = i - k; i > 0; i--) {
+		copyN = (copyN - copyN % 10) / 10;
+	}
+	cout << copyN << '\n';
+	cout << "task 3 completed\n\n";
+}
