@@ -3,10 +3,11 @@
 
 int main() {
 	using namespace std;
-	int NumTask1, y = 1;
+	int NumTask1, y = 1, Result1;
 	cout << "Please enter a positive number "; cin >> NumTask1;
 	for (y; NumTask1 > 0; y++) {
-		cout << NumTask1 % 10 << endl;
+		Result1 = NumTask1 % 10;
+		cout << Result1 << endl;
 		NumTask1 /= 10;
 	}
 
@@ -41,7 +42,7 @@ int main() {
 	}
 
 
-	int Num1Task3, Num2Task3, Temp, NumOfDigInANum1 = 0, Result;
+	int Num1Task3, Num2Task3, Temp, NumOfDigInANum1 = 0, Result2;
 	cout << "Enter number n "; cin >> Num1Task3;
 	cout << "Enter number k "; cin >> Num2Task3;
 	Temp = Num1Task3;
@@ -52,8 +53,8 @@ int main() {
 		cout << Num1Task3 << endl;
 	else
 	{
-		Result = Num1Task3 / pow(10, NumOfDigInANum1 - Num2Task3);
-		cout << Result << endl;
+		Result2 = Num1Task3 / pow(10, NumOfDigInANum1 - Num2Task3);
+		cout << Result2 << endl;
 	}
 
 
