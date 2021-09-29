@@ -41,6 +41,22 @@ int main() {
 	}
 
 
+	int Num1Task3, Num2Task3, Temp, NumOfDigInANum1 = 0, Result;
+	cout << "Enter number n "; cin >> Num1Task3;
+	cout << "Enter number k "; cin >> Num2Task3;
+	Temp = Num1Task3;
+	for (NumOfDigInANum1; Temp > 0; NumOfDigInANum1++) {
+		Temp /= 10;
+	}
+	if (Num2Task3 > NumOfDigInANum1)
+		cout << Num1Task3 << endl;
+	else
+	{
+		Result = Num1Task3 / pow(10, NumOfDigInANum1 - Num2Task3);
+		cout << Result << endl;
+	}
+
+
 	
 
 	return 0;
