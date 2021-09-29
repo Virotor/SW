@@ -113,10 +113,10 @@ int main()
 		{
 			int a, b, c, d, A, B, C, D;
 			cout << "Задание 5: пароль (чере rand)." << endl << endl;
-			a = rand() % 10 + 1;
-			b = rand() % 10 + 1;
-			c = rand() % 10 + 1;
-			d = rand() % 10 + 1;
+			a = rand() % 9 + 1;
+			b = rand() % 9 + 1;
+			c = rand() % 9 + 1;
+			d = rand() % 9 + 1;
 		tryag:
 			cout << endl << "Введите пароль: ";
 			cin >> A >> B >> C >> D;
