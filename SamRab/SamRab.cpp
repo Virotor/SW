@@ -55,11 +55,38 @@ void NfromK(int& x) {
         cout << n / int(pow(10, (i - k))) << endl;
     }
 }
+//next
+void rectangle(int& x) {
+    int l, w, h, r; // l - Lenght, w - Width, h - Height, r - Radius
+    cout << "Enter  lenght:";  cin >> l;
+    cout << "Enter  width: ";  cin >> w;
+    cout << "Enter  height: ";  cin >> h;
+    cout << "Enter  radius:";  cin >> r;
+    if (l <= 0)
+        cout << "Error\n";
+    else if (w <= 0)
+        cout << "Error\n";
+    else if (l <= 0)
+        cout << "Error\n";
+    else if (h <= 0)
+        cout << "Error\n";
+    else if (r <= 0)
+        cout << "Error\n";
+    else if (sqrt(l * l + w * w) <= 2 * r)
+        cout << "Fits\n";
+    else if (sqrt(l * l + h * h) <= 2 * r)
+        cout << "Fits\n";
+    else if (sqrt(w * w + h * h) <= 2 * r)
+        cout << "Fits\n";
+    else
+        cout << "doesn't fit\n";
+}
 int main() {
     int x;
     number(x);
     week(x);
     NfromK(x);
+    rectangle(x);
     system("pause");
     return 0;
 }
