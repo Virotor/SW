@@ -51,16 +51,41 @@ int day;
 	c = 0;
 	cout << "Введите число\n"; cin >> n;
 	g = n;
-	cout << "Сколько первых цифр этого числа вы хотите увидеть?:"; cin >> k;
+	cout << "Сколько первых цифр этого числа вы хотите увидеть?:" ; cin >> k;
 	for (c; g > 0; c++) {
 		g /= 10;
 	}
-	if (k > c) cout << n;
+	if (k > c) cout << n ;
 	else {
 		y = n / pow(10, c - k);
-		cout << y;
+		cout << y << endl;
 	}
-	return 0;
+	
+
+	double l, r, h, w;
+	int p;
+	cout << "Введите радиус отверстия: "; cin >> r;
+	cout << "Введите длину, ширину и высоту параллелепипеда: "; cin >> l >> w >> h;
+	if (pow(l * l + w * w, 0.5) <= r * 2)
+		p = 1;
+	else p = 2;
+	if (pow(l * l + h * h, 0.5) <= r * 2)
+		p = 3;
+	else p = 4;
+	if (pow(w * w + h * h, 0.5) <= r * 2)
+		p = 5;
+	else p = 6;
+	int R = p % 2;
+	switch (R) {
+	case 1: cout << "Войдет\n";
+		break;
+	case 0: cout << "Не войдет\n";
+		break;
+	default: cout << "Странные числа вы ввели...\n";
+		break;
+
+	}
+	system("pause");
 
 
 
