@@ -33,3 +33,22 @@ void task1() {
 	}
 	cout << "task 1 completed\n\n";
 }
+
+void task2() {
+	cout << "task 2\n";
+	setlocale(LC_ALL, "Russian");
+	int DAY;
+	cout << "Enter day\n";
+	cin >> DAY;
+	switch (DAY) {
+	case 1: cout << "Понедельник\n"; break;
+	case 2: cout << "Вторник\n"; break;
+	case 3: cout << "Среда\n"; break;
+	case 4: cout << "Четверг\n"; break;
+	case 5: cout << "Пятница\n"; break;
+	case 6: cout << "Суббота\n"; break;
+	case 7: cout << "Воскресенье\n"; break;
+	default: cout << "ошибка\n";
+	}
+	cout << "task 2 conpleted\n\n";
+}
