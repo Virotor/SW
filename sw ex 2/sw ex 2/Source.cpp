@@ -4,36 +4,35 @@
 #include <iostream>
 int main ()
 {
-setlocale(LC_ALL, "Russian");
-printf("Введите ваше число(от 1 до 7) и я скажу вам день недели:\n");
+printf("Input your number\n");
 int vasheChislo;
 scanf_s("%d", &vasheChislo);
 switch (vasheChislo)
 {
 case 1:
-	printf("ЕЕЕ это понедельник");
+	printf("Monday");
 	break;
 case 2:
-	printf("Ничего не скажу про вторник");
+	printf("Thuesday");
 	break;
 case 3:
-	printf("Еще только середина недели,то есть среда");
+	printf("Wednesday");
 	break;
 case 4:
-	printf("Сегодня четверг");
+	printf("Thursday");
 	break;
 case 5:
-	printf("Люблю пятницу");
+	printf("Friday");
 	break;
 case 6:
-	printf("Субботочка");
+	printf("Saturday");
 	break;
 case 7:
-	printf("В воскресенье идём в церковь");
+	printf("Sunday");
 	break;
 
 default:
-	printf("Вводи норм число");
+	printf("invalid selection");
 }
 
 
