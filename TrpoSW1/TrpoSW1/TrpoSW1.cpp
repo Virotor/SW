@@ -62,10 +62,38 @@ void firstNumbers() {
 	}
 
 }
+void dimensions() {
+
+	cout << "Enter the dimensions of the parallelepiped:" << endl;
+	long long object[3] = { 0, 0, 0 };
+	cout << "Object height = "; cin >> object[0];
+	cout << "Object length = "; cin >> object[1];
+	cout << "Object width = ";  cin >> object[2];
+	cout << "Enter the dimensions of hole: " << endl;
+
+	long long hole[2] = { 0, 0 };
+	cout << "Hole length = "; cin >> hole[0];
+	cout << "Hole width = "; cin >> hole[1];
+
+
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			if (i == j) {
+				continue;
+			}
+			if (object[i] <= hole[0] && j[object] <= hole[1]) {
+				cout << "Yes" << endl;
+				return;
+			}
+		}
+	}
+	cout << "The parallelepiped will not pass through the hole\n";
+}
 
 int main() {
 	splittingNumbers();
 	dayOfWeek();
 	firstNumbers();
+	dimensions();
 	return 0;
 }
