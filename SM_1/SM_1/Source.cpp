@@ -94,3 +94,30 @@ void task4() {
 	cout << endl;
 }
 
+
+void task5() {
+	cout << "Exercises 5\n";
+	srand(time(0));
+	int Password, Characters;
+	char russia[] = { "1234567890" };
+	srand(time(NULL));
+	int r = rand() % 10;
+	int t = rand() % 10;
+	int y = rand() % 10;
+	int u = rand() % 10;
+	cout << r << t << y << u;
+
+	for (int a = 0; a < 10; a++) {
+		for (int b = 0; b < 10; b++) {
+			for (int c = 0; c < 10; c++) {
+				for (int d = 0; d < 10; d++) {
+					if (r == a && t == b && y == c && u == d) {
+						cout << "\nPassword found " << r << t << y << u; break;
+
+					}
+				}
+			}
+		}
+	}
+	cout << endl << endl;
+}
