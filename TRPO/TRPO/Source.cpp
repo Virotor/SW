@@ -47,17 +47,17 @@ int day;
 	
 
 
-	int n, k,y,c,g;
-	c = 0;
+	int n, k,y,f,g;
+	f = 0;
 	cout << "Введите число\n"; cin >> n;
 	g = n;
 	cout << "Сколько первых цифр этого числа вы хотите увидеть?:" ; cin >> k;
-	for (c; g > 0; c++) {
+	for (f; g > 0; f++) {
 		g /= 10;
 	}
-	if (k > c) cout << n ;
+	if (k > f) cout << n ;
 	else {
-		y = n / pow(10, c - k);
+		y = n / pow(10, f - k);
 		cout << y << endl;
 	}
 	
@@ -81,12 +81,26 @@ int day;
 		break;
 	case 0: cout << "Не войдет\n";
 		break;
-	default: cout << "Странные числа вы ввели...\n";
-		break;
-
 	}
 	system("pause");
 
 
-
+	int a, b, c, d, A, B, C, D;
+	a = rand() % 9 + 1;
+	b = rand() % 9 + 1;
+	c = rand() % 9 + 1;
+	d = rand() % 9 + 1;
+	cout << "Введите пароль:"; cin >> A >> B >> C >> D;
+	if (A != a || B != b || C != c || D != d)
+	{
+		if (A == a) cout << "Первая цифра подобрана" << endl;
+		if (B == b) cout << "Вторая цифра подобрана" << endl;
+		if (C == c) cout << "Третья цифра подобрана" << endl;
+		if (D == d) cout << "Четвертая цифра подобрана" << endl;
+	}
+	else if (A == a || B == b || C == c || D == d)
+	{
+		cout << "Успешно. Пароль:" << a << " " << b << "" << c << "" << d << endl;
+	}
+	return 0;
 }
