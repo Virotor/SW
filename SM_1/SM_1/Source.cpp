@@ -53,3 +53,26 @@ void task2() {
 	}
 	cout << endl << endl ;
 }
+
+
+void task3() {
+	cout << "Exercises 3\n";
+	int n, k, s, c, b;
+	cout << "Enter the number n = "; cin >> n;
+	cout << "Enter the number k = "; cin >> k;
+	s = n;
+	for (c = 0; s > 0; c++) {
+		s /= 10;
+	}
+	if (k > 10)
+		cout << "Error\n";
+	else
+		if (k > c)
+			cout << n;
+		else {
+			b = n / pow(10, c - k);
+			cout << b;
+		}
+	cout << endl << endl;
+}
+
