@@ -59,5 +59,26 @@ int main()
 			}
 		}
 		break;
+	case 3:
+		void third();
+		{
+			int n = 0, k = 0, a = 1;
+			cout << "Задание 3" << endl << endl;
+			cout << "n = ";
+			cin >> n;
+			cout << "k = ";
+			cin >> k;
+			while ((n / a) >= 1)
+			{
+				a *= 10;
+			}
+			a /= 10;
+			while (k >= 1)
+			{
+				cout << (n / a) % 10;
+				k--;
+			}
+		}
+		break;
 	}
 }
