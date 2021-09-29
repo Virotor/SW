@@ -96,3 +96,27 @@ void task4() {
 
 	cout << "task 5 completed\n\n";
 }
+
+
+void task5() {
+	srand(time(NULL));
+	string pass = "0000";
+	for (int i = 0; i <= 3; i++) {
+		pass[i] = 48 + rand() % 10;
+	}
+
+	for (char num1 = 48; num1 < 58; num1++) {
+		for (char num2 = 48; num2 < 58; num2++) {
+			for (char num3 = 48; num3 < 58; num3++) {
+				for (char num4 = 48; num4 < 58; num4++) {
+					char tryPass[]{ num1,num2,num3,num4,NULL };
+					string optPass(tryPass);
+					if (optPass == pass) {
+						std::cout << optPass << '\n' << "task 5 completed\n";
+						exit(0);
+					}
+				}
+			}
+		}
+	}
+}
