@@ -4,9 +4,8 @@ using namespace std;
 int main()
 {
 	using namespace std;
-	setlocale(LC_ALL, "RUS");
 	int num;
-	cout << "Введите число\n"; cin >> num;
+	cout << "Input number\n"; cin >> num;
 	while (num)
 	{
 		cout << num % 10 << endl;
@@ -17,41 +16,41 @@ int main()
 
 
 int day;
-	cout << "Введите номер дня недели\n"; cin >> day;
+	cout << "Input day number\n"; cin >> day;
 	switch (day)
 	{
 	case(1):
-		cout << "Понедельник\n";
+		cout << "Monday\n";
 		break;
 	case(2):
-		cout << "Вторник\n";
+		cout << "Tuesday\n";
 		break;
 	case(3):
-		cout << "Среда\n";
+		cout << "Wednesday\n";
 		break;
 	case(4):
-		cout << "Четверг\n";
+		cout << "Thursday\n";
 		break;
 	case(5):
-		cout << "Пятница\n";
+		cout << "Friday\n";
 		break;
 	case(6):
-		cout << "Суббота\n";
+		cout << "Saturday\n";
 		break;
 	case(7):
-		cout << "Воскресенье\n";
+		cout << "Sunday\n";
 		break;
 	default:
-		cout << "Такого дня недели нет" << endl;
+		cout << "Can't find this day..." << endl;
 	}
 	
 
 
 	int n, k,y,f,g;
 	f = 0;
-	cout << "Введите число\n"; cin >> n;
+	cout << "Input number\n"; cin >> n;
 	g = n;
-	cout << "Сколько первых цифр этого числа вы хотите увидеть?:" ; cin >> k;
+	cout << "How many first numbers of inputed number do you want to see?:" ; cin >> k;
 	for (f; g > 0; f++) {
 		g /= 10;
 	}
@@ -64,8 +63,8 @@ int day;
 
 	double l, r, h, w;
 	int p;
-	cout << "Введите радиус отверстия: "; cin >> r;
-	cout << "Введите длину, ширину и высоту параллелепипеда: "; cin >> l >> w >> h;
+	cout << "Set circle radius: "; cin >> r;
+	cout << "Input length, width and height of parallelepiped : "; cin >> l >> w >> h;
 	if (pow(l * l + w * w, 0.5) <= r * 2)
 		p = 1;
 	else p = 2;
@@ -77,9 +76,9 @@ int day;
 	else p = 6;
 	int R = p % 2;
 	switch (R) {
-	case 1: cout << "Войдет\n";
+	case 1: cout << "Parallelepiped will pass\n";
 		break;
-	case 0: cout << "Не войдет\n";
+	case 0: cout << "Parallelepiped won't pass \n";
 		break;
 	}
 	system("pause");
@@ -90,17 +89,17 @@ int day;
 	b = rand() % 9 + 1;
 	c = rand() % 9 + 1;
 	d = rand() % 9 + 1;
-	cout << "Введите пароль:"; cin >> A >> B >> C >> D;
+	cout << "Input password:"; cin >> A >> B >> C >> D;
 	if (A != a || B != b || C != c || D != d)
 	{
-		if (A == a) cout << "Первая цифра подобрана" << endl;
-		if (B == b) cout << "Вторая цифра подобрана" << endl;
-		if (C == c) cout << "Третья цифра подобрана" << endl;
-		if (D == d) cout << "Четвертая цифра подобрана" << endl;
+		if (A == a) cout << "First nubmer picked up" << endl;
+		if (B == b) cout << "Second nubmer picked up" << endl;
+		if (C == c) cout << "Third nubmer picked up" << endl;
+		if (D == d) cout << "Forth nubmer picked up" << endl;
 	}
 	else if (A == a || B == b || C == c || D == d)
 	{
-		cout << "Успешно. Пароль:" << a << " " << b << "" << c << "" << d << endl;
+		cout << "Successful. Password:" << a << " " << b << "" << c << "" << d << endl;
 	}
 	return 0;
 }
