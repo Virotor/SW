@@ -11,9 +11,11 @@ int main()
     if (l > 0 && s1 > 0 && h1 > 0 && s2 > 0 && h2 > 0)
     {
         if (s1<=s2 && h1<=h2) cout << "Nice)))";
+        else if (h1<=s2 && s1<=h2) cout << "Nice)))";
         else if (s1<=s2 && l<=h2) cout << "Nice)))";
         else if (h1<=s2 && l<=h2) cout << "Nice)))";
-        else if (h1<=s2 && s1<=h2) cout << "Nice)))";
+        else if (l<=s2 && s1<=h2) cout << "Nice)))";
+        else if (l<=s2 && h1<=h2) cout << "Nice)))";
         else cout << "Try again(((";
     }
     else cout << "Error!!!\n";
