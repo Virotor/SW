@@ -5,18 +5,18 @@ using namespace std;
 
 int main() {
 	setlocale(LC_ALL, "rus");
-	int a, b,h,ao,bo;
+	int length, width,hight,lengtho,widtho;
 	cout << "Введите длину параллелепипеда" << endl;
-	cin >> a;
+	cin >> length;
 	cout << "Введите высота параллелепипеда" << endl;
-	cin >>h ;
+	cin >>hight ;
 	cout << "Введите ширина параллелепипеда" << endl;
-	cin >>b ;
+	cin >>width ;
 	cout << "Введите длину отверстия" << endl;
-	cin >> ao;
+	cin >> lengtho;
 	cout << "Введите ширина отверстия" << endl;
-	cin >> bo;
-	if( (a < ao, b < bo)|| (b < ao, a < bo)|| (b < bo, h < ao)|| (b < ao, h < bo) || (a < ao, h < bo)|| (h < ao, a < bo) ){
+	cin >> widtho;
+	if( (length < lengtho, width < widtho)|| (width < lengtho, length < widtho)|| (width < widtho, hight < lengtho)|| (width < lengtho, hight < widtho) || (length < lengtho, hight < widtho)|| (hight < lengtho, length < widtho) ){
 		cout << "Проходит" << endl;;
 	}
 	else {
