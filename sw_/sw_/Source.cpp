@@ -23,6 +23,44 @@ int ex1()
 }
 
 
+int ex2()
+{
+    int weekday;
+    cout << "Enter a day of week (1 - 7) | ";
+    cin >> weekday;
+    bool check = true;
+
+    while (check) {
+        switch (weekday)
+        {
+        case 1: cout << "Monday" << endl;
+            check = false;
+            break;
+        case 2: cout << "Tuesday" << endl;
+            check = false;
+            break;
+        case 3: cout << "Wednesday" << endl;
+            check = false;
+            break;
+        case 4: cout << "Thursday" << endl;
+            check = false;
+            break;
+        case 5: cout << "Friday" << endl;
+            check = false;
+            break;
+        case 6: cout << "Saturday" << endl;
+            check = false;
+            break;
+        case 7: cout << "Sunday" << endl;
+            check = false;
+            break;
+
+        }
+    }
+    return 0;
+}
+
+
 int main()
 {
     int ex; bool check = true;
