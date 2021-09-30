@@ -6,10 +6,10 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "rus");
-	int f;
+	int day;
 	cout << "Введите номер" << endl;
-	cin >> f;
-	switch (f) {
+	cin >> day;
+	switch (day) {
 	case 1:cout << "Понедельник" << endl; break;
 	case 2:cout << "Вторник" << endl; break;
 	case 3:cout << "Среда" << endl; break;
