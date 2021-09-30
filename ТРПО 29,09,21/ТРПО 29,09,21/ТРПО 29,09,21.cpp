@@ -35,6 +35,20 @@ int main() {
 		cout << "Воскресенье" << endl;
 		break;
 	}
+	int n, k, s, c = 0, b;
+	cout << "Введите число n "; cin >> n;
+	cout << "Введите чило k "; cin >> k;
+	s = n;
+	for (c; s > 0; c++) {
+		s /= 10;
+	}
+	if (k > c)
+		cout << n << endl;
+	else
+	{
+		b = n / pow(10, c - k);
+		cout << b << endl;
+	}
 
 	return 0;
 }
