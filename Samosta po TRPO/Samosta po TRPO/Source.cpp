@@ -41,5 +41,19 @@ int main() {
 		}
 		break;
 	}
+	case 3: {
+		int b1;
+		string a1;
+		cout << "¬ведите число ";
+		cin >> a1 >> b1;
+		if (b1 > size(a1)) {
+			cout << "ќшибка";
+			return 1;
+		}
+		a1 = a1.erase(b1, size(a1));
+		cout << a1;
+		return 0;
+	}
+		  break;
 	}
 }
