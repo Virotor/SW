@@ -25,10 +25,10 @@ case 5:
 	printf("Friday");
 	break;
 case 6:
-	printf("Saturday");
+	printf("Saturday");//
 	break;
 case 7:
-	printf("Sunday");//
+	printf("Sunday");
 	break;
 
 default:
