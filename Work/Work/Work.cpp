@@ -6,6 +6,7 @@ using namespace std;
 int task1();
 int task2();
 int task3();
+int task4();
 
 int main()
 {
@@ -13,6 +14,7 @@ int main()
 	task1();
 	task2();
 	task3();
+	task4();
 	return 0;
 }
 
@@ -65,5 +67,19 @@ int task3()
 	{
 		cout << temp[i];
 	}
+	return 0;
+}
+int task4()
+{
+	cout << "\n\tЗадание 4\n";
+	int holeHeight, holeWidth;
+	cout << "Введите размеры отверстия (высота, ширина): "; cin >> holeHeight >> holeWidth;
+	int paralLength, paralHeight, paralWidth;
+	cout << "Введите габариты параллелепипеда (длина, высота, ширина):"; cin >> paralLength >> paralHeight >> paralWidth;
+	if ((paralLength < holeWidth && paralWidth < holeHeight) || (paralWidth < holeWidth && paralLength < holeHeight) || (paralHeight < holeHeight && paralLength < holeWidth) || (paralHeight < holeHeight && paralWidth < holeWidth))
+		cout << "Параллелепипед поместиться в отверстие";
+	else
+		cout << "Параллелепипед не поместиться в отверстие";
+
 	return 0;
 }
