@@ -61,6 +61,47 @@ int ex2()
 }
 
 
+int ex3()
+{
+    int n, k;
+    bool check = true;
+
+    while (check) {
+        cout << "\nEnter n | ";
+        cin >> n;
+        cout << "\nEnter k | ";
+        cin >> k;
+
+        int count_n = 0;
+        int copy_n = n;
+
+        while (true)
+        {
+            if (copy_n == 0) break;
+            copy_n /= 10;
+            count_n++;
+        }
+
+
+        if (count_n < k) {
+            cout << "Enter that count of number n >= k" << endl;
+            continue;
+        }
+
+        cout << "Firstly k number of numbers n |" << endl;
+
+        for (int i = 0; i < k; i++)
+        {
+            cout << to_string(n)[i] << endl;
+        }
+        check = false;
+
+    }
+    n = (int)n;
+    return 0;
+}
+
+
 int main()
 {
     int ex; bool check = true;
