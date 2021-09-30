@@ -7,6 +7,7 @@ int task1();
 int task2();
 int task3();
 int task4();
+int task5();
 
 int main()
 {
@@ -15,6 +16,7 @@ int main()
 	task2();
 	task3();
 	task4();
+	task5();
 	return 0;
 }
 
@@ -81,5 +83,19 @@ int task4()
 	else
 		cout << "Параллелепипед не поместиться в отверстие";
 
+	return 0;
+}
+
+int task5()
+{
+	cout << "\n\tЗадание 5\n";
+	srand(time(0));
+	char pass[5]{ rand() % (57 - 48 + 1) + 48, rand() % (57 - 48 + 1) + 48, rand() % (57 - 48 + 1) + 48, rand() % (57 - 48 + 1) + 48 };
+	for (char num1 = '0'; num1 <= '9'; ++num1)
+		for (char num2 = '0'; num2 <= '9'; ++num2)
+			for (char num3 = '0'; num3 <= '9'; ++num3)
+				for (char num4 = '0'; num4 <= '9'; ++num4)
+					if (pass[0] == num1 && pass[1] == num2 && pass[2] == num3 && pass[3] == num4)
+						cout << "Угаданный пароль: " << num1 << num2 << num3 << num4;
 	return 0;
 }
