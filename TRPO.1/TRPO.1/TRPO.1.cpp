@@ -20,6 +20,49 @@ void zadanie1()
     cout << x3 << "\n";
 }
 
+
+void zadanie2()
+{
+    int day;
+    cout << "Введите номер дня: ";
+    cin >> day;
+
+    switch (day)
+    {
+
+    case 1:
+        cout << "Понедельник";
+        break;
+
+    case 2:
+        cout << "Вторник";
+        break;
+
+    case 3:
+        cout << "Среда";
+        break;
+
+    case 4:
+        cout << "Четверг";
+        break;
+
+    case 5:
+        cout << "Пятница";
+        break;
+
+    case 6:
+        cout << "Суббота";
+        break;
+
+    case 7:
+        cout << "Воскресенье";
+        break;
+
+    default:
+        cout << "Ошибка";
+    }
+}
+
 int main()
 {
     setlocale(LC_ALL, "rus");
@@ -31,6 +74,9 @@ int main()
     {
     case 1:
         zadanie1();
+        break;
+    case 2:
+        zadanie2();
         break;
     }
 }
