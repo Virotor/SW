@@ -4,17 +4,17 @@ using namespace std;
 
 int main()
 {
-	int n, c, x, i,b;
+	int kolvo, cifra, chislo, i,b;
 	cout << "Vvedite chislo" << endl;
-	cin >> x;
-	x = abs(x);
-	b = x;
-	n = 1;
-	while ((b /= 10) > 0) n++;
-	for (i = n; i > 0;i--) {
-		c = x / pow(10,i-1);
+	cin >> chislo;
+	chislo = abs(chislo);
+	b = chislo;
+	kolvo = 1;
+	while ((b /= 10) > 0) kolvo++;
+	for (i = kolvo; i > 0;i--) {
+		cifra = chislo / pow(10,i-1);
 		cout << c<<endl;
-		x =x-c* pow(10, i-1);
+		chislo =chislo-cifra* pow(10, i-1);
 	}
 	return 0;
 }
