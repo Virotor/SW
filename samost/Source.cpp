@@ -1,22 +1,24 @@
 #include <iostream>;
 using namespace std;
-
 int main() {
-	cout << "Enter n and k ";
-	int n, a, b, k, g, h = 1;
-	cin >> n;
-	a = n;
-	for (a; a > 10; a /= 10) {
-		h++;
+	int number;
+	cout << "Enter the number \n";
+	cin >> number;
+	switch (number) {
+	case 1: cout << "Monday";
+		break;
+	case 2: cout << "Tuesday";
+		break;
+	case 3: cout << "Wednesday";
+		break;
+	case 4: cout << "Thursday";
+		break;
+	case 5: cout << "Friday";
+		break;
+	case 6: cout << "Saturday";
+		break;
+	case 7: cout << "Sunday";
+		break;
+	default: cout << "Error";
 	}
-	cin >> k;
-	int e = h - k;
-	for (h; h > e; h--) {
-		b = pow(10, h);
-		g = n;
-		g = g / (b / 10);
-		cout << g;
-		n = n % (b / 10);
-	}
-	return 0;
 }
