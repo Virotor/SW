@@ -5,14 +5,14 @@ using namespace std;
 int main()
 {
     int a, b, c, d;
-    a = rand() % 9;
-    b = rand() % 9;
-    c = rand() % 9;
-    d = rand() % 9;
+    a = rand() % 10;
+    b = rand() % 10;
+    c = rand() % 10;
+    d = rand() % 10;
     int n = 0;
     int numList[4] = {a,b,c,d};
-    cout<<"Сгенерированное число : "<<a<<b<<c<<d<<endl;
-    cout<<"Отгаданное число : ";
+    cout<<"Сгенерированный пароль : "<<a<<b<<c<<d<<endl;
+    cout<<"Отгаданный пароль : ";
     for (int i = 0; i < 4; i++)
     {   
         for (int k = 0; k < numList[i]; k++)
