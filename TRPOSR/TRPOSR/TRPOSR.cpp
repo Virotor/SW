@@ -3,17 +3,43 @@ using namespace std;
 
 int main()
 {
-    int number, x1, x2, x3;
-    cout << "\nEnter a three-digit number: ";
-    cin >> number;
-    x1 = number / 100;
-    number %= 100;
-    x2 = number / 10;
-    number %= 10;
-    x3 = number;
-    cout << x1 << "\n";
-    cout << x2 << "\n";
-    cout << x3 << "\n";
+    setlocale(LC_ALL, "rus");
+    int day;
+    cout << "Введите номер дня: ";
+    cin >> day;
 
-    return 0;
+    switch (day)
+    {
+
+    case 1:
+        cout << "Понедельник";
+        break;
+
+    case 2:
+        cout << "Вторник";
+        break;
+
+    case 3:
+        cout << "Среда";
+        break;
+
+    case 4:
+        cout << "Четверг";
+        break;
+
+    case 5:
+        cout << "Пятница";
+        break;
+
+    case 6:
+        cout << "Суббота";
+        break;
+
+    case 7:
+        cout << "Воскресенье";
+        break;
+
+    default:
+        cout << "Ошибка";
+    }
 }
