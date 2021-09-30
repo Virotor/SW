@@ -60,6 +60,28 @@ void Task3()
 
 	}
 }
+void Task4()
+{
+	int HoleWidht, HoleLenght;
+	cout << "Введите ширину и длинну";
+	cin >> HoleWidht >> HoleLenght;
+	int Lenght, Width, Height;
+	cout << "Введите длинну ширину и высоту парралелипипида";
+	cin >> Lenght >> Width >> Height;
+
+	if((Lenght < HoleLenght && Width < HoleWidht) ||
+	   (Lenght < HoleWidht && Width < HoleLenght) ||
+	   (Lenght < HoleWidht && Width < HoleLenght) ||
+		(Height < HoleWidht && Lenght < HoleLenght) ||
+		(Width < HoleWidht && Height < HoleLenght))
+	{
+		cout << "\n Параллелепипед поместится";
+	}
+	else
+	{
+		cout << "\n Параллелепипед не поместится";
+	}
+}
 
 int main()
 {
