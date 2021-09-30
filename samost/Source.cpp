@@ -2,23 +2,21 @@
 using namespace std;
 
 int main() {
-	cout << "Enter number";
-	int c, a;
-	int k = 1;
-	int b;
-	int g;
-	cin >> c;
-	a = c;
-	int f;
+	cout << "Enter n and k ";
+	int n, a, b, k, g, h = 1;
+	cin >> n;
+	a = n;
 	for (a; a > 10; a /= 10) {
-		k++;
+		h++;
 	}
-	for (k; k > 0; k--) {
-		b = pow(10, k);
-		g = c;
+	cin >> k;
+	int e = h - k;
+	for (h; h > e; h--) {
+		b = pow(10, h);
+		g = n;
 		g = g / (b / 10);
-		cout << g << endl;
-		c = c % (b / 10);
+		cout << g;
+		n = n % (b / 10);
 	}
 	return 0;
 }
