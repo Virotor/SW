@@ -38,7 +38,7 @@ int task1()
 }
 int task2()
 {
-	cout << "\n\tЗадание 2\n";
+	cout << "\tЗадание 2\n";
 	int day;
 	do{
 		cout << "Введите номер дня недели: ";
@@ -59,16 +59,19 @@ int task2()
 }
 int task3()
 {
-	cout << "\n\tЗадание3\n";
-	int numberN, numberK;
+	cout << "\tЗадание3\n";
+	int numberN, numberK, temp, kol=0;
 	cout << "Введите число n: "; cin >> numberN;
 	cout << "Введите число k: "; cin >> numberK;
-	string temp;
-	temp = to_string(numberN);
-	for (int i = 0; i < numberK; i++)
+	temp = numberN;
+	while (numberN)
 	{
-		cout << temp[i];
+		numberN /= 10;
+		kol++;
 	}
+	for (int i = 0; i < kol - numberK; i++)
+		temp /= 10;
+	cout << temp;
 	return 0;
 }
 int task4()
