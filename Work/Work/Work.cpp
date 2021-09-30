@@ -5,12 +5,14 @@ using namespace std;
 
 int task1();
 int task2();
+int task3();
 
 int main()
 {
 	setlocale(LC_ALL,"rus");
 	task1();
 	task2();
+	task3();
 	return 0;
 }
 
@@ -49,5 +51,19 @@ int task2()
 		default: cout << "Такого дня нет!!!" << endl; break;
 		}
 	} while (day > 7 || day < 1);
+	return 0;
+}
+int task3()
+{
+	cout << "\n\tЗадание3\n";
+	int numberN, numberK;
+	cout << "Введите число n: "; cin >> numberN;
+	cout << "Введите число k: "; cin >> numberK;
+	string temp;
+	temp = to_string(numberN);
+	for (int i = 0; i < numberK; i++)
+	{
+		cout << temp[i];
+	}
 	return 0;
 }
