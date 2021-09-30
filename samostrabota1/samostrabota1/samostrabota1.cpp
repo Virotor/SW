@@ -1,6 +1,7 @@
 #include<iostream>
 #include<conio.h>
 #include<sstream>
+#include<math.h>
 
 using namespace std;
 
@@ -60,6 +61,59 @@ int zadanie3()
 	return 0;
 }
 
+int zadanie4()
+{
+	int a1, b1, c1, a2, b2;
+
+	cout << "\nInput length, width and height of the parallelepiped:" << endl;
+	cin >> a1 >> b1 >> c1;
+
+	cout << "\nInput length and width of the hole:" << endl;
+	cin >> a2 >> b2;
+
+	if (a1 <= a2 && c1 <= b2)
+		cout << "\nThe parallelepiped will go through the hole" << endl;
+	else
+	{
+		if (c1 <= a2 && a1 <= b2)
+			cout << "\nThe parallelepiped will go through the hole" << endl;
+		else
+		{
+			if (c1 <= a2 && b1 <= b2)
+				cout << "\nThe parallelepiped will go through the hole" << endl;
+			else
+			{
+				if (b1 <= a2 && c1 <= b2)
+					cout << "\nThe parallelepiped will go through the hole" << endl;
+				else
+				{
+					if (a1 <= a2 && b1 <= b2)
+						cout << "\nThe parallelepiped will go through the hole" << endl;
+					else
+					{
+						if (b1 <= a2 && a1 <= b2)
+							cout << "\nThe parallelepiped will go through the hole" << endl;
+						else
+						{
+							if (sqrt(pow(a1, 2) + pow(b1, 2)) <= sqrt(pow(a2, 2) + pow(b2, 2)) && c1 <= b2)
+								cout << "\nThe parallelepiped will go through the hole" << endl;
+							else
+							{
+								if (sqrt(pow(a1, 2) + pow(b1, 2)) <= sqrt(pow(a2, 2) + pow(b2, 2)) && c1 <= a2)
+									cout << "\nThe parallelepiped will go through the hole" << endl;
+								else
+									cout << "\nThe parallelepiped won't go through the hole" << endl;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	return 0;
+}
+
 int main()
 {
 	setlocale(LC_ALL, "Rus");
@@ -71,5 +125,6 @@ int main()
 	case'1':zadanie1();break;
 	case'2':zadanie2();break;
 	case'3':zadanie3();break;
+	case'4':zadanie4();break;
 	}
 }
