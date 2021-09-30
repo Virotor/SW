@@ -55,5 +55,19 @@ int main() {
 		return 0;
 	}
 		  break;
+	case 4: {
+		int a2, b2, c2, x2, y2;
+		cout << "Введите размеры отверстия " << "\n";
+		cin >> x2;
+		cin >> y2;
+		cout << "Введите размеры параллелепипеда " << "\n";
+		cin >> a2 >> b2 >> c2;
+		if (x2 > y2) { double t = x2; x2 = y2; y2 = t; }
+		if (a2 > b2) { double t = a2; a2 = b2; b2 = t; }
+		if (b2 > c2) { double t = b2; b2 = c2; c2 = t; }
+		if (a2 > b2) { double t = a2; a2 = b2; b2 = t; }
+		if ((a2 < x2) && (b2 < y2)) cout << "Параллелепипед пройдет в отверстие";
+		else cout << "Параллелепипед не пройдет в отверстие";
+		return 0; } break;
 	}
 }
