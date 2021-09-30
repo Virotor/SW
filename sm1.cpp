@@ -13,7 +13,7 @@ int main()
 	while ((b /= 10) > 0) kolvo++;
 	for (i = kolvo; i > 0;i--) {
 		cifra = chislo / pow(10,i-1);
-		cout << c<<endl;
+		cout << cifra<<endl;
 		chislo =chislo-cifra* pow(10, i-1);
 	}
 	return 0;
