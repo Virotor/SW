@@ -79,6 +79,37 @@ int main()
 	{
 		cout << "ERROR" << endl << endl;
 	}
+	cout << endl << "ЗАДАНИЕ 5." << endl;
+	int f, g, p, r, a1 = 0, b1 = 0, c1 = 0, d1 = 0;
+	srand((int)time(0));
+	f = rand() % 10 + 0;
+	g = rand() % 10 + 0;
+	p = rand() % 10 + 0;
+	r = rand() % 10 + 0;
+	cout << "PASSWORD: " << f;
+	cout << g;
+	cout << p;
+	cout << r << endl;
+	while (a1 != f)
+	{
+		a1++;
+	}
+	while (b1 != g)
+	{
+		b1++;
+	}
+	while (c1 != p)
+	{
+		c1++;
+	}
+	while (d1 != r)
+	{
+		d1++;
+	}
+	cout << "GENERATE PASSWORD: " << a1;
+	cout << b1;
+	cout << c1;
+	cout << d1;
 	return 0;
 }
 
