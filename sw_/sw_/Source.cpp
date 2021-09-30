@@ -102,6 +102,45 @@ int ex3()
 }
 
 
+int ex4()
+{
+    int width, height, length;
+    int radius;
+    cout << "Width | ";
+    cin >> width;
+    cout << "\nHeight | ";
+    cin >> height;
+    cout << "\nLenght | ";
+    cin >> length;
+    cout << "\nRadius | ";
+    cin >> radius;
+
+    int diameter = 2 * radius;
+
+    int diagonalP1, diagonalP2, diagonalP3;
+
+    diagonalP1 = sqrt(width * width + height * height);
+    diagonalP2 = sqrt(length * length + height * height);
+    diagonalP3 = sqrt(width * width + length * length);
+
+    int diagonalList[3] = { diagonalP1, diagonalP2, diagonalP3 };
+    int n_result = 0;
+
+    for (int i = 0; i < 2; i++)
+    {
+        int diagonal = diagonalList[i];
+        int diagonal2 = diagonalList[i + 1];
+        if (diagonal > diagonal2) n_result = diagonal;
+        else n_result = diagonal2;
+    }
+
+    cout << n_result << endl;
+    if (n_result < diameter) cout << "Pass" << endl;
+    else cout << "Not work" << endl;
+    return 0;
+}
+
+
 int main()
 {
     int ex; bool check = true;
