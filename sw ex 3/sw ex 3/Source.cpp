@@ -15,7 +15,7 @@ int main()
 		kolichestvoCifr += 1;
 	}
 	int novoeChislo, vspomogatelnoeChislo;
-	vspomogatelnoeChislo = pow(10, kolichestvoCifr - k);
+	vspomogatelnoeChislo = pow(10, kolichestvoCifr - k);//
 	novoeChislo = byfer/vspomogatelnoeChislo;
 
 	printf("Rezult:%d",novoeChislo);
