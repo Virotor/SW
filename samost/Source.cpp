@@ -1,24 +1,23 @@
 #include <iostream>;
 using namespace std;
 int main() {
-	int number;
-	cout << "Enter the number \n";
-	cin >> number;
-	switch (number) {
-	case 1: cout << "Monday";
-		break;
-	case 2: cout << "Tuesday";
-		break;
-	case 3: cout << "Wednesday";
-		break;
-	case 4: cout << "Thursday";
-		break;
-	case 5: cout << "Friday";
-		break;
-	case 6: cout << "Saturday";
-		break;
-	case 7: cout << "Sunday";
-		break;
-	default: cout << "Error";
+	int holeWidth, holeLength, holeHeight, parWidth, parHeight, parLength;
+	cout << "Enter hole length, width and height\n";
+	cin >> holeHeight >> holeLength >> holeWidth;
+	cout << "Enter par length, width and height\n";
+	cin >> parHeight >> parLength >> parWidth;
+	if ((holeHeight >= parHeight && holeWidth >= parWidth && holeLength >= parLength) ||
+		(holeHeight >= parLength && holeWidth >= parWidth && holeLength >= parHeight) ||
+		(holeHeight >= parWidth && holeWidth >= parHeight && holeLength >= parLength) ||
+		(holeHeight >= parHeight && holeWidth >= parLength && holeLength >= parWidth) ||
+		(holeHeight >= parLength && holeWidth >= parHeight && holeLength >= parLength)||
+	    (holeHeight >= parWidth && holeWidth >= parLength && holeLength >= parHeight))
+	{
+		cout << "\nFITS";
 	}
+	else{
+		cout << "\nDOESN'T FIT";
+	}
+	
+	return 0;
 }
