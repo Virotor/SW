@@ -1,5 +1,6 @@
 #include<iostream>
 #include<conio.h>
+#include<sstream>
 
 using namespace std;
 
@@ -39,6 +40,26 @@ int zadanie2()
 	return 0;
 }
 
+int zadanie3()
+{
+	int n, k, N = 0;
+	stringstream ss;
+
+	cout << "\nInput n and k:" << endl;
+	cin >> n >> k;
+	ss << n;
+
+	cout << "\n";
+	while (N != k)
+	{
+		cout << ss.str()[N];
+		N++;
+	}
+	cout << "\n";
+
+	return 0;
+}
+
 int main()
 {
 	setlocale(LC_ALL, "Rus");
@@ -49,5 +70,6 @@ int main()
 	{
 	case'1':zadanie1();break;
 	case'2':zadanie2();break;
+	case'3':zadanie3();break;
 	}
 }
