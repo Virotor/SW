@@ -66,9 +66,13 @@ int main() {
 	else
 		j = 2;
 	int f = j % 2;
-
-
-
-
+	switch (f) {
+	case 0:
+		cout << "Войдет";
+		break;
+	case 1:
+		cout << "Не войдет";
+		break;
+	}
 	return 0;
 }
