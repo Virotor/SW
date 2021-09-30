@@ -76,7 +76,7 @@ int task4()
 	cout << "Введите размеры отверстия (высота, ширина): "; cin >> holeHeight >> holeWidth;
 	int paralLength, paralHeight, paralWidth;
 	cout << "Введите габариты параллелепипеда (длина, высота, ширина):"; cin >> paralLength >> paralHeight >> paralWidth;
-	if ((paralLength < holeWidth && paralWidth < holeHeight) || (paralWidth < holeWidth && paralLength < holeHeight) || (paralHeight < holeHeight && paralLength < holeWidth) || (paralHeight < holeHeight && paralWidth < holeWidth))
+	if ((paralLength < holeWidth && paralWidth < holeHeight) || (paralWidth < holeWidth && paralLength < holeHeight) || (paralHeight < holeHeight && paralLength < holeWidth) || (paralHeight < holeHeight && paralWidth < holeWidth) || (paralHeight < holeWidth && paralWidth < holeHeight) || (paralHeight < holeWidth && paralLength < holeHeight))
 		cout << "Параллелепипед поместиться в отверстие";
 	else
 		cout << "Параллелепипед не поместиться в отверстие";
