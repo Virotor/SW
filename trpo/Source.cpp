@@ -56,3 +56,22 @@ int zadanie3()
 	}
 	return(0);
 }
+
+int zadanie4()
+{
+		int w1, h1, w, h, l;
+		cout << "Vvedite visotu i shirinu otverstiya:" << endl;
+		cin >> w1 >> h1;
+		cout << "Vvedite dannie parallelepipeda - shirina, dlina, visota:" << endl;
+		cin >> w >> l >> h;
+		if (w1 >= w && h1 >= h ||
+			w1 >= w && h1 >= l ||
+			w1 >= h && h1 >= w ||
+			w1 >= h && h1 >= l ||
+			w1 >= l && h1 >= w ||
+			w1 >= l && h1 >= h) {
+			cout << "Proshel";
+		}
+		else cout << "Ne proshel";
+	return 0;
+}
