@@ -1,20 +1,24 @@
 ﻿#include <iostream>
+#include <cmath>
 using namespace std;
-
 
 int main()
 {
-    int number, x1, x2, x3;
-    cout << "\nEnter a three-digit number: ";
-    cin >> number;
-    x1 = number / 100;
-    number %= 100;
-    x2 = number / 10;
-    number %= 10;
-    x3 = number;
-    cout << x1 << "\n";
-    cout << x2 << "\n";
-    cout << x3 << "\n";
+	int number, a, c, count, b;
+	cout << "Enter a number: ";
+	cin >> number;
 
-    return 0;
+	number = fabs(number);
+	a = number;
+	for (count = 0; a > 0; count++)
+	{
+		a = a / 10;
+	}
+	for (b = count; number > 0; count--)
+	{
+		c = number / pow(10, (count - 1));
+		number = number - c * pow(10, count - 1);
+		cout << c << "\n";
+	}
+	return 0;
 }
