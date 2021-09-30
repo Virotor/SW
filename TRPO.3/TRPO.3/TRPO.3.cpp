@@ -9,8 +9,6 @@ int main()
     cin >> n;
     cout << "Enter a K: ";
     cin >> k;
-
-
     k = to_string(n).length() - k;
     n /= pow(10, k);
     cout << n;
