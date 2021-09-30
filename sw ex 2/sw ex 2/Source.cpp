@@ -28,11 +28,11 @@ case 6:
 	printf("Saturday");
 	break;
 case 7:
-	printf("Sunday");
+	printf("Sunday");//
 	break;
 
 default:
-	printf("invalid selection");//Русски язык не работает в гитхабе
+	printf("invalid selection");//Русский язык не работает в гитхабе
 }
 
 
