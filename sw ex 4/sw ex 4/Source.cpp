@@ -23,7 +23,7 @@ int main()
 		}
 		if (widthParallelipip < dlinaOtverst && heightparalelepip < shirinaOtverst || widthParallelipip < shirinaOtverst & heightparalelepip < dlinaOtverst)
 		{
-			printf("Vleset\n");
+			printf("Vleset\n");//
 			system("pause");
 			return 0;
 		}
