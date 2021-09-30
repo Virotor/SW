@@ -2,9 +2,9 @@
 #include <math.h>
 int main()
 {
-	printf("Vvedite chislo:\n");
+	printf("Vvedite chislo:\n");//
 	int vvedenoeChislo;
-	scanf_s("%d", &vvedenoeChislo);//
+	scanf_s("%d", &vvedenoeChislo);
 	int ostatokOtDeleniya;
 	ostatokOtDeleniya = 0;
 	for (int i = 0; i <=vvedenoeChislo; i++)
