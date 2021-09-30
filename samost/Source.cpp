@@ -6,22 +6,22 @@ void z1() {
 
 
 	cout << "Enter number";
-	int c, a;
+	int c, w;
 	int k = 1;
-	int b;
-	int g;
+	int q;
+	int l;
 	cin >> c;
-	a = c;
+	w = c;
 	int f;
-	for (a; a > 10; a /= 10) {
+	for (w; w > 10; w /= 10) {
 		k++;
 	}
 	for (k; k > 0; k--) {
-		b = pow(10, k);
-		g = c;
-		g = g / (b / 10);
-		cout << g << endl;
-		c = c % (b / 10);
+		q = pow(10, k);
+		l = c;
+		l = l / (q / 10);
+		cout << l << endl;
+		c = c % (q / 10);
 	}
 }
 void z2()
@@ -84,4 +84,40 @@ void z4() {
 		cout << "\nDOESN'T FIT";
 	}
 
+}
+void z5() {
+	string s;
+	char symbol1, symbol2, symbol3, symbol4;
+	symbol1 = rand() % 10 + 48;
+	symbol2 = rand() % 10 + 48;
+	symbol3 = rand() % 10 + 48;
+	symbol4 = rand() % 10 + 48;
+	char arr[4] = { symbol1, symbol2, symbol3, symbol4 };
+	s = string(arr);
+	int a;
+	int x = 0;
+	stringstream ss;
+	ss << s;
+	ss >> a;
+	cout << a << endl;
+	int array[4];
+	for (int i = 3; i >= 0; i--) {
+		array[i] = a % 10;
+		a /= 10;
+	}
+	cout << "Password:";
+	for (int i = 0; i <= 3; i++) {
+		for (x; x != array[i]; x++) {
+		}
+		cout << x;
+	}
+
+}
+int main() {
+	z1();
+	z2();
+	z3();
+	z4();
+	z5();
+	return 0;
 }
