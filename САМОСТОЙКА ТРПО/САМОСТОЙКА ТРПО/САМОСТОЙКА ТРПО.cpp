@@ -53,6 +53,32 @@ int main()
 	default:
 		cout << "ПОДУМАЙ ЛУЧШЕ( В НЕДЕЛЕ 7 ДНЕЙ )" << endl << endl;
 	}
+	cout << "ЗАДАНИЕ 3. " << endl;
+	int n, k, d = 1;
+	cout << "Введите n: " << endl;
+	cin >> n;
+	cout << "Введите k: " << endl;
+	cin >> k;
+
+	if (k <= n)
+	{
+
+		while ((n / d) >= 1)
+		{
+			d *= 10;
+		}
+		d /= 10;
+		while (k >= 1)
+		{
+			cout << (n / d) % 10;
+			d /= 10;
+			k--;
+		}
+	}
+	else
+	{
+		cout << "ERROR" << endl << endl;
+	}
 	return 0;
 }
 
