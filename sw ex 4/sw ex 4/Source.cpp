@@ -10,7 +10,7 @@ int main()
 	scanf_s("%d%d%d", &lengthParallelepip, &widthParallelipip, &heightparalelepip);
 		if (lengthParallelepip < dlinaOtverst && widthParallelipip < shirinaOtverst || lengthParallelepip < shirinaOtverst & widthParallelipip < dlinaOtverst)
 		{
-			printf("Vleset\n");
+			printf("Vleset\n");//
 			system("pause");
 			return 0;
 		}
