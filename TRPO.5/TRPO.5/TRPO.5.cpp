@@ -27,4 +27,6 @@ int main()
         cout << "Success! Your password is " << "0" << PsevdoPassword;
     else
         cout << "Success! Your password is " << PsevdoPassword;
+
+    return 0;
 }
