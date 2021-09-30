@@ -114,6 +114,39 @@ int zadanie4()
 	return 0;
 }
 
+int zadanie5()
+{
+	int a, b, c, d, n = 0;
+
+	a = rand() % 9;
+	b = rand() % 9;
+	c = rand() % 9;
+	d = rand() % 9;
+
+	int numList[4] = { a,b,c,d };
+
+	cout << "\nGenerated password: " << a << b << c << d;
+
+	cout << "\nGuessed password: ";
+
+	for (int i = 0; i < 4; i++)
+	{
+		for (int k = 0; k < numList[i]; k++)
+		{
+			n++;
+			if (n == numList[i])
+			{
+				cout << n;
+				n = 0;
+			}
+
+		}
+	}
+	cout << "\n";
+
+	return 0;
+}
+
 int main()
 {
 	setlocale(LC_ALL, "Rus");
@@ -126,5 +159,6 @@ int main()
 	case'2':zadanie2();break;
 	case'3':zadanie3();break;
 	case'4':zadanie4();break;
+	case'5':zadanie5();break;
 	}
 }
