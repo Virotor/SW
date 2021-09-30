@@ -7,7 +7,7 @@ int main()
 	srand(time(NULL));
 		char cifraParolya1 = rand() % 10 + '0';
 		printf("%c", cifraParolya1);
-		char cifraParolya2 = rand() % 10 + '0';
+		char cifraParolya2 = rand() % 10 + '0';//
 		printf("%c", cifraParolya2);
 		char cifraParolya3 = rand() % 10 + '0';
 		printf("%c", cifraParolya3);
