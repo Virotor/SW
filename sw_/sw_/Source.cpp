@@ -141,12 +141,40 @@ int ex4()
 }
 
 
+int ex5()
+{
+    char n1, n2, n3, n4;
+    n1 = (int)rand() % 10;
+    n2 = (int)rand() % 10;
+    n3 = (int)rand() % 10;
+    n4 = (int)rand() % 10;
+
+    int numList[4] = { n1, n2, n3, n4 }; 
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 10; j++)
+        {
+            if (numList[i] == j)
+            {
+                cout << j << endl;
+            }
+        }
+    }
+
+    n1 = (char)n1;
+    n2 = (char)n1;
+    n3 = (char)n1;
+    n4 = (char)n1;
+
+    return 0;
+}
+
 int main()
 {
     int ex; bool check = true;
 
     while (check) {
-        cout << "\nEnter the exercise 1 - 1 (0 - exit) | ";
+        cout << "\nEnter the exercise 1 - 5 (0 - exit) | ";
         cin >> ex;
 
         switch (ex)
@@ -155,7 +183,22 @@ int main()
             cout << "\nEx 1\n" << endl;
             ex1();
             break;
-
+        case 2:
+            cout << "\nEx 2\n" << endl;
+            ex2();
+            break;
+        case 3:
+            cout << "\nEx 3\n" << endl;
+            ex3();
+            break;
+        case 4:
+            cout << "\nEx 4\n" << endl;
+            ex4();
+            break;
+        case 5:
+            cout << "\nEx 5\n" << endl;
+            ex5();
+            break;
         case 0:
             check = false;
             break;
