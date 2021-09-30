@@ -48,13 +48,22 @@ void Task2()
 }
 void Task3()
 {
-	int n, k;
-	
+	cout << "Задание3" << endl;
+	int N, K;
+	cout << "Введите число n: "; cin >> N;
+	cout << "Введите число k: "; cin >> K;
+	string temp;
+	temp = to_string(N);
+	for (int i = 0; i < K; i++)
+	{
+		cout << temp[i];
+
+	}
 }
 
 int main()
 {
 	setlocale(LC_ALL, "rus");
 
-	Task2();
+	Task3();
 }
