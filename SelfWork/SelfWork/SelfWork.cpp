@@ -8,7 +8,7 @@ void Task1()
 	int num;
 	string digit;
 
-	cout << "Введите число: ";
+	cout << "Задание 1: Введите число: ";
 	cin >> num;
 	while (num > 0)
 	{
@@ -21,10 +21,40 @@ void Task1()
 	}
 	digit.clear();
 }
+void Task2()
+{
+	cout << "Задание 2:" << endl;
+
+	string day[] = {
+		"Понедельник",
+		"Вторник",
+		"Среда",
+		"Четверг",
+		"Пятница",
+		"Суббота",
+		"Воскресенье"
+	};
+	int num;
+	cout << "Введите номер дня: ";
+	cin >> num;
+	num = (num - 1);
+	
+	if (num < 1 || num > 7)
+	{
+		cout << "Нет такого дня недели";
+		return;
+	}
+	cout << day[num];
+}
+void Task3()
+{
+	int n, k;
+	
+}
 
 int main()
 {
 	setlocale(LC_ALL, "rus");
 
-	Task1();
+	Task2();
 }
