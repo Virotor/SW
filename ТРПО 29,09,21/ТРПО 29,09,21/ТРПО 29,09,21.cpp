@@ -49,6 +49,21 @@ int main() {
 		b = n / pow(10, c - k);
 		cout << b << endl;
 	}
+	double l, h, v, r;
+	int j;
+	cout << "Радиус отверстия = "; cin >> r;
+	cout << "Длина = "; cin >> l;
+	cout << "Ширина = ";  cin >> v;
+	cout << "Высота = "; cin >> h;
+	if ((pow(l * l + v * v, 0.5)) <= r * 2)
+		j = 1;
+	else if ((pow(h * h + v * v, 0.5)) <= r * 2)
+		j = 1;
+	else if ((pow(l * l + h * h, 0.5)) <= r * 2)
+		j = 1;
+	else
+		j = 2;
+	int f = j % 2;
 
 	return 0;
 }
