@@ -53,4 +53,19 @@ int main()
         n /= 10;
     }
     return 0;
+
+}
+#include <string>
+#include <iostream>
+using namespace std;
+int main() {
+    setlocale(LC_ALL, "Rus");
+    std::string n;
+    int k;
+
+    std::cout << "¬ведите n: ";
+    std::cin >> n;
+    std::cout << "¬ведите k: ";
+    std::cin >> k;
+    std::cout << " " << n.substr(0, k);
 }
