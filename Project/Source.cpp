@@ -39,3 +39,18 @@ int main()
     default: cout << "¬ведите правильный номер дн€ недели!" << endl;
     }
 }
+#include <iostream>
+using namespace std;
+int main()
+{
+    setlocale(LC_ALL, "Rus");
+    int n;
+    cout << "¬ведите число: ";
+    cin >> n;
+    while (n)
+    {
+        cout << n % 10 << endl;
+        n /= 10;
+    }
+    return 0;
+}
