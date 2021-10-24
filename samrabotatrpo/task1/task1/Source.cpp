@@ -7,7 +7,7 @@ int main() {
 	cin >> a;
 	for (int b = 0; b < a.length(); b++)
 	{
-		cout << a[b] << "\n";
+		cout << a[b] << endl;
 	}
 	return 0;
 }

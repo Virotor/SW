@@ -2,10 +2,10 @@
 #include <math.h>
 using namespace std;
 int main(int argc, const char* argv[]) {
-	int day_num;
+	int day;
 	cout«"Ââåäèòå íîìåğ äíÿ ";
 	cin»day_num;
-	switch (day_num) {
+	switch (day) {
 	case 1:
 		cout«"Ïîíåäåëüíèê"«endl;
 		break;
