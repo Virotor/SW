@@ -7,10 +7,12 @@ using namespace std;
 
 void task1();
 void task2();
+void task3();
 
 int main() {
 	task1();
 	task2();
+	task3();
 	system("pause");
 	return 0;
 }
@@ -86,5 +88,93 @@ void task2() {
 			delete[]arr;
 			system("pause");
 		}
+	}
+}
+
+void task3() {
+	int row_1, col_1, row_2, col_2, row_3 = 0, col_3 = 0, newI, i, j, min, max, multiply = 1;
+	cout << "\n Task number 3 \n";
+	cout << "Enter the number of rows of the first matrix  : "; cin >> row_1;
+	cout << "Enter the number of columns of the first matrix : "; cin >> col_1;
+	cout << "Enter the number of rows of the second matrix : "; cin >> row_2;
+	cout << "Enter the number of columns of the second matrix : "; cin >> col_2;
+	cout << "Minimum element : "; cin >> min;
+	cout << "Maximum element : "; cin >> max;
+
+	if (min > max) {
+		cout << "Invalid input " << endl;
+		system("pause");
+	}
+
+	if (row_1 <= 0 || col_1 <= 0 || row_2 <= 0 || col_2 <= 0) {
+		cout << "Non-existent matrix   " << endl;
+		system("pause");
+	}
+	else {
+		row_3 = row_1;
+		col_3 = col_2;
+
+		int** firstMatrix = new int* [row_1];
+		int** secondMatrix = new int* [row_2];
+		int** newMatrix = new int* [row_3];
+
+		cout << endl;
+		cout << "First matrix : " << endl;
+		for (i = 0; i < row_1; i++) {
+			firstMatrix[i] = new int[col_1];
+			for (j = 0; j < col_1; j++) {
+				firstMatrix[i][j] = rand() % (max - min + 1) + min;
+				cout << setw(3) << firstMatrix[i][j] << " ";
+			}
+			cout << endl;
+		}
+		cout << endl;
+		cout << "Second matrix: " << endl;
+		for (i = 0; i < row_2; i++) {
+			secondMatrix[i] = new int[col_2];
+			for (j = 0; j < col_2; j++) {
+				secondMatrix[i][j] = rand() % (max - min + 1) + min;
+				cout << setw(3) << secondMatrix[i][j] << " ";
+			}
+			cout << endl;
+		}
+		cout << endl;
+		if (col_1 != row_2) {
+			cout << "Matrices cannot be multiplied !" << endl;
+		}
+		else {
+			cout << " Result matrix :\n";
+			for (i = 0; i < row_3; i++) {
+				newMatrix[i] = new int[col_3];
+				for (j = 0; j < col_3; j++) {
+					newMatrix[i][j] = 0;
+					for (newI = 0; newI < row_3; newI++) {
+						newMatrix[i][j] += firstMatrix[i][newI] * secondMatrix[newI][j];
+					}
+				}
+			}
+			for (i = 0; i < row_3; i++) {
+				for (j = 0; j < col_3; j++) {
+					cout << setw(3) << newMatrix[i][j] << " ";
+				}
+				cout << endl;
+
+			}
+			for (i = 0; i < row_3; i++) {
+				delete[] newMatrix[i];
+			}
+			delete[] newMatrix;
+		}
+
+		for (i = 0; i < row_1; i++) {
+			delete[] firstMatrix[i];
+		}
+		delete[] firstMatrix;
+
+		for (i = 0; i < row_2; i++) {
+			delete[] secondMatrix[i];
+		}
+		delete[] secondMatrix;
+		system("pause");
 	}
 }
