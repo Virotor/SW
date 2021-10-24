@@ -8,11 +8,13 @@ using namespace std;
 void task1();
 void task2();
 void task3();
+void task4();
 
 int main() {
 	task1();
 	task2();
 	task3();
+	task4();
 	system("pause");
 	return 0;
 }
@@ -176,5 +178,56 @@ void task3() {
 		}
 		delete[] secondMatrix;
 		system("pause");
+	}
+}
+
+void task4() {
+	int size, min, max, interval;
+	double sum = 0, srednee;
+	cout << endl << "\nTask number 4  " << endl;
+	cout << "Enter the size of the array  "; cin >> size;
+	if (size <= 0) cout << "Invalid input  ";
+	else {
+		cout << "Enter minimum element: "; cin >> min;
+		cout << "Enter the maximum element : "; cin >> max;
+
+		if (max < min) cout << "Invalid input \n";
+		else {
+
+			int* arr = new int[size];
+
+			interval = (max - min + 1);
+			for (int i = 0; i < size; i++) {
+				arr[i] = rand() % interval + min;
+			}
+
+			cout << "Source array: " << endl;
+			for (int i = 0; i < size; i++) {
+				cout << arr[i] << " ";
+			}
+			cout << "\nArray without repeating elements : ";
+			for (int i = 0; i < size; i++) {
+				for (int j = i + 1; j < size; j++) {
+					if (arr[i] == arr[j]) {
+						for (int k = j; k < size - 1; k++) {
+							arr[k] = arr[k + 1];
+						}
+						size--;
+						j--;
+					}
+				}
+				cout << arr[i] << " ";
+			}
+			cout << endl;
+
+			sort(arr, arr + size);
+			cout << "Sorted array : ";
+			for (int i = 0; i < size; i++) {
+				cout << arr[i] << " ";
+			}
+			cout << endl;
+			cout << "Median of the array  = " << arr[size / 2];
+			cout << endl;
+		}
 	}
 }
