@@ -181,7 +181,29 @@ void Matrix_transposition()
 		Matrix_print(raw_count, col_count, matrix2);
 		matrix3 = Side_trans(raw_count, copy);
 		Matrix_print(raw_count, col_count, matrix3);
+		Matrix_delete(raw_count, matrix2);
+		Matrix_delete(raw_count, matrix3);
 	}
+	else cout << "Error" << endl;
+	Matrix_delete(raw_count, matrix1);
+	Matrix_delete(raw_count, copy);
+}
+
+void Max_distance()
+{
+	int dots_number, ** coords;
+	double maxd;
+	cout << "Enter number of dots" << endl;
+	cin >> dots_number;
+	coords = Matrix_create(dots_number, 2);
+	Matrix_print(dots_number, 2, coords);
+	maxd = (coords[0][0] - coords[1][0]) * (coords[0][0] - coords[1][0]) + (coords[0][1] - coords[1][1]) * (coords[0][1] - coords[1][1]);
+	for (int i = 0;i < dots_number - 1;i++)
+		for (int j = i;j < dots_number;j++)
+			if ((coords[i][0] - coords[i + 1][0]) * (coords[i][0] - coords[i + 1][0]) + (coords[i][1] - coords[i + 1][1]) * (coords[i][1] - coords[i + 1][1]) > maxd)
+				maxd = (coords[i][0] - coords[i + 1][0]) * (coords[i][0] - coords[i + 1][0]) + (coords[i][1] - coords[i + 1][1]) * (coords[i][1] - coords[i + 1][1]);
+	cout << "Maximal distance = " << sqrt(maxd);
+	Matrix_delete(dots_number, coords);
 }
 
 int main()
@@ -202,5 +224,9 @@ int main()
 		break;
 	case 4:
 		Matrix_transposition();
+		break;
+	case 5:
+		Max_distance();
+		break;
 	}
 }
