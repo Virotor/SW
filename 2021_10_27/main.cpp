@@ -13,12 +13,15 @@ double* getArray(int& array_size);
 void elementsArrayFind();
 void elementsStringFind();
 void findNumbersSmallerThanDifferencesOfPreviousTwo();
+int largestSubsequence(const double* values, int values_size, double& largest_index);
+void findLargestSubsequence();
 
 int main() {
   srand(time(NULL));
   elementsArrayFind();
   elementsStringFind();
   findNumbersSmallerThanDifferencesOfPreviousTwo();
+  findLargestSubsequence();
   return 0;
 }
 
@@ -144,12 +147,45 @@ void findNumbersSmallerThanDifferencesOfPreviousTwo() {
   int values_size;
   auto values = getArray(values_size);
   cout << "Answer numbers:\n";
-  for(int index = 2; index < values_size; index++) {
-    if(values[index] < values[index - 2] - values[index - 1]) {
+  for (int index = 2; index < values_size; index++) {
+    if (values[index] < values[index - 2] - values[index - 1]) {
       cout << values[index] << " ";
     }
   }
   cout << "\n";
   cout << "Task 2 is completed\n\n";
+  delete[] values;
+}
+
+int largestSubsequence(const double* values,
+                       int values_size,
+                       double& largest_index) {
+  int last_index = 0;
+  int index = 0;
+  int max_subsequence_size = 1;
+  while (index < values_size) {
+    while (values[index] == values[last_index] && index < values_size) {
+      index++;
+    }
+    if (index - last_index > max_subsequence_size) {
+      max_subsequence_size = index - last_index;
+      largest_index = last_index;
+    }
+    last_index = index;
+    index++;
+  }
+  return max_subsequence_size;
+}
+
+void findLargestSubsequence() {
+  cout << "Task 3: find largest subsequence\n\n";
+  int values_size;
+  auto values = getArray(values_size);
+  double largest_index;
+  int largest_subsequence_size =
+      largestSubsequence(values, values_size, largest_index);
+  cout << "Largest subsequence start from index " << largest_index << " and have "
+       << largest_subsequence_size << " values\n";
+  cout << "Task 3 is completed\n\n";
   delete[] values;
 }
