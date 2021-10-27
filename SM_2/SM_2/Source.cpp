@@ -2,10 +2,12 @@
 #include<ctime>
 using namespace std;
 
+
 void duplicateArray(int* arr, int size, int interval, int min, int max);
 void translateArray(int* arr, int size, int interval, int min, int max);
 void inputArray(int* arr, int size, int min, int interval);
 void printArray(int* arr, int size);
+void matrix();
 
 
 int main() {
@@ -86,6 +88,7 @@ void duplicateArray(int* arr, int size, int interval, int min, int max) {
 	translateArray(arr, size, interval, min, max);
 }
 
+
 void translateArray(int* arr, int size, int interval, int min, int max) {
 
 	cout << "\n\nExercises 3:\n";
@@ -112,6 +115,57 @@ void translateArray(int* arr, int size, int interval, int min, int max) {
 
 	delete[]arr;
 	system("pause");
+	matrix();
+}
+
+void matrix() {
+	int row, column, min, max, interval;
+	cout << "\n\nExercises 4:" << endl;
+	cout << "Enter the number of rows "; cin >> row;
+	cout << "Enter the number of columns "; cin >> column;
+
+	if (row <= 0 || column <= 0)
+		cout << "Non-existent matrix ";
+	else {
+
+		cout << "Minimum element  ="; cin >> min;
+		cout << "Maximum element  ="; cin >> max;
+		if (max < min) cout << "Invalid input  \n";
+		else {
+
+			int** matrix = new int* [row];
+			for (int i = 0; i < row; i++) {
+				matrix[i] = new int[column];
+			}
+
+			interval = (max - min + 1);
+
+			cout << "Matrix:\n";
+			for (int i = 0; i < row; i++) {
+				for (int j = 0; j < column; j++) {
+					matrix[i][j] = rand() % interval + min;
+					cout << matrix[i][j] << "\t";
+				}
+				cout << endl;
+			}
+
+			cout << "\nTranspose a matrix along the main diagonal:\n";
+			for (int i = 0; i < column; i++) {
+				for (int j = 0; j < row; j++) {
+					cout << matrix[j][i] << "\t";
+				}
+				cout << endl;
+			}
+
+			cout << "Transpose a matrix along the side diagonal:\n";
+			for (int i = column - 1; i > -1; i--) {
+				for (int j = row - 1; j > -1; j--) {
+					cout << matrix[j][i] << "\t";
+				}
+				cout << endl;
+			}
+		}
+	}
 }
 
 void inputArray(int* arr, int size, int min, int interval) {
