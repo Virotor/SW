@@ -5,7 +5,7 @@
 using namespace std;
 
 
-
+int searchLongestLine(int col);
 
 void deleteMatrix(int* arr[], int row);
 
@@ -133,6 +133,25 @@ int main() {
 
 		break;
 	}
+
+	case 5:
+	{
+
+
+		cout << "Введите кол-во точек" << endl;
+		cin >> col;
+
+		if (!cin)
+		{
+			return 1;
+		}
+
+		searchLongestLine(col);
+
+		break;
+
+	}
+
 
 	default:
 		break;
@@ -282,7 +301,6 @@ void searchLongLine(int arr[], int col) {
 
 }
 
-
 void deleteMatrix(int* arr[], int row) {
 
 	for (int i = 0; i < row; i++)
@@ -394,4 +412,55 @@ int** printMatrix(int row, int col) {
 
 
 	return arr;
+}
+
+int searchLongestLine(int col) {
+
+	double line;
+	double maxLine = 0;
+
+
+	int* arrOfX = new int[col];
+
+	int* arrOfY = new int[col];
+
+
+
+
+	for (int i = 0; i < col; i++)
+	{
+		arrOfY[i] = (rand() % 100) - 5;
+		arrOfX[i] = (rand() % 100) - 5;
+	}
+
+	cout << "Все точки " << endl;
+	for (int i = 0; i < col; i++)
+	{
+
+		cout << "(" << arrOfX[i] << "," << arrOfY[i] << ")" << endl;
+	}
+
+	for (int i = 0; i < col; i++)
+	{
+
+		for (int j = i; j < col; j++)
+		{
+
+			line = sqrt(arrOfX[i] * arrOfX[i] - arrOfX[j] * arrOfX[j] + (arrOfY[i] * arrOfY[i] - arrOfY[j] * arrOfY[j]));
+
+			if (line > maxLine)
+			{
+				maxLine = line;
+			}
+		}
+
+	}
+
+	cout << "максимальное расстояние - " << maxLine << endl;
+
+	deleteArray(arrOfX);
+
+	deleteArray(arrOfY);
+
+	return 0;
 }
