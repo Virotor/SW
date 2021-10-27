@@ -37,7 +37,8 @@ void DifferenceNumber() {
 	delete[]arr;
 }
 
-int main()
+int one ()
 {
 	DifferenceNumber();
+		return 0;
 }

@@ -3,7 +3,7 @@ using namespace std;
 int* initArray(int length);
 void printArray(int* array, int length);
 int foundnumberposition(int* array, int length, int number);
-int main() {
+int main () {
 	int length, number;
 	cout << "Enter lenght of array:\n ";
 	cin >> length;
