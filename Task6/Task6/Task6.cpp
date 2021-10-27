@@ -10,6 +10,7 @@ void PositionOfFirstEqualNumber();
 void TaskWithMagicNumbers();
 void SubsequenceTask();
 void TransposeMatrix();
+void Distance();
 
 int* CreateArray(int);
 int** CreateMatrix(int, int);
@@ -22,6 +23,7 @@ string SearchMagicNumbers(int, int*);
 int CountGreatestSubsequence(int, int*);
 void TransposeMainDiagonal(int, int, int**);
 void TransposeSideDiagonal(int, int, int**);
+double CompareCoordinats(int, int**);
 void DeleteMatrix(int, int**);
 
 int main()
@@ -47,7 +49,11 @@ int main()
 	case 4:
 		TransposeMatrix();
 		break;
+	case 5:
+		Distance();
+		break;
 	default:
+		cout << "Вы ввели некорректный номер задания";
 		break;
 	}
 }
@@ -129,6 +135,28 @@ void TransposeMatrix()
 	TransposeSideDiagonal(size, size, array);
 
 	DeleteMatrix(size, array);
+}
+
+void Distance()
+{
+	int coordinateColumn, row = 2;
+
+	do
+	{
+		cout << "Введите количество точек (больше одной) ";
+		cin >> coordinateColumn;
+	} while (coordinateColumn < 2);
+
+	int** array = CreateMatrix(row, coordinateColumn);
+	SetMatrix(row, coordinateColumn, array);
+
+	cout << "строка x и строка y соответственно: " << endl;
+	PrintMatrix(row, coordinateColumn, array);
+
+	double maxDistance = CompareCoordinats(coordinateColumn, array);
+	cout << "наибольшее расстояние : " << maxDistance;
+
+	DeleteMatrix(row, array);
 }
 
 int* CreateArray(int size)
@@ -287,6 +315,32 @@ void TransposeSideDiagonal(int row, int column, int** array)
 		}
 		cout << endl;
 	}
+}
+
+double CompareCoordinats(int column, int** array)
+{
+	double xDistance, yDistance, totalDistance, maxDistance = 0;
+
+	for (int i = 0; i < column - 1; i++)
+	{
+		int j = 1;
+		while (i + j < column)
+		{
+			xDistance = (array[0][i] - array[0][i + j]) * (array[0][i] - array[0][i + j]);
+			yDistance = (array[1][i] - array[1][i + j]) * (array[1][i] - array[1][i + j]);
+
+			totalDistance = sqrt(xDistance + yDistance);
+
+			if (totalDistance > maxDistance)
+			{
+				maxDistance = totalDistance;
+			}
+
+			j++;
+		}
+	}
+
+	return maxDistance;
 }
 
 void DeleteMatrix(int row, int** array)
