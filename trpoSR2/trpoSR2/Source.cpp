@@ -9,6 +9,10 @@ void deleteArray(int*);
 int createarrayandfindnumb();
 int withDrawDifference();
 void findNumbDiffence(int, int*);
+int sequencelength();
+void inputArray(int, int*);
+int countLength(int, int*);
+
 int main()
 {
 	setlocale(LC_ALL, "RUS");
@@ -24,6 +28,10 @@ int main()
 	case 2:
 		cout << "ЗАДАНИЕ №2" << endl;
 		withDrawDifference();
+		break;
+	case 3:
+		cout << "ЗАДАНИЕ №3" << endl;
+		sequencelength();
 		break;
 	}
 	return 0;
@@ -99,4 +107,43 @@ void findNumbDiffence(int n, int* a)
 	{
 		if (a[i - 2] - a[i - 1] > a[i])cout << a[i] << endl;
 	}
+}
+int sequencelength()
+{
+	int a;
+	cout << "Введите размер массива ";
+	cin >> a;
+	int* save = CreateArray(a);
+	inputArray(a, save);
+	cout << endl;
+	countLength(a, save);
+	deleteArray(save);
+	system("pause");
+	return a;
+}
+void inputArray(int n, int* a)
+{
+	cout << "Введите массив вручную:" << endl;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> a[i];
+	}
+}
+int countLength(int n, int* a)
+{
+	int Counter = 1, max = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (a[i] == a[i + 1])
+		{
+			Counter++;
+		}
+		else
+		{
+			if (max < Counter) max = Counter;
+			Counter = 1;
+		}
+	}
+	cout << "Самая длиная последовательность равна " << max << endl;
+	return Counter, max;
 }
