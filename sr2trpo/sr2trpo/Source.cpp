@@ -15,6 +15,9 @@ void* searchNum(int arr[], int num, int col);
 
 int* printArray(int col);
 
+void searchLongLine(int arr[], int col);
+
+void* searchNums(int arr[], int col);
 
 int main() {
 
@@ -86,6 +89,21 @@ int main() {
 		}
 		searchNums(printArray(col), col);
 
+		break;
+	}
+
+	case 3: {
+
+
+
+		cout << "Введите размер массива " << endl;
+		cin >> col;
+
+		if (!cin)
+		{
+			return 1;
+		}
+		searchLongLine(printArray(col), col);
 		break;
 	}
 
@@ -210,4 +228,31 @@ void* searchNums(int arr[], int col) {
 	deleteArray(arr);
 
 	return 0;
+}
+
+
+void searchLongLine(int arr[], int col) {
+
+	int Long = 1;
+	int maxLong = 1;
+	for (int i = 0; i < col; i++)
+	{
+
+		if (arr[i] == arr[i + 1])
+		{
+			Long++;
+		}
+		if (Long > maxLong)
+		{
+
+			maxLong = Long;
+			Long = 1;
+
+		}
+
+	}
+	cout << "MAX = " << maxLong << endl;
+
+	deleteArray(arr);
+
 }
