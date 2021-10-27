@@ -1,6 +1,7 @@
 #include<iostream>
 #include <time.h>
 #include <iomanip>
+#include<string>
 using namespace std;
 int* CreateArray(int);
 void SetArray(int, int*);
@@ -19,11 +20,12 @@ void printMatrix(int, int, int**);
 void deleteMatrix(int, int**);
 int transpMatrixMainDiagon(int, int, int**);
 int transpMatrixSaidDiagon(int, int, int**);
+void subsrtringInString();
 
 int main()
 {
 	setlocale(LC_ALL, "RUS");
-	cout << "Введите номер задане: ";
+	cout << "Введите номер задане:(ДОП задание под номером 6) ";
 	int Number;
 	cin >> Number;
 	switch (Number)
@@ -43,6 +45,10 @@ int main()
 	case 4:
 		cout << "ЗАДАНИЕ №4" << endl;
 		transponitionMatrix();
+	case 6:
+		cout << "ДОПОЛНИТЕЛЬНОЕ ЗАДАНИЕ" << endl;
+		subsrtringInString();
+
 	}
 	return 0;
 }
@@ -255,4 +261,44 @@ int transpMatrixSaidDiagon(int n, int k, int** a)
 
 
 	return exchange2;
+}
+void subsrtringInString()
+{
+	cout << "Введите символы:" << endl;
+	string mainstring;
+	getline(cin, mainstring);
+	getline(cin, mainstring);
+	int lengthOfMainstring;
+	lengthOfMainstring = mainstring.length();
+	string substring;
+	cout << "Введите символы, которые надо найти:" << endl;
+	getline(cin, substring);
+	int lengthOfSubstring;
+	lengthOfSubstring = substring.length();
+	int i1, j1, j2;
+	bool flag1 = false;
+	for (i1 = 0; i1 < lengthOfMainstring; i1++)
+	{
+		if (mainstring[i1] == substring[0])
+		{
+			for (j1 = i1, j2 = 0; j2 < lengthOfSubstring; j1++, j2++)
+			{
+				if (mainstring[j1] != substring[j2])
+				{
+					break;
+				}
+				if (j2 == lengthOfSubstring - 1)
+				{
+					cout << "Номер = " << i1 << endl;
+					flag1 = true;
+
+				}
+
+			}
+		}
+		if (flag1 == true)
+			break;
+	}
+	if (flag1 == false)
+		cout << "Такой подстроки нет" << endl;
 }
