@@ -9,7 +9,7 @@ void lessThanPrevious(int*array,int length);
 void theLargestSequance(int* array, int length);
 int** firstTranspose(int** matrix, int row, int column);
 int** secondTranspose(int** matrix, int row, int column);
-
+int maxDistance(int** matrix, int number_of_points);
 
 int main()
 {
@@ -38,6 +38,12 @@ int main()
     int** secondResultMatrix = secondTranspose(matrix, row, column);
     cout << "Transposed matrix from the side diagonal: "<<endl;
     printMatrix(secondResultMatrix, column, row);
+    int numberOfPoints;
+    cout << "Enter number of point : ";
+    cin >> numberOfPoints;
+    int** points = initMatrix(2, numberOfPoints);
+    printMatrix(points, 2, numberOfPoints);
+    cout << "Maximum distance between two points is " << maxDistance(points, numberOfPoints) << endl;
     delete[]array;
     for (int i = 0; i < row; i++) {
         delete[] matrix[i];
@@ -170,4 +176,21 @@ int** secondTranspose(int** matrix, int row, int column)
     }
 
     return resultMatrix;
+}
+int maxDistance(int** matrix, int numberOfPoints)
+{
+    int maxRange = 0, range;
+    for (int i = 0; i < numberOfPoints; i++)
+    {
+        for (int j = 0; j < numberOfPoints; j++)
+        {
+            range = sqrt(abs(matrix[0][i] - matrix[0][j]) * abs(matrix[0][i] - matrix[0][j]) + abs(matrix[1][i] - matrix[1][j]) * abs(matrix[1][i] - matrix[1][j]));
+            if (range > maxRange)
+            {
+                maxRange = range;
+            }
+        }
+    }
+
+    return maxRange;
 }
