@@ -229,3 +229,41 @@ void transposeMatrix(){
     transposeSideDiagonal(size, size, array);
 
 }
+
+
+
+// TASK 5
+
+int searchLongestWay(int column) {
+
+    double line;
+    double way = 0;
+
+
+    // define arrs of matrix
+    int* arrOfX = new int[column];
+    int* arrOfY = new int[column];
+
+    // init arrs of matrix
+    for (int i = 0; i < column; i++){
+        arrOfY[i] = (rand() % 100) - 5;
+        arrOfX[i] = (rand() % 100) - 5;
+    }
+
+    for (int i = 0; i < column; i++){
+
+        for (int j = i; j < column; j++){
+
+            line = sqrt(arrOfX[i] * arrOfX[i] - arrOfX[j] * arrOfX[j] + (arrOfY[i] * arrOfY[i] - arrOfY[j] * arrOfY[j]));
+
+            if (line > way){
+                way = line;
+            }
+        }
+
+    }
+
+    cout << "The max distant is" << way << "\n";
+
+    return 0;
+}
