@@ -1,24 +1,27 @@
 ﻿#include <iostream>
-#include <string>
 
 using namespace std;
 
 int* initArray(int length);
 void printArray(int* array, int length);
-int largestSequence(int* array, int length);
+int foundNumberIndex(int* array, int length, int number);
 
 int main()
 {
-    int length;
+    int length, number;
     cout << "Enter length of array\n";
     cin >> length;
     srand(time(nullptr));
 
     int* array = initArray(length);
 
+    cout << "Enter number\n";
+    cin >> number;
+
     printArray(array, length);
 
-    cout << largestSequence(array, length);
+    cout << foundNumberIndex(array, length, number);
+
 }
 
 int* initArray(int length)
@@ -41,23 +44,13 @@ void printArray(int* array, int length)
     cout << endl;
 }
 
-int largestSequence(int* array, int length)
+int foundNumberIndex(int* array, int length, int number)
 {
-    int count = 1, max_count = 1;
-    for (int i = 0; i < length-1; i++)
+    for (int i = 0; i < length; i++)
     {
-        if (array[i] == array[i+1])
+        if (number == array[i])
         {
-            count++;
-            if (count > max_count)
-            {
-                max_count = count;
-            }
-        }
-        else
-        {
-            count = 1;
+            return i;
         }
     }
-    return max_count;
 }
