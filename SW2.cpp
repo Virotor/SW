@@ -28,7 +28,6 @@ int main()
         return 0;
     }
     srand(time(nullptr));
-
     int* array = initArray(length);
 
     cout << "\n\t --Array--\n";
@@ -54,7 +53,7 @@ int main()
 
     cout << "\n\t --Task 3--\n";
     cout << "Length of largest sequence " << largestSequence(array, length) << endl;
-        
+
     cout << "\n\t --Task 4--\n";
     int row, column;
     cout << "Enter the number of rows\n";
@@ -64,6 +63,7 @@ int main()
         cout << ERROR;
         return 0;
     }
+
     cout << "Enter the number of columns\n";
     cin >> column;
     if (column < 1)
@@ -71,6 +71,7 @@ int main()
         cout << ERROR;
         return 0;
     }
+
     int** matrix = initMatrix(row, column);
     cout << "\n\t --Matrix--\n";
     printMatrix(matrix, row, column);
@@ -90,6 +91,7 @@ int main()
         cout << ERROR;
         return 0;
     }
+
     int** points = initMatrix(2, number_of_points);
     printMatrix(points, 2, number_of_points);
     cout << "Maximum distance between two points is " << maxRange(points, number_of_points) << endl;
@@ -119,7 +121,7 @@ int numberIndex(int* array, int length, int number)
 {
     for (int i = 0; i < length; i++)
     {
-        if (number == array[i] && i != length)
+        if (number == array[i])
         {
             return i;
         }
@@ -129,8 +131,6 @@ int numberIndex(int* array, int length, int number)
 
 void printLessThenPreviousTwo(int* array, int length)
 {
-    int resoult_length = 0;
-    int* resoult_array = new int[length];
     for (int i = 2; i < length; i++)
     {
         if (array[i] < array[i - 2] - array[i - 1])
@@ -236,13 +236,15 @@ int maxRange(int** matrix, int number_of_points)
 
 int indexOfSubstring(string text, string substring)
 {
-    for (int i = 0; i < text.length(); i++) {
+    for (int i = 0; i < text.length(); i++)
+    {
         int j = 0;
-        while (j < substring.length() && i + j < text.length() && substring[j] == text[i + j] )
+        while (j < substring.length() && i + j < text.length() && substring[j] == text[i + j])
         {
             j++;
         }
-        if (j == substring.length()) {
+        if (j == substring.length())
+        {
             return i;
         }
     }
