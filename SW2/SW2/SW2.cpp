@@ -248,3 +248,37 @@ int TransFromOtherLine(int matrixSize1, int matrixSize2, int** Matrix)
 	}
 	return element;
 }
+void SpaceBetweenDots()
+{
+	int howMuchDots, coordinates = 2, distance = 0;
+	double DistanceForX, DistanceForY, AllDistance;
+	cout << "введите количество точек" << endl;
+	cin >> howMuchDots;
+	if (howMuchDots == 1)
+	{
+		cout << "Расстояние посчитать нельзя" << endl;
+		return;
+	}
+	int** Matrix2 = CreateMatrix(coordinates, howMuchDots);
+	FillInMatrix(coordinates, howMuchDots, Matrix2);
+	cout << "x и y - " << endl;
+	CoutMatrix(coordinates, howMuchDots, Matrix2);
+	for (int i = 0; i < howMuchDots - 1; i++)
+	{
+		int j = 1;
+		while (i + j < howMuchDots)
+		{
+			DistanceForX = (Matrix2[0][i] - Matrix2[0][i + j]) * (Matrix2[0][i] - Matrix2[0][i + j]);
+			DistanceForY = (Matrix2[1][i] - Matrix2[1][i + j]) * (Matrix2[1][i] - Matrix2[1][i + j]);
+
+			AllDistance = sqrt(DistanceForX + DistanceForY);
+
+			if (AllDistance > distance)
+			{
+				distance = AllDistance;
+			}
+			j++;
+		}
+	}
+	cout << "наибольшее расстояние между точками равно " << distance;
+}
