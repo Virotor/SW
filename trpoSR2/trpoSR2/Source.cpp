@@ -12,6 +12,13 @@ void findNumbDiffence(int, int*);
 int sequencelength();
 void inputArray(int, int*);
 int countLength(int, int*);
+int transponitionMatrix();
+int** CreateMatrix(int, int);
+void SetMatrix(int, int, int**);
+void printMatrix(int, int, int**);
+void deleteMatrix(int, int**);
+int transpMatrixMainDiagon(int, int, int**);
+int transpMatrixSaidDiagon(int, int, int**);
 
 int main()
 {
@@ -33,6 +40,9 @@ int main()
 		cout << "ЗАДАНИЕ №3" << endl;
 		sequencelength();
 		break;
+	case 4:
+		cout << "ЗАДАНИЕ №4" << endl;
+		transponitionMatrix();
 	}
 	return 0;
 }
@@ -146,4 +156,103 @@ int countLength(int n, int* a)
 	}
 	cout << "Самая длиная последовательность равна " << max << endl;
 	return Counter, max;
+}
+int transponitionMatrix()
+{
+	int line, column;
+	cout << "Введите размер квадратной матрицы:";
+	cin >> line;
+	column = line;
+	int** save = CreateMatrix(line, column);
+	SetMatrix(line, column, save);
+	printMatrix(line, column, save);
+	int number;
+	cout << "Чтобы вывести транспонированную матрицу по главной диагонали нажмите 1" << endl;
+	cout << "Чтобы вывести транспонированную матрицу по побочной диагонали нажмите 2" << endl;
+	cin >> number;
+	switch (number)
+	{
+	case 1:
+		cout << endl << "Транспонированная матрица относительно главное диагонали" << endl;
+		transpMatrixMainDiagon(line, column, save);
+		break;
+	case 2:
+		cout << endl << "Транспонированная матрица относительно побочной диагонали" << endl;
+		transpMatrixSaidDiagon(line, column, save);
+		break;
+	}
+
+	printMatrix(line, column, save);
+	deleteMatrix(line, save);
+	system("pause");
+	return line, column;
+}
+int** CreateMatrix(int n, int k)
+{
+	int** a = new int* [n];
+	for (int i = 0; i < n; i++)
+	{
+		a[i] = new int[k];
+	}
+	return a;
+}
+void SetMatrix(int n, int k, int** a)
+{
+	srand(time(0));
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < k; j++)
+		{
+			a[i][j] = rand() % 21 - 10;
+		}
+	}
+}
+void printMatrix(int n, int k, int** a)
+{
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < k; j++)
+		{
+			cout << setw(5) << a[i][j];
+		}
+		cout << endl << endl;
+	}
+
+}
+void deleteMatrix(int n, int** a)
+{
+	for (int i = 0; i < n; i++)
+	{
+		delete[] a[i];
+	}
+	delete[] a;
+}
+int transpMatrixMainDiagon(int n, int k, int** a)
+{
+	int exchange;
+	for (int i = 0; i < n - 1; i++)
+	{
+		for (int j = i + 1; j < k; j++)
+		{
+			exchange = a[i][j];
+			a[i][j] = a[j][i];
+			a[j][i] = exchange;
+		}
+	}
+	return 	exchange;
+}
+int transpMatrixSaidDiagon(int n, int k, int** a)
+{
+	int exchange2;
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < n - i - 1; j++)
+		{
+
+			exchange2 = a[i][j];
+			a[i][j] = a[n - j - 1][n - i - 1];
+			a[n - j - 1][n - i - 1] = exchange2;
+		}
+
+
+	return exchange2;
 }
