@@ -2,7 +2,7 @@
 #include<ctime>
 using namespace std;
 
-
+void duplicateArray(int* arr, int size, int interval, int min, int max);
 void inputArray(int* arr, int size, int min, int interval);
 void printArray(int* arr, int size);
 void matrix();
@@ -51,7 +51,38 @@ int main() {
 		}
 		cout << endl;
 		system("pause");
+		duplicateArray(arr, size, interval, min, max);
 	}
+}
+
+void duplicateArray(int* arr, int size, int interval, int min, int max) {
+
+	cout << "\n\nExercises 2:\n";
+
+	inputArray(arr, size, min, interval);
+	printArray(arr, size);
+
+	int amount = 0;
+	for (int i = 2; i < size; i++) {
+		if (arr[i - 2] - arr[i - 1] > arr[i]) {
+			amount++;
+		}
+	}
+
+	if (amount > 0) {
+		cout << endl << " Numbers that are less than the difference between the two previos: ";
+		for (int i = 2; i < size; i++) {
+			if (arr[i - 2] - arr[i - 1] > arr[i]) {
+				cout << arr[i] << " ";
+			}
+		}
+	}
+
+	else {
+		cout << " There is no number that is less than the previous two " << endl;
+	}
+
+	system("pause");
 }
 
 void inputArray(int* arr, int size, int min, int interval) {
