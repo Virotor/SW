@@ -2,26 +2,7 @@
 
 int checkPosition() {
 
-    // enter size of array
-
-    std::cout << "Enter size of array:" << "\n";
-    int arrsize;
-    std::cin >> arrsize;
-
-    int* arr = NULL;
-    arr = (int*)malloc(sizeof(int) * arrsize);
-
-    // define elements of array
-
-    int min_value = -100;
-    int max_value = 100;
-
-    for (int a = 0; a < arrsize; a++) {
-
-        arr[a] = rand() % (max_value - min_value + 1) + min_value;
-        std::cout << arr[a] << " ";
-
-    }
+    arrayCreate(-100, 100);
 
     std::cout << "\n";
 
@@ -109,22 +90,10 @@ int findLittleString()
 
 }
 
-int main() {
+int allNumbersWhichLower() {
 
 
-    // enter size of array
-
-    std::cout << "Enter size of array:" << "\n";
-    int arrsize;
-    std::cin >> arrsize;
-
-    int* arr = NULL;
-    arr = (int*)malloc(sizeof(int) * arrsize);
-
-    // define elements of array
-
-    int min_value = -100;
-    int max_value = 100;
+    arrayCreate(-10, 10);
 
     for (int a = 0; a < arrsize; a++) {
 
@@ -144,5 +113,56 @@ int main() {
         }
     }
 
+
+}
+
+int arrayCreate(int min_value, int max_value) {
+
+    // enter size of array
+
+    std::cout << "Enter size of array:" << "\n";
+    int arrsize;
+    std::cin >> arrsize;
+
+    int* arr = NULL;
+    arr = (int*)malloc(sizeof(int) * arrsize);
+
+    // define elements of array
+
+    for (int a = 0; a < arrsize; a++) {
+
+        arr[a] = rand() % (max_value - min_value + 1) + min_value;
+        std::cout << arr[a] << " ";
+
+    }
+
+    return arr;
+
+}
+
+int lenghtOfSeq() {
+
+    arr = arrayCreate(-10, 10);
+
+    int size;
+    size = sizeof(arr) / sizeof(arr[o]);
+
+    int hm = 1;
+    int max = 1;
+
+    for (int i = 1; i < size; i++) {
+
+        if (arr[i] == arr[i - 1])
+        {
+            hm++;
+        }
+        else
+        {
+            if (hm > max)
+                max = hm;
+            hm = 1;
+        }
+
+    }
 
 }
