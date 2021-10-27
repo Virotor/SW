@@ -11,6 +11,7 @@ int** second_transpose(int** matrix, int row, int column);
 int** transpose(int** matrix, int row, int column);
 void printMatrix(int** matrix, int row, int column);
 int** initMatrix(int row, int column);
+int foundMaxRange(int** matrix, int number_of_points);
 
 int main()
 {
@@ -47,14 +48,19 @@ int main()
     cout << "\n\t --Matrix--\n";
     printMatrix(matrix, row, column);
     int** result_matrix = transpose(matrix, row, column);
-    cout << endl;
     cout << "\t --Transposed matrix one--\n";
     printMatrix(result_matrix, column, row);
-    cout << endl;
     int** second_result_matrix = second_transpose(matrix, row, column);
     cout << "\t --Transposed matrix two--\n";
     printMatrix(second_result_matrix, column, row);
 
+    cout << "\n\t --Task 5--\n";
+    int number_of_points;
+    cout << "Enter number of point\n";
+    cin >> number_of_points;
+    int** points = initMatrix(2, number_of_points);
+    printMatrix(points, 2, number_of_points);
+    cout << "Maximum distance between two points is " << foundMaxRange(points, number_of_points) << endl;
 }
 
 int* initArray(int length)
@@ -161,6 +167,7 @@ void printMatrix(int** matrix, int row, int column)
         }
         cout << endl;
     }
+    cout << endl;
 }
 
 int** initMatrix(int row, int column)
@@ -175,4 +182,22 @@ int** initMatrix(int row, int column)
         }
     }
     return matrix;
+}
+
+int foundMaxRange(int** matrix, int number_of_points)
+{
+    int max_range = 0, range;
+    for (int i = 0; i < number_of_points; i++)
+    {
+        for (int j = 0; j < number_of_points; j++)
+        {
+            range = sqrt(abs(matrix[0][i] - matrix[0][j]) * abs(matrix[0][i] - matrix[0][j]) + abs(matrix[1][i] - matrix[1][j]) * abs(matrix[1][i] - matrix[1][j]));
+            if (range > max_range)
+            {
+                max_range = range;
+            }
+        }
+    }
+
+    return max_range;
 }
