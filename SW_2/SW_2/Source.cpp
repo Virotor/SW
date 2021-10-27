@@ -57,6 +57,22 @@ void differenceBetweenTwoPrevios(int* previosArray, int size, int max, int min) 
 	delete[] previosArray;
 }
 
+void longestSequenceLength(int* sequenceArray, int size, int max, int min) {
+	int amount = 1, proverkaAmount = 0;
+	for (int i = 0; i < size; i++) {
+		if (sequenceArray[i] == sequenceArray[i + 1]) {
+			amount++;
+		}
+		else if (amount > proverkaAmount) {
+			proverkaAmount = amount;
+			amount = 0;
+		}
+	}
+	cout << endl << " The length of the longest sequence of numbers: " << proverkaAmount << endl;
+	cout << endl;
+	delete[] sequenceArray;
+}
+
 int main() {
 	srand(time(0));
 	int size, min, max, rows, cols, minMatrix, maxMatrix;
@@ -87,6 +103,23 @@ int main() {
 		inputArray(previosArray, size, max, min);
 		printArray(previosArray, size);
 		differenceBetweenTwoPrevios(previosArray, size, max, min);
+	}
+	else if (size < 0) {
+		cout << " Size of massive must be natural number " << endl;
+	}
+	else if (min > max) {
+		cout << " Minimum more than maximum " << endl;
+	}
+
+	cout << " Task 3 " << endl;
+	cout << " Input size of 'sequence' massive: "; cin >> size;
+	cout << " Input minimum of your random range: "; cin >> min;
+	cout << " Input maximum of your random range: "; cin >> max;
+	if (size > 0) {
+		int* sequenceArray = new int[size];
+		inputArray(sequenceArray, size, max, min);
+		printArray(sequenceArray, size);
+		longestSequenceLength(sequenceArray, size, max, min);
 	}
 	else if (size < 0) {
 		cout << " Size of massive must be natural number " << endl;
