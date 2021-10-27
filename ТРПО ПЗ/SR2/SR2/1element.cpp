@@ -3,7 +3,6 @@
 using namespace std;
 
 void printPosOfElemInArray() {
-	setlocale(LC_ALL, "rus");
 	int sizeOfArr;
 	cout << "Введите длину массива: "; 
 	cin >> sizeOfArr;
@@ -12,19 +11,19 @@ void printPosOfElemInArray() {
 	{
 		arr[i] = rand() % 200 - 100;
 		cout << arr[i] << ", ";
-	}
+	}cout << endl;
+
 	int contentOfElement;
-	cout << endl << "Введите элемента массива : "; 
+	cout << "Введите значение элемента массива: "; 
 	cin >> contentOfElement;
 	int examination = 0;
 	for (int j = 0; j <= sizeOfArr; j++) {
 		if (arr[j] == contentOfElement) {
 			examination++;
-			cout << endl << "Этот элемент стоит в массиве под номером " << j << endl;
+			cout << endl << "Этот элемент встречается в массиве под номером " << j << endl;
 		}
 	}
 	if (examination == 0) { cout << "Такого элемента нет в массиве! " << endl; }
 
-
-	delete[] arr;
 }
+
