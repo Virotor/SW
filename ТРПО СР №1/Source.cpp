@@ -170,7 +170,7 @@ int main()
 				size[3] = hwidth;
 			}
 	}
-	//for (int i = 0; i <= 5; i++)cout << size[i];
+
 	for (int i = 0; i <= 2; i++)
 	{
 		if (size[i] <= size[i + 3])
@@ -189,39 +189,15 @@ int main()
 	}
 	
 	cout << "\n-----------PROGRAM#5-----------------------------------------------------------------\n";
-//	long double randsq, cofficient;
 
 	int password[4], hack[10];
 	int h;
-
-//	cout << "\n\tEnter the cofficient: ";
-//	cin >> cofficient;
 
 	for (int i = 0; i <= 9; i++)
 		hack[i] = i;
 	for (int p = 0; p <= 3; p++)
 		password[p] = (rand() % 10);
 
-/*	randsq = (cofficient + sqrt(3)) / pow(2, sqrt(7));
-	randsq = abs(randsq);
-	for (int i = 0; i <= 4; i++)
-	{  
-
-		while (randsq>1000)
-		{
-			randsq /= 8.6;
-		}
-
-		if (randsq < 1)
-			randsq *= pow(10, sqrt(i + 10));
-		else
-			if (randsq < 42)
-				randsq *= (int)pow(sqrt(i + 3), 30) / pow(sqrt(i + 3), 30);
-			else
-				randsq /= pow(sqrt(i + 2), sqrt(i - 4));
-
-		password[i] = (int)trunc(randsq);              //   Nothing ne vyslo(((((
-	}*/
 	cout << "\n\tPassword: ";
 	for (int i = 0; i <= 3; i++)
 	{
@@ -232,7 +208,6 @@ int main()
 			}		
 		h = 0;
 	}
-	//Zhal' this priznavat', but I've gived up(, because i want to eat, sleap, and I have to do other homework
-	//Fuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+	
 	return 0;
 }
