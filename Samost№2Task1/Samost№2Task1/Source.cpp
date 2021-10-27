@@ -2,6 +2,7 @@
 #include<ctime>
 #include<string>
 #include<conio.h>
+#include<iomanip>
 using namespace std;
 void RandomOne_dimensionalArray(int, int*);
 void InputOne_dimensionalArray(int, int*);
@@ -10,17 +11,80 @@ void searchSubstring();
 void ShowPosition();
 void searchNumbers();
 void subsequenceNumbers();
-
+int** CreatingArray(int rows, int cols);
+void ShowTwo_dimensionalArray(int rows, int cols, int** Array);
+void Transport1(int rows, int cols, int** Array);
+void Transport2(int rows, int cols, int** Array);
+void RandomOne_dimensionalArray(int rows, int cols, int** Array);
+void TransporationMatrix();
 int main() {
 
-
-	subsequenceNumbers();
+	TransporationMatrix();
+	
 
 
 	system("pause");
 
 	return 0;
 }
+
+
+int** CreatingArray(int rows, int cols) {
+	srand(time(NULL));
+	int i, j;
+	int** array = new int* [rows];
+	for (i = 0; i < rows; i++)
+	{
+		array[i] = new int[cols];
+	}
+
+	return array;
+};
+void ShowTwo_dimensionalArray(int rows, int cols, int** Array) {
+	int i, j;
+	for (i = 0; i < rows; i++)
+	{
+		for (j = 0; j < cols; j++) {
+			cout << setw(5) << Array[i][j] << " ";
+		}
+		cout << endl;
+	}
+
+
+};
+void Transport1(int rows, int cols, int** Array) {
+	int i, j, swipe;
+
+
+
+	for (i = 0; i < rows - 1; i++)
+	{
+		for (j = 0; j < cols - i; j++) {
+			swipe = Array[i][j];
+			Array[i][j] = Array[rows - j - 1][cols - i - 1];
+			Array[rows - j - 1][cols - i - 1] = swipe;
+		}
+
+	}
+
+	ShowTwo_dimensionalArray(rows, cols, Array);
+};
+void Transport2(int rows, int cols, int** Array) {
+	int i, j, swipe;
+
+
+	for (i = 0; i < rows - 1; i++)
+	{
+		for (j = i + 1; j < cols; j++) {
+			swipe = Array[i][j];
+			Array[i][j] = Array[j][i];
+			Array[j][i] = swipe;
+		}
+
+	}
+
+	ShowTwo_dimensionalArray(rows, cols, Array);
+};
 void subsequenceNumbers() {
 	int sizeArray;
 	cout << "Enter the size of the array" << endl;
@@ -63,6 +127,17 @@ void subsequenceNumbers() {
 	delete[]array;
 
 
+
+};
+void RandomTwo_dimensionalArray(int rows, int cols, int** Array) {
+	int i, j;
+	for (i = 0; i < rows; i++) {
+		for (j = 0; j < cols; j++) {
+			Array[i][j] = rand() % 20 - 10;
+
+		}
+
+	}
 
 };
 void RandomOne_dimensionalArray(int sizeArray, int* Array) {
@@ -226,3 +301,36 @@ void searchNumbers(){
 
 	delete[]array;
 }
+void TransporationMatrix() {
+	int i, j;
+	int rows, cols;
+	cout << "Enter rows=cols" << endl;
+	cin >> rows >> cols;
+	int** matrix;
+	matrix = CreatingArray(rows, cols);
+	RandomTwo_dimensionalArray(rows, cols, matrix);
+	ShowTwo_dimensionalArray(rows, cols, matrix);
+
+	cout << "Secondary:" << endl;
+	int** transportarray1 = CreatingArray(rows, cols);
+	for (i = 0; i < rows; i++) {
+
+		for (j = 0; j < cols; j++) {
+			transportarray1[i][j] = matrix[i][j];
+		}
+	}
+	int** transportarray2 = CreatingArray(rows, cols);
+	transportarray2 = matrix;
+	for (i = 0; i < rows; i++) {
+
+		for (j = 0; j < cols; j++) {
+			transportarray2[i][j] = matrix[i][j];
+		}
+	}
+	Transport1(rows, cols, transportarray1);
+
+	cout << "Main:" << endl;
+	Transport2(rows, cols, transportarray2);
+
+
+};
