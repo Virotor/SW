@@ -1,11 +1,163 @@
+/**
+      ---------------------------------------------------
+      |         Made by Shamal Viktor (@j3uktop)        |
+      |           2019-2021 - Lyceum BSU - IM           |
+      |             2021 - BSUIR - FCP - PMS            |
+      |          *** All rights reserved ***            |
+      ---------------------------------------------------
+                                            			**/
 #include <iostream>
 #include <conio.h>
+#include <iomanip>
 #include <ctime>
 using std::cin;
 using std::cout;
 using std::max;
 using std::string;
 using std::getline;
+using std::setw;
+
+class matrix {
+  double** values;
+  int row;
+  int col;
+  const int SPACE = 5;
+ public:
+  matrix() {
+    row = 0;
+    col = 0;
+    values = nullptr;
+  };
+  void init() {
+    cout << "Enter matrix size:\n";
+    cout << "row count = ";
+    cin >> row;
+    cout << "col count = ";
+    cin >> col;
+    while (row < 1 || col < 1) {
+      cout << "Input error. Row and col count must be >= 1\n";
+      cout << "row count = ";
+      cin >> row;
+      cout << "col count = ";
+      cin >> col;
+    }
+    int mod;
+    double interval_start;
+    double interval_finish;
+    cout << "Enter the number generation interval\n";
+    cout << "Min value = ";
+    cin >> interval_start;
+    cout << "Max value = ";
+    cin >> interval_finish;
+
+    while (interval_start >= interval_finish) {
+      cout << "Interval input error\n";
+      cout << "Min value = ";
+      cin >> interval_start;
+      cout << "Max value = ";
+      cin >> interval_finish;
+    }
+    mod = (interval_finish - interval_start + 1);
+
+    values = new double* [row];
+    for (int i = 0; i < row; i++) {
+      values[i] = new double[col];
+    }
+
+    for (int r = 0; r < row; r++) {
+      for (int c = 0; c < col; c++) {
+        values[r][c] = rand() % mod + interval_start;
+      }
+    }
+  };
+  void init(int _row, int _col) {
+    if (_row < 1) {
+      _row = 0;
+    }
+    if (_col < 1) {
+      _col = 0;
+    }
+    row = _row;
+    col = _col;
+    values = new double* [row];
+    for (int i = 0; i < row; i++) {
+      values[i] = new double[col];
+    }
+  };
+  void print() {
+    if (row < 1 || col < 1) {
+      cout << "Error. Invalid matrix to print\n";
+      return;
+    }
+    for (int r = 0; r < row; r++) {
+      for (int c = 0; c < col; c++) {
+        cout << setw(SPACE) << values[r][c] << ' ';
+      }
+      cout << '\n';
+    }
+  };
+  void transpose() {
+    if (row < 1 || col < 1) {
+      return;
+    }
+    matrix result;
+    result.init(col, row);
+    for (int row_index = 0; row_index < row; row_index++) {
+      for (int col_index = 0; col_index < col; col_index++) {
+        result.values[col_index][row_index] = values[row_index][col_index];
+      }
+    }
+    *this = result;
+  };
+  void transposeReverse() {
+    if (row < 1 || col < 1) {
+      return;
+    }
+    /*
+     00 01 02 03
+     10 11 12 13
+     20 21 22 23
+
+     23 13 03
+     22 12 02
+     21 11 01
+     20 10 00
+     */
+    matrix result;
+    result.init(col, row);
+    for (int row_index = 0; row_index < row; row_index++) {
+      for (int col_index = 0; col_index < col; col_index++) {
+        result.values[col_index][row_index] =
+            values[row - row_index - 1][col - col_index - 1];
+      }
+    }
+    *this = result;
+  };
+  void operator=(matrix& matr) {
+    if (matr.row < 1 || matr.col < 1 || this == &matr) {
+      return;
+    }
+    if (row != 0) {
+      for (int row_index = 0; row_index < row; row_index++) {
+        delete[] values[row_index];
+      }
+      delete[] values;
+    }
+    row = matr.row;
+    col = matr.col;
+    values = matr.values;
+    matr.values = nullptr;
+  }
+  ~matrix() {
+    if (values == nullptr) {
+      return;
+    }
+    for (int i = 0; i < row; i++) {
+      delete[] values[i];
+    }
+    delete[] values;
+  };
+};
 
 int findElementFirstIndex(const double* array, int& size, double value);
 int findIndexOfSubstr(string parent, string child);
@@ -13,16 +165,36 @@ double* getArray(int& array_size);
 void elementsArrayFind();
 void elementsStringFind();
 void findNumbersSmallerThanDifferencesOfPreviousTwo();
-int largestSubsequence(const double* values, int values_size, double& largest_index);
+int largestSubsequence(const double* values,
+                       int values_size,
+                       double& largest_index);
 void findLargestSubsequence();
+void matrixTranspose();
 
 int main() {
   srand(time(NULL));
-  elementsArrayFind();
-  elementsStringFind();
-  findNumbersSmallerThanDifferencesOfPreviousTwo();
-  findLargestSubsequence();
+  // elementsArrayFind();
+  // elementsStringFind();
+  // findNumbersSmallerThanDifferencesOfPreviousTwo();
+  // findLargestSubsequence();
+  matrixTranspose();
   return 0;
+}
+
+void matrixTranspose() {
+  cout << "Task 4: transpose matrix\n\n";
+  matrix matr;
+  matr.init();
+  cout << "Matrix:\n";
+  matr.print();
+  matr.transpose();
+  cout << "Transpose matrix:\n";
+  matr.print();
+  matr.transpose();
+  matr.transposeReverse();
+  cout << "Reverse transpose matrix:\n";
+  matr.print();
+  cout << "Task 4 is completed\n\n";
 }
 
 void elementsArrayFind() {
@@ -184,7 +356,8 @@ void findLargestSubsequence() {
   double largest_index;
   int largest_subsequence_size =
       largestSubsequence(values, values_size, largest_index);
-  cout << "Largest subsequence start from index " << largest_index << " and have "
+  cout << "Largest subsequence start from index " << largest_index
+       << " and have "
        << largest_subsequence_size << " values\n";
   cout << "Task 3 is completed\n\n";
   delete[] values;
