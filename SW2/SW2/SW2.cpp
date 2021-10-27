@@ -2,9 +2,13 @@
 using namespace std;
 int* initArray(int length);
 void printArray(int* array, int length);
+int** initMatrix(int row, int column);
+void printMatrix(int** matrix, int row, int column);
 void positionOfTheNumber(int* array, int length, int number);
 void lessThanPrevious(int*array,int length);
 void theLargestSequance(int* array, int length);
+int** firstTranspose(int** matrix, int row, int column);
+int** secondTranspose(int** matrix, int row, int column);
 
 
 int main()
@@ -20,6 +24,25 @@ int main()
     positionOfTheNumber(array, length, number);
     lessThanPrevious(array, length);
     theLargestSequance(array, length);
+    int row,column;
+    cout << "Enter rows of matrix : ";
+    cin >> row;
+    cout << "Enter columns of the matrix : ";
+    cin >> column;
+    int**matrix = initMatrix(row,column);
+    cout << "Matrix : " << endl;
+    printMatrix(matrix, row, column);
+    int** resultMatrix = firstTranspose(matrix, row, column);
+    cout << "Transposed matrix from the main diagonal: "<<endl;
+    printMatrix(resultMatrix, column, row);
+    int** secondResultMatrix = secondTranspose(matrix, row, column);
+    cout << "Transposed matrix from the side diagonal: "<<endl;
+    printMatrix(secondResultMatrix, column, row);
+    delete[]array;
+    for (int i = 0; i < row; i++) {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
 	system("pause");
 	return 0;
 }
@@ -92,4 +115,59 @@ void theLargestSequance(int* array, int length)
 
     cout << "Length of the largest sequance is " << maxSequence << endl;
 
+}
+int** initMatrix(int row, int column)
+{
+    int** matrix = new int* [row];
+    for (int i = 0; i < row; i++) {
+
+        matrix[i] = new int[column];
+
+        for (int j = 0; j < column; j++) {
+
+            matrix[i][j] = rand() % 20 - 10;
+           
+        }
+
+    }
+    return matrix;
+}
+void printMatrix(int** matrix, int row, int column)
+{
+    for (int i = 0; i < row; i++) {
+
+        for (int j = 0; j < column; j++) {
+            cout << matrix[i][j] << " ";
+
+        }
+        cout << endl;
+
+    }
+}
+int** firstTranspose(int** matrix, int row, int column)
+{
+    int** resultMatrix = initMatrix(column, row);
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < column; j++)
+        {
+            resultMatrix[j][i] = matrix[i][j];
+        }
+    }
+
+    return resultMatrix;
+}
+
+int** secondTranspose(int** matrix, int row, int column)
+{
+    int** resultMatrix = initMatrix(column, row);
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < column; j++)
+        {
+            resultMatrix[column - j - 1][i] = matrix[row - i - 1][j];
+        }
+    }
+
+    return resultMatrix;
 }
