@@ -3,9 +3,9 @@
 using namespace std;
 
 void duplicateArray(int* arr, int size, int interval, int min, int max);
+void translateArray(int* arr, int size, int interval, int min, int max);
 void inputArray(int* arr, int size, int min, int interval);
 void printArray(int* arr, int size);
-void matrix();
 
 
 int main() {
@@ -82,6 +82,35 @@ void duplicateArray(int* arr, int size, int interval, int min, int max) {
 		cout << " There is no number that is less than the previous two " << endl;
 	}
 
+	system("pause");
+	translateArray(arr, size, interval, min, max);
+}
+
+void translateArray(int* arr, int size, int interval, int min, int max) {
+
+	cout << "\n\nExercises 3:\n";
+	inputArray(arr, size, min, interval);
+	printArray(arr, size);
+
+	int s = 2;
+	for (int i = 0; i < size; i++) {
+		if (arr[i] == arr[i + 1] && arr[i - 1] == arr[i]) {
+			s++;
+			if (arr[i] != arr[i + 1] && arr[i - 1] != arr[i]) {
+				break;
+			}
+		}
+
+	}
+
+	if (s == 2) {
+		cout << "There is no maximum length of consecutively identical numbers in a row " << endl;
+	}
+	else {
+		cout << endl << "Length of the longest sequence of identical numbers, in a row " << s << endl;
+	}
+
+	delete[]arr;
 	system("pause");
 }
 
