@@ -2,19 +2,27 @@
 #include <math.h>
 #include <time.h>
 #include <string>
+#include <iomanip>
 using namespace std;
 
 void PositionOfFirstEqualNumber();
 //MagicNumbers - числа, которые меньше разности двух предыдущих в массиве. Как их ещё лаконично назвать?
 void TaskWithMagicNumbers();
 void SubsequenceTask();
+void TransposeMatrix();
 
 int* CreateArray(int);
+int** CreateMatrix(int, int);
 void SetArray(int, int*);
+void SetMatrix(int, int, int**);
 void PrintArray(int, int*);
+void PrintMatrix(int, int, int**);
 void SearchEqualElement(int, int, int*);
 string SearchMagicNumbers(int, int*);
 int CountGreatestSubsequence(int, int*);
+void TransposeMainDiagonal(int, int, int**);
+void TransposeSideDiagonal(int, int, int**);
+void DeleteMatrix(int, int**);
 
 int main()
 {
@@ -37,7 +45,7 @@ int main()
 		SubsequenceTask();
 		break;
 	case 4:
-
+		TransposeMatrix();
 		break;
 	default:
 		break;
@@ -102,11 +110,61 @@ void SubsequenceTask()
 	delete[]array;
 }
 
+void TransposeMatrix()
+{
+	int size;
+
+	cout << "Введите размер для квадратной матрицы (n)" << endl;
+	cin >> size;
+
+	int** array = CreateMatrix(size, size);
+	SetMatrix(size, size, array);
+	cout << "Матрица: " << endl;
+	PrintMatrix(size, size, array);
+
+	cout << "Матрица, транспонированная по главной диагонали:" << endl;
+	TransposeMainDiagonal(size, size, array);
+
+	cout << "Матрица, транспонировання по побочной диагонали:" << endl;
+	TransposeSideDiagonal(size, size, array);
+
+	DeleteMatrix(size, array);
+}
+
 int* CreateArray(int size)
 {
 	int* array = new int[size];
 
 	return array;
+}
+
+int** CreateMatrix(int row, int column)
+{
+	int** array = new int* [row];
+	for (int i = 0; i < row; i++)
+	{
+		array[i] = new int[column];
+	}
+
+	return array;
+}
+
+void SetArray(int size, int* array)
+{
+	for (int i = 0; i < size; i++)
+	{
+		array[i] = rand() % 21 - 10;
+	}
+}
+
+void SetMatrix(int row, int column, int** array)
+{
+
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < column; j++)
+			array[i][j] = rand() % 21 - 10;
+	}
 }
 
 void PrintArray(int size, int* array)
@@ -118,13 +176,18 @@ void PrintArray(int size, int* array)
 	cout << endl;
 }
 
-void SetArray(int size, int* array)
+void PrintMatrix(int row, int column, int** array)
 {
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < row; i++)
 	{
-		array[i] = rand() % 21 - 10;
+		for (int j = 0; j < column; j++)
+		{
+			cout << setw(4) << array[i][j];
+		}
+		cout << endl;
 	}
 }
+
 
 void SearchEqualElement(int element, int size, int* array)
 {
@@ -199,4 +262,38 @@ int CountGreatestSubsequence(int size, int* array)
 	}
 
 	return greatestSubsequence;
+}
+
+void TransposeMainDiagonal(int row, int column, int** array)
+{
+
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < column; j++)
+		{
+			cout << setw(4) << array[j][i];
+		}
+		cout << endl;
+	}
+}
+
+void TransposeSideDiagonal(int row, int column, int** array)
+{
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < column; j++)
+		{
+			cout << setw(4) << array[row - 1 - j][column - 1 - i];
+		}
+		cout << endl;
+	}
+}
+
+void DeleteMatrix(int row, int** array)
+{
+	for (int i = 0; i < row; i++)
+	{
+		delete[] array[i];
+	}
+	delete[] array;
 }
