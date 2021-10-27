@@ -18,11 +18,14 @@ void Transport2(int rows, int cols, int** Array);
 void RandomOne_dimensionalArray(int rows, int cols, int** Array);
 void TransporationMatrix();
 void DeletingMatrix(int rows,int**array );
+void RandomOne_dimensionalArrayCoordinats(int, int*, int*);
+void ShowOne_dimensionalArrayCoordinats(int, int*, int*);
+void SearchDistance();
 int main() {
 
 	
 	
-
+	SearchDistance();
 
 	system("pause");
 
@@ -186,6 +189,29 @@ void DeletingMatrix(int rows, int**matrix) {
 
 	delete[] matrix;
 };
+void RandomOne_dimensionalArrayCoordinats(int sizeArray, int* Array1, int* Array2) {
+	int i;
+	srand(time(NULL));
+
+
+	for (i = 0; i < sizeArray; i++)
+	{
+		Array1[i] = rand() % 100 - 50;
+		Array2[i] = rand() % 100 - 50;
+	}
+
+
+}
+void ShowOne_dimensionalArrayCoordinats(int sizeArray, int* Array1, int* Array2) {
+	int i;
+	for (i = 0; i < sizeArray; i++)
+	{
+		cout << "(" << Array1[i] << ";" << Array2[i] << ")" << endl;
+
+	}
+
+	cout << endl;
+}
 void ShowPosition() {
 	int sizeArray;
 	cout << "Enter the size of the array" << endl;
@@ -341,4 +367,33 @@ void TransporationMatrix() {
 	 DeletingMatrix(rows, matrix);
 	 DeletingMatrix(rows, transportarray1);
 	 DeletingMatrix(rows, transportarray2);
+};
+void SearchDistance() {
+	int numbersPoints;
+	cout << "Enter the numbers of the points" << endl;//i didn't check to save time
+	cin >> numbersPoints;
+	int* arrayX = new int[numbersPoints];
+	int* arrayY = new int[numbersPoints];
+
+	RandomOne_dimensionalArrayCoordinats(numbersPoints, arrayX, arrayY);
+	cout << "Array:" << endl;
+	ShowOne_dimensionalArrayCoordinats(numbersPoints, arrayX, arrayY);
+	int i, j;
+	double maximumDistance = 0, distance, DistanceSquare;
+
+	cout << "Result:" << endl;
+	for (i = 0; i < numbersPoints ; i++) {
+
+		for (j = i+1; j < numbersPoints; j++) {
+			DistanceSquare = (arrayX[i] - arrayX[j]) * (arrayX[i] - arrayX[j]) + (arrayY[i] - arrayY[j]) * (arrayY[i] - arrayY[j]);
+			distance = sqrt(DistanceSquare);
+		}
+		if (distance > maximumDistance)
+			maximumDistance = distance;
+	}
+	cout << maximumDistance << "= maximum distance " << endl;
+
+	
+	delete[]arrayX;
+	delete[]arrayY;
 };
