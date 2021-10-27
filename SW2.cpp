@@ -1,10 +1,12 @@
-﻿#include <iostream>
+#include <iostream>
 
 using namespace std;
 
 int* initArray(int length);
 void printArray(int* array, int length);
 int foundNumberIndex(int* array, int length, int number);
+void printLessThenPreviousTwo(int* array, int length);
+
 
 int main()
 {
@@ -15,12 +17,17 @@ int main()
 
     int* array = initArray(length);
 
-    cout << "Enter number\n";
-    cin >> number;
-
+    cout << "\t --Array--\n";
     printArray(array, length);
 
-    cout << foundNumberIndex(array, length, number);
+    cout << "\t --Task 1--\n";
+    cout << "Enter number\n";
+    cin >> number;
+    cout << "Position of the first element of the array equal to the entered number is " << foundNumberIndex(array, length, number) << endl;
+
+    cout << "\t --Task 2--\n";
+    cout << "Result array is ";
+    printLessThenPreviousTwo(array, length);
 
 }
 
@@ -51,6 +58,19 @@ int foundNumberIndex(int* array, int length, int number)
         if (number == array[i])
         {
             return i;
+        }
+    }
+}
+
+void printLessThenPreviousTwo(int* array, int length)
+{
+    int resoult_length = 0;
+    int* resoult_array = new int[length];
+    for (int i = 2; i < length; i++)
+    {
+        if (array[i] < array[i - 2] - array[i - 1])
+        {
+            cout << array[i] << " ";
         }
     }
 }
