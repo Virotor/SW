@@ -3,63 +3,70 @@
 
 using namespace std;
 
-void fillingMatrix(int** matrix, int unsigned orderOfMatrix)
+void fillingMatrix(int** Matrix, unsigned int rows, unsigned int columns)
 {
 	srand(time(NULL));
 	unsigned int i = 0;
-	for (i; i < orderOfMatrix; i++)
+	for (i; i < rows; i++)
 	{
-		for (unsigned int ii = 0; ii < orderOfMatrix; ii++)
-			matrix[i][ii] = 9 - rand() % 19;
+		for (unsigned int ii = 0; ii < columns; ii++)
+			Matrix[i][ii] = 9 - rand() % 19;
 	}
 };
-void outputtingMatrix(int** matrix, int unsigned orderOfMatrix)
+void outputtingMatrix(int** Matrix, unsigned int rows, unsigned int columns)
 {
 	unsigned int i = 0;
-	for (i; i < orderOfMatrix; i++)
+	for (i; i < rows; i++)
 	{
-		for (unsigned int ii = 0; ii < orderOfMatrix; ii++)
-			printf("%-3i ", matrix[i][ii]);
+		for (unsigned int ii = 0; ii < columns; ii++)
+			printf("%-7i ", Matrix[i][ii]);
 		cout << endl;
 	}
 };
-void transpositingMatrix(int** matrix, unsigned int orderOfMatrix)
+void transpositingMatrixMainDiagonal(int** matrix, unsigned int rows, unsigned int columns, int ** matrixToFill)
 {
-	int buffer = 0;
-	for (unsigned int i = 0; i < orderOfMatrix; i++)
+	for (unsigned int i = 0; i < rows; i++)
 	{
-		for (unsigned int ii = i; ii < orderOfMatrix; ii++)
+		for (unsigned int ii = 0; ii < columns; ii++)
 			{
-				buffer = matrix[i][ii];
-				matrix[i][ii] = matrix[ii][i];
-				matrix[ii][i] = buffer;
+				matrixToFill[ii][i] = matrix[i][ii];
 			};
 	};
-	for (unsigned int i = 0; i < orderOfMatrix; i++)
+};
+void transpositingMatrixSecondaryDiagonal(int** matrix, unsigned int rows, unsigned int columns, int** matrixToFill)
+{
+	for (unsigned int i = 0; i < rows; i++)
 	{
-		for (unsigned int ii = 0; ii < orderOfMatrix - i; ii++)
-			{
-				buffer = matrix[i][ii];
-				matrix[i][ii] = matrix[orderOfMatrix - ii - 1][orderOfMatrix - 1 - i];
-				matrix[orderOfMatrix - ii - 1][orderOfMatrix - i - 1] = buffer;
-			};
+		for (unsigned int ii = 0; ii < columns; ii++)
+		{
+			matrixToFill[columns - ii - 1][rows -i - 1] = matrix[i][ii];
+		};
 	};
 };
 
 int main()
 {
-	unsigned int orderOfMatrix;
-	cout << "Enter order of matrix:\n > "; cin >> orderOfMatrix;
-	int** matrix = new int* [orderOfMatrix];
-	for (unsigned int i = 0; i < orderOfMatrix; i++)
+	unsigned int rows, columns;
+	cout << "Enter number of rows:\n > "; cin >> rows;
+	cout << "Enter number of colums:\n > "; cin >> columns;
+	int** matrix = new int* [rows];
+	for (unsigned int i = 0; i < rows; i++)
 	{
-		matrix[i] = new int[orderOfMatrix];
+		matrix[i] = new int[columns];
 	}
-	fillingMatrix(matrix, orderOfMatrix);
+	fillingMatrix(matrix, rows, columns);
 	cout << "Generated matrix is:\n";
-	outputtingMatrix(matrix, orderOfMatrix);
-	transpositingMatrix(matrix, orderOfMatrix);
-	cout << "Transposed matrix:\n";
-	outputtingMatrix(matrix, orderOfMatrix);
+	outputtingMatrix(matrix, rows, columns);
+	int** matrixBuffer = new int* [columns];
+	for (unsigned int i = 0; i < columns; i++)
+	{
+		matrixBuffer[i] = new int[rows];
+	}
+	transpositingMatrixMainDiagonal(matrix, rows, columns, matrixBuffer);
+	cout << "\nFirst time transposed matrix:\n";
+	outputtingMatrix(matrixBuffer, columns, rows);
+	transpositingMatrixSecondaryDiagonal(matrixBuffer, columns, rows, matrix);
+	cout << "\nAnswer matrix:\n";
+	outputtingMatrix(matrix, rows, columns);
 	return 0;
 }
