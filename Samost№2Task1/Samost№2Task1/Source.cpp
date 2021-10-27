@@ -9,17 +9,62 @@ void ShowOne_dimensionalArray(int, int*);
 void searchSubstring();
 void ShowPosition();
 void searchNumbers();
+void subsequenceNumbers();
+
 int main() {
 
 
-	
-	searchNumbers();
+	subsequenceNumbers();
+
 
 	system("pause");
 
 	return 0;
 }
+void subsequenceNumbers() {
+	int sizeArray;
+	cout << "Enter the size of the array" << endl;
+	cin >> sizeArray;
+	int* array = new int[sizeArray];
+	cout << "Choose the method to fill the array" << endl;
+	cout << "1.Random(default)" << endl << "2.From the keyboard" << endl;
+	char FillingMethod;
+	FillingMethod = _getch();
+	cout << FillingMethod << endl;
+	switch (FillingMethod)
+	{
+	case '1':default: {
+		RandomOne_dimensionalArray(sizeArray, array);
 
+		break; }
+	case'2': {
+		InputOne_dimensionalArray(sizeArray, array);
+		break;
+	}
+	}
+	cout << "Array:" << endl;
+	ShowOne_dimensionalArray(sizeArray, array);
+	int i, calculator1 = 1, calculator2 = 1;
+
+	cout << "Result:" << endl;
+	for (i = 0; i < sizeArray - 1; i++)
+	{
+		if (array[i] == array[i + 1])
+
+			calculator2++;
+		else
+			if (calculator1 < calculator2) {
+				calculator1 = calculator2;
+				calculator2 = 1;
+			}
+			else calculator2 = 1;
+	}
+	cout << calculator1 << endl;
+	delete[]array;
+
+
+
+};
 void RandomOne_dimensionalArray(int sizeArray, int* Array) {
 	int i;
 	srand(time(NULL));
