@@ -33,6 +33,12 @@ void outMatrix(int** matrix, int rows, int cols);
 
 void transposeMatrix(int** matrix, int rows, int cols);
 
+void maxLength(int num);
+
+
+
+
+
 int main()
 {
 	srand(time(NULL));
@@ -86,6 +92,14 @@ int main()
 		int rows, cols;
 		cin >> rows >> cols;
 		transposeMatrix(createMatrix(rows, cols), rows, cols);
+		break;
+	}
+	case '5':
+	{
+		cout << "Enter the number of points ";
+		int num;
+		cin >> num;
+		maxLength(num);
 		break;
 	}
 	default:
@@ -301,4 +315,29 @@ void deleteMatrix(int** matrix, int rows, int cols)
 		delete[]matrix[i];
 	}
 	delete[]matrix;
+}
+
+void maxLength(int num)
+{
+	int* coordinates_x, * coordinates_y;
+	coordinates_x = createArray(num);
+	coordinates_y = createArray(num);
+	FillArray(coordinates_x, num);
+	FillArray(coordinates_y, num);
+	outArray(coordinates_y, num);
+	outArray(coordinates_x, num);
+	double max = 0;
+	for (i = 0;i < num;i++)
+	{
+		for (j = 0;j < num;j++)
+		{
+			if (pow(pow(coordinates_x[i], 2) + pow(coordinates_y[j], 2), 1. / 2) > max)
+			{
+				max = pow(pow(coordinates_x[i], 2) + pow(coordinates_y[j], 2), 1. / 2);
+			}
+		}
+	}
+	cout << "Max = " << max << endl;
+	deleteArray(coordinates_x);
+	deleteArray(coordinates_y);
 }
