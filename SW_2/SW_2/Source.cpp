@@ -73,6 +73,57 @@ void longestSequenceLength(int* sequenceArray, int size, int max, int min) {
 	delete[] sequenceArray;
 }
 
+int** creatureMatrix(int rows, int cols) {
+	int** transMatrix;
+	transMatrix = new int* [rows];
+	for (int i = 0; i < rows; i++) {
+		transMatrix[i] = new int[cols];
+	}
+	return transMatrix;
+}
+
+void inputMatrix(int** transMatrix, int rows, int cols, int minMatrix, int maxMatrix) {
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < cols; j++) {
+			transMatrix[i][j] = rand() % (maxMatrix - minMatrix + 1) + minMatrix;
+		}
+	}
+}
+
+void printMatrix(int** transMatrix, int rows, int cols) {
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < cols; j++) {
+			cout << setw(3) << transMatrix[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
+
+void transposeMatrix(int** transMatrix, int rows, int cols) {
+	cout << " Your transposed matrix along the main diagonal" << endl;
+	for (int i = 0; i < cols; i++) {
+		for (int j = 0; j < rows; j++) {
+			cout << setw(3) << transMatrix[j][i] << " ";
+		}
+		cout << endl;
+	}
+	cout << endl;
+
+	cout << " Your transposed matrix along the side diagonal" << endl;
+	for (int i = cols - 1; i > -1; i--) {
+		for (int j = rows - 1; j > -1; j--) {
+			cout << setw(3) << transMatrix[j][i];
+		}
+		cout << endl;
+	}
+	cout << endl;
+
+	for (int i = 0; i < rows; i++) {
+		delete[] transMatrix[i];
+	}
+	delete[] transMatrix;
+}
+
 int main() {
 	srand(time(0));
 	int size, min, max, rows, cols, minMatrix, maxMatrix;
@@ -126,6 +177,25 @@ int main() {
 	}
 	else if (min > max) {
 		cout << " Minimum more than maximum " << endl;
+	}
+
+	cout << " Task 4 " << endl;
+	cout << " Input height of your matrix: "; cin >> rows;
+	cout << " Input length of your matrix: "; cin >> cols;
+	cout << " Input minimum of your random range: "; cin >> minMatrix;
+	cout << " Input maximum of your random range: "; cin >> maxMatrix;
+	if (rows > 0 && cols > 0 && minMatrix <= maxMatrix) {
+		int** transMatrix;
+		transMatrix = creatureMatrix(rows, cols);
+		inputMatrix(transMatrix, rows, cols, minMatrix, maxMatrix);
+		printMatrix(transMatrix, rows, cols);
+		transposeMatrix(transMatrix, rows, cols);
+	}
+	else if (minMatrix > maxMatrix) {
+		cout << " Minimum more than maximum " << endl;
+	}
+	else if (rows <= 0 || cols <= 0) {
+		cout << "Rows and columns must be natural numbers  " << endl;
 	}
 	system("pause");
 	return 0;
