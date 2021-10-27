@@ -285,5 +285,58 @@ int main()
 
 	delete2dArray(matrix, row);
 
+	//------------Task#5----------------------------------
+
+	int stroke = 2, number_of_dots;
+
+	cout << "\n\n\nEnter the number of dots: ";
+	cin >> number_of_dots;
+
+	int** dots = new int* [stroke];
+
+	for (int i = 0; i < stroke; ++i)
+	{
+		dots[i] = new int[number_of_dots];
+	}
+
+	initMatrix(dots, stroke, number_of_dots);
+	printMatrix(dots, stroke, number_of_dots);
+
+	int number_of_distances = 1;
+
+	for (int j = 2; j < number_of_dots; ++j)//size of array of distances
+	{
+		number_of_distances *= j;
+	}
+
+	double* distances = new double[number_of_distances];//array of distances
+
+	int d = 0;
+
+	for (int i = 0; i < number_of_dots - 1; ++i)
+	{
+		for (int j = i + 1; j < number_of_dots; ++j)
+		{
+			distances[d] = sqrt(pow((dots[0][i] - dots[0][j]), 2) + pow((dots[1][i] - dots[1][j]), 2));
+			d++;
+		}
+	}
+
+	double max_dist;
+
+	max_dist = distances[0];
+
+	for (int i = 1; i < number_of_distances; ++i)
+	{
+		if (distances[0] < distances[i])
+			distances[0] = distances[i];
+	}
+
+	max_dist = distances[0];
+
+	cout << "\nMax distance: " << max_dist;
+	delete[]distances;
+	delete2dArray(dots, stroke);
+
 	return 0;
 }
