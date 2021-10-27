@@ -3,6 +3,7 @@
 using namespace std;
 
 void diffOfPrevNum() {
+	setlocale(LC_ALL, "rus");
 	int sizeOfArr;
 	cout << "¬ведите длину массива: "; 
 	cin >> sizeOfArr;
