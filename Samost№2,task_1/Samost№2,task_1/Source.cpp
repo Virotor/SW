@@ -19,6 +19,8 @@ void findStr(string main, string sub);
 
 void deleteArray(int*);
 
+void searchNumber(int*, int);
+
 int main()
 {
 	srand(time(NULL));
@@ -52,6 +54,11 @@ int main()
 	}
 	case '2':
 	{
+		int size;
+		cout << "Enter the size of the array";
+		cin >> size;
+		searchNumber(createArray(size), size);
+		break;
 	}
 	default:
 	{
@@ -150,3 +157,21 @@ void deleteArray(int* array)
 	delete[]array;
 }
 
+void searchNumber(int* array, int size)
+{
+	outArray(array, size);
+	cout << "The numbers" << endl;
+	for (i = 2; i < size;i++)
+	{
+		if (array[i] < array[i - 2] - array[i - 1])
+		{
+			cout << array[i] << "\t";
+		}
+		else
+		{
+			continue;
+		}
+	}
+	cout << endl;
+	deleteArray(array);
+}
