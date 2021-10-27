@@ -6,16 +6,16 @@
 
 using namespace std;
 
-void init1dArray(int*array, int size)
+void init1dArray(int* array, int size)
 {
 	int range;
 
 	cout << "Enter the range of the array: ";
 	cin >> range;
-	
+
 	for (int i = 0; i < size; ++i)
 	{
-		array[i] = rand() % range - (range-1)/2;
+		array[i] = rand() % range - (range - 1) / 2;
 	}
 }
 
@@ -31,13 +31,13 @@ void print1dArray(int* array, int size)
 
 void findPosition(int* array, int size, int pos)
 {
-	int flag=0;
+	int flag = 0;
 
 	for (int i = 0; i < size; ++i)
 	{
 		if (pos == array[i])
 		{
-			cout << "The position of first number " << pos << " is " << i <<"\n\n\n";
+			cout << "The position of first number " << pos << " is " << i << "\n\n\n";
 			flag++;
 			break;
 		}
@@ -54,13 +54,13 @@ void findString(string main_string, string sub_string)
 	sub_string_length = sub_string.length();
 
 	if (main_string_length < sub_string_length)
-	{	
+	{
 		cout << "Short string is longer then long string *~*\n\n\n";
 		return;
 	}
-	
+
 	for (int i = 0; i < main_string_length; ++i)
-	{		
+	{
 		k = 0;
 		for (int j = 0; j < sub_string_length; ++j)
 		{
@@ -69,7 +69,7 @@ void findString(string main_string, string sub_string)
 				k++;
 			}
 		}
-				
+
 		if (k == sub_string_length)
 		{
 			cout << "The position of short string in long string is " << i << "\n\n\n";
@@ -79,7 +79,7 @@ void findString(string main_string, string sub_string)
 
 	if (k != sub_string_length)
 		cout << "There is no such short string in the long string\n\n\n";
-	
+
 }
 
 void findNumbers(int* array, int size)
@@ -104,6 +104,32 @@ void delete1dArray(int* array)
 	delete[]array;
 }
 
+void countMaxSeries(int* array, int size)
+{
+	int max_series;
+	int* digit = new int[size];
+	for (int i = 0; i < size; ++i)
+	{
+		digit[i] = 1;
+		for (int k = 1; k < size - i; ++k)
+		{
+			if (array[i] == array[i + k])
+				digit[i]++;
+			else
+			{
+				break;
+			}
+		}
+	}
+	max_series = digit[0];
+	for (int i = 1; i < size; ++i)
+	{
+		if (digit[0] < digit[i])
+			digit[0] = digit[i];
+	}
+	max_series = digit[0];
+	cout << "Max series of numbers: " << max_series;
+}
 
 int main()
 {
@@ -149,6 +175,21 @@ int main()
 
 	delete1dArray(array);
 
+	//------------Task#3----------------------------------
+	int nar_size;
+
+	cout << "Enter the size of narrow array: ";
+	cin >> nar_size;
+
+	int* narrow_array = new int[nar_size];
+
+	init1dArray(narrow_array, nar_size);
+
+	print1dArray(narrow_array, nar_size);
+
+	countMaxSeries(narrow_array, nar_size);
+
+	delete1dArray(narrow_array);
 
 	return 0;
 }
