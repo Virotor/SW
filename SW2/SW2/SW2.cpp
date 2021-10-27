@@ -171,3 +171,34 @@ int DifferenceBetweenElements()
 	DeleteArray(arr2);
 	return size;
 }
+
+int LineOfEqualNumbers() //третье задание
+{
+	int* arr3;
+	int counter, size, counterincycle3 = 0;
+	cout << "Введите размер массива" << endl;
+	cin >> size;
+	srand(time(0));
+	arr3 = new int[size];
+	for (int i = 0; i < size; i++)
+	{
+		arr3[i] = 1 + rand() % 2; //небольшой диапозон чтобы был виден результат задания
+	}
+	CoutArray(size, arr3);
+	int counter1, counter2;
+	counter1 = 1;
+	counter2 = 1;
+	for (int i = 0; i < size - 1; i++)
+	{
+		if (arr3[i] == arr3[i + 1])
+		{
+			counter2++;
+			if (counter2 > counter1) counter1 = counter2;
+		}
+		else
+			counter2 = 1;
+	}
+	cout << endl << counter1;
+	DeleteArray(arr3);
+	return size;
+}
