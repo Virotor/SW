@@ -15,6 +15,8 @@ void subsrtringInString();
 
 void elementsLessThanDifferenceOfTwoPrevious(int*, int);
 
+void maxLengthOfEqual(int*, int);
+
 int main() {
     int task;
     cout << "Номер задания: ";
@@ -44,6 +46,18 @@ int main() {
             fillArray(array, size);
             showArray(array, size);
             elementsLessThanDifferenceOfTwoPrevious(array, size);
+            delete[] array;
+            break;
+        }
+        case 3:
+        {
+            int size;
+            cout << "Размер массива: ";
+            cin >> size;
+            int *array = createArr(size);
+            fillArray(array, size);
+            showArray(array, size);
+            maxLengthOfEqual(array, size);
             delete[] array;
             break;
         }
@@ -149,4 +163,26 @@ void elementsLessThanDifferenceOfTwoPrevious(int *array,int size)
         k++;
     }
     cout << endl;
+}
+
+void maxLengthOfEqual(int *array, int size)
+{
+    int count1 = 1, count2 = 1;
+    for (int i = 0; i < size-1; i++)
+        {
+            if (array[i] == array[i + 1])
+            {
+                count2++;
+            }
+            else if (count1 < count2)
+            {
+                count1 = count2;
+                count2 = 1;
+            }
+            else
+            {
+                count2 = 1;
+            }
+        }
+        cout << "Максимальная длина последовательности одинаковых чисел: " << count1 << endl;
 }
