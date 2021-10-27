@@ -17,9 +17,10 @@ void Transport1(int rows, int cols, int** Array);
 void Transport2(int rows, int cols, int** Array);
 void RandomOne_dimensionalArray(int rows, int cols, int** Array);
 void TransporationMatrix();
+void DeletingMatrix(int rows,int**array );
 int main() {
 
-	TransporationMatrix();
+	
 	
 
 
@@ -31,7 +32,7 @@ int main() {
 
 int** CreatingArray(int rows, int cols) {
 	srand(time(NULL));
-	int i, j;
+	int i;
 	int** array = new int* [rows];
 	for (i = 0; i < rows; i++)
 	{
@@ -179,6 +180,12 @@ void ShowOne_dimensionalArray(int sizeArray, int* Array) {
 
 	cout << endl;
 }
+void DeletingMatrix(int rows, int**matrix) {
+	for (int i = 0; i < rows; i++)
+		delete[] matrix[i];
+
+	delete[] matrix;
+};
 void ShowPosition() {
 	int sizeArray;
 	cout << "Enter the size of the array" << endl;
@@ -331,6 +338,7 @@ void TransporationMatrix() {
 
 	cout << "Main:" << endl;
 	Transport2(rows, cols, transportarray2);
-
-
+	 DeletingMatrix(rows, matrix);
+	 DeletingMatrix(rows, transportarray1);
+	 DeletingMatrix(rows, transportarray2);
 };
