@@ -386,3 +386,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 .idea/
 *.sln.iml
+task5/task5/task5.vcxproj
+task5/task5/task5.vcxproj.filters
