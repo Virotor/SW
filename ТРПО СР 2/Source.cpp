@@ -131,6 +131,73 @@ void countMaxSeries(int* array, int size)
 	cout << "Max series of numbers: " << max_series;
 }
 
+void printMatrix(int** matrix, int row, int col)
+{
+	cout << "\n\n\t";
+
+	for (int i = 0; i < row; ++i)
+	{
+		for (int j = 0; j < col; ++j)
+		{
+			cout << setw(4) << matrix[i][j];
+		}
+
+		cout << "\n\t";
+	}
+}
+
+void initMatrix(int** matrix, int row, int col)
+{
+	for (int i = 0; i < row; ++i)
+	{
+		for (int j = 0; j < col; ++j)
+		{
+			matrix[i][j] = rand() % 19 - 9;
+		}
+	}
+}
+
+void delete2dArray(int** matrix, int row)
+{
+	for (int i = 0; i < row; ++i)
+		delete[]matrix[i];
+
+	delete[]matrix;
+}
+
+void transponMainMatrix(int** matrix, int row)
+{
+	for (int i = 0; i < row; ++i)
+	{
+		for (int j = 0; j <= i; ++j)
+		{
+			if (i != j)
+			{
+				matrix[i][j] += matrix[j][i];
+				matrix[j][i] = matrix[i][j] - matrix[j][i];
+				matrix[i][j] = matrix[i][j] - matrix[j][i];
+			}
+
+		}
+	}
+}
+
+void transponSideMatrix(int** matrix, int row)
+{
+	for (int i = 0; i < row; ++i)
+	{
+		for (int j = 0; j < row - i; ++j)
+		{
+			if (i + j != row - 1)
+			{
+				matrix[i][j] += matrix[row - j - 1][row - i - 1];
+				matrix[row - j - 1][row - i - 1] = matrix[i][j] - matrix[row - j - 1][row - i - 1];
+				matrix[i][j] = matrix[i][j] - matrix[row - j - 1][row - i - 1];
+			}
+		}
+	}
+}
+
 int main()
 {
 	srand(time(NULL));
@@ -190,6 +257,33 @@ int main()
 	countMaxSeries(narrow_array, nar_size);
 
 	delete1dArray(narrow_array);
+
+	//------------Task#4----------------------------------
+
+	int row;
+	cout << "\n\n\nEnter the size of square matrix: ";
+	cin >> row;
+
+	int** matrix = new int* [row];
+
+	for (int i = 0; i < row; i++)
+	{
+		matrix[i] = new int[row];
+	}
+
+	initMatrix(matrix, row, row);
+
+	printMatrix(matrix, row, row);
+
+	transponMainMatrix(matrix, row);
+
+	printMatrix(matrix, row, row);
+
+	transponSideMatrix(matrix, row);
+
+	printMatrix(matrix, row, row);
+
+	delete2dArray(matrix, row);
 
 	return 0;
 }
