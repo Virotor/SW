@@ -1,5 +1,38 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
+
+int** Matrix_create(int raw, int col)
+{
+	int i, j;
+	int** a = new int* [raw];
+	srand(time(0));
+	for (i = 0;i < raw;i++)
+		a[i] = new int[col];
+	for (i = 0;i < raw;i++)
+		for (j = 0;j < col;j++)
+			a[i][j] = rand() % 21 - 10;
+	return (a);
+}
+
+void Matrix_print(int raw, int col, int** arr)
+{
+	int i, j;
+	for (i = 0;i < raw;i++)
+	{
+		for (j = 0;j < col;j++)
+			cout << setw(5) << arr[i][j] << ' ';
+		cout << endl;
+	}
+	cout << endl;
+}
+
+void Matrix_delete(int raw, int** arr)
+{
+	for (int i = 0;i < raw;i++)
+		delete[]arr[i];
+	delete[]arr;
+}
 
 int* Array_create(int _size)
 {
@@ -49,6 +82,35 @@ int Max_raw(int* a, int s)
 		}
 	}
 	return(max);
+}
+
+int** Main_trans(int size, int** mat)
+{
+	int r;
+	for (int i = 0;i < size - 1;i++)
+		for (int j = i + 1;j < size;j++)
+		{
+			r = mat[i][j];
+			mat[i][j] = mat[j][i];
+			mat[j][i] = r;
+		}
+	return(mat);
+}
+
+int** Side_trans(int size, int** mat)
+{
+	int r;
+	for (int i = 0;i < size - 1;i++)
+		for (int j = 0;j < size;j++)
+		{
+			if (i + j < size - 1)
+			{
+				r = mat[i][j];
+				mat[i][j] = mat[size - 1 - j][size - 1 - i];
+				mat[size - 1 - j][size - 1 - i] = r;
+			}
+		}
+	return(mat);
 }
 
 void Element_position()
@@ -102,6 +164,26 @@ void Max_subsequence()
 	delete[]array;
 }
 
+void Matrix_transposition()
+{
+	int raw_count, col_count, ** matrix1, ** matrix2, ** matrix3, ** copy;
+	cout << "Enter sizes of matrix n,m" << endl;
+	cin >> raw_count >> col_count;
+	matrix1 = Matrix_create(raw_count, col_count);
+	Matrix_print(raw_count, col_count, matrix1);
+	copy = Matrix_create(raw_count, col_count);
+	for (int i = 0;i < raw_count;i++)
+		for (int j = 0;j < col_count;j++)
+			copy[i][j] = matrix1[i][j];
+	if (raw_count == col_count)
+	{
+		matrix2 = Main_trans(raw_count, matrix1);
+		Matrix_print(raw_count, col_count, matrix2);
+		matrix3 = Side_trans(raw_count, copy);
+		Matrix_print(raw_count, col_count, matrix3);
+	}
+}
+
 int main()
 {
 	int task_number;
@@ -118,5 +200,7 @@ int main()
 	case 3:
 		Max_subsequence();
 		break;
+	case 4:
+		Matrix_transposition();
 	}
 }
