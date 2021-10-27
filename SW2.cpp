@@ -108,3 +108,41 @@ int findLittleString()
     return answer;
 
 }
+
+int main() {
+
+
+    // enter size of array
+
+    std::cout << "Enter size of array:" << "\n";
+    int arrsize;
+    std::cin >> arrsize;
+
+    int* arr = NULL;
+    arr = (int*)malloc(sizeof(int) * arrsize);
+
+    // define elements of array
+
+    int min_value = -100;
+    int max_value = 100;
+
+    for (int a = 0; a < arrsize; a++) {
+
+        arr[a] = rand() % (max_value - min_value + 1) + min_value;
+        std::cout << arr[a] << " ";
+
+    }
+
+    int flag = 0;
+
+    for (int i = 2; i < arrsize; i++)
+    {
+        if (arr[i] < arr[i - 2] - arr[i - 1])
+        {
+            cout << arr[i] << ' ';
+            flag = 1;
+        }
+    }
+
+
+}
