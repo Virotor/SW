@@ -2,9 +2,9 @@
 using namespace std;
 int* initArray(int length);
 void printArray(int* array, int length);
-int positionOfTheNumber(int* array, int length, int number);
+void positionOfTheNumber(int* array, int length, int number);
 void lessThanPrevious(int*array,int length);
-
+void theLargestSequance(int* array, int length);
 
 
 int main()
@@ -17,8 +17,9 @@ int main()
     printArray(array, length);
     cout << "Enter number : ";
     cin >> number;
-    cout <<"Position of this number is "<< positionOfTheNumber(array, length, number) << endl;
+    positionOfTheNumber(array, length, number);
     lessThanPrevious(array, length);
+    theLargestSequance(array, length);
 	system("pause");
 	return 0;
 }
@@ -41,33 +42,54 @@ void printArray(int* array, int length)
     cout << endl;
 }
 
-int positionOfTheNumber(int* array, int length, int number)
+void positionOfTheNumber(int* array, int length, int number)
 {
     for (int i = 0; i < length; i++)
     {
         if (array[i]==number)
         {
-            return i;
+            cout<<"Position of this number is  " <<i<<endl;
+            break;
         }
     }
-    delete[]array;
 }
 void lessThanPrevious(int*array,int length)
 {
    
-    int countOfNums = 0;
+    bool trueElement = false;
     for (int i = 2; i < length; i++)
     {
         if (array[i] < (array[i - 2] - array[i - 1]))
         {
             cout << array[i] << " ";
-            countOfNums++;
+            trueElement = true;
         }
     }
     cout << endl;
-    if (countOfNums == 0)
-    {
-        cout << "There are no such numbers here " << endl;
+    if (trueElement == false) {
+        cout << " There are no such numbers here" << endl;
     }
-    delete[]array;
+
+}
+void theLargestSequance(int* array, int length)
+{
+    
+    int search = 1;
+    int maxSequence = 1;
+    for (int i = 0; i < length; i++) {
+
+        if (array[i] == array[i + 1]) {
+            search++;
+        }
+        else {
+            search = 1;
+        }
+
+        if (search > maxSequence) {
+            maxSequence = search;
+        }
+    }
+
+    cout << "Length of the largest sequance is " << maxSequence << endl;
+
 }
