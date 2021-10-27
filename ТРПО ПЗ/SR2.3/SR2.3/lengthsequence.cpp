@@ -25,5 +25,4 @@ void greatConsistensy() {
 	int compare = max(counter1, counter2);
 	cout << endl << "Элемент максимальной длины последовательности равен: " << compare << endl;
 
-	delete[] arr;
 }
