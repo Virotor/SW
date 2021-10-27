@@ -324,16 +324,18 @@ void maxLength(int num)
 	coordinates_y = createArray(num);
 	FillArray(coordinates_x, num);
 	FillArray(coordinates_y, num);
-	outArray(coordinates_y, num);
+	cout << "X ";
 	outArray(coordinates_x, num);
+	cout << "Y ";
+	outArray(coordinates_y, num);
 	double max = 0;
 	for (i = 0;i < num;i++)
 	{
-		for (j = 0;j < num;j++)
+		for (j = i + 1;j < num;j++)
 		{
-			if (pow(pow(coordinates_x[i], 2) + pow(coordinates_y[j], 2), 1. / 2) > max)
+			if (sqrt(pow(coordinates_x[i] - coordinates_x[j], 2) + pow(coordinates_y[i] - coordinates_y[j], 2)) > max)
 			{
-				max = pow(pow(coordinates_x[i], 2) + pow(coordinates_y[j], 2), 1. / 2);
+				max = sqrt(pow(coordinates_x[i] - coordinates_x[j], 2) + pow(coordinates_y[i] - coordinates_y[j], 2));
 			}
 		}
 	}
