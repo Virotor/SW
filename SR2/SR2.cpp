@@ -6,7 +6,7 @@ int* Array_create(int _size)
 	int* a = new int[_size];
 	srand(time(0));
 	for (int i = 0;i < _size;i++)
-		a[i] = rand() % 201 - 100;
+		a[i] = rand() % 21 - 10;
 	return(a);
 }
 
@@ -32,22 +32,41 @@ int Element_number(int* a, int _size, int el)
 	return(num);
 }
 
+int Max_raw(int* a, int s)
+{
+	int max = 1, k = 1;
+	for (int i = 1;i < s;i++)
+	{
+		if (a[i] == a[i - 1])
+		{
+			k++;
+		}
+		else
+		{
+			if (k > max)
+				max = k;
+			k = 1;
+		}
+	}
+	return(max);
+}
+
 void Element_position()
 {
-	int size, *array, element;
+	int size, * array, element;
 	cout << "Enter size of array" << endl;
 	cin >> size;
 	array = Array_create(size);
-	Array_print(array,size);
+	Array_print(array, size);
 	cout << "Enter the element" << endl;
 	cin >> element;
-	cout << Element_number(array, size, element)<<endl;
-	delete []array;
+	cout << Element_number(array, size, element) << endl;
+	delete[]array;
 }
 
 void Numbers_search()
 {
-	int size, *array, flag=0;
+	int size, * array, flag = 0;
 	cout << "Enter size of array" << endl;
 	cin >> size;
 	array = Array_create(size);
@@ -56,15 +75,31 @@ void Numbers_search()
 		for (int i = 2;i < size;i++)
 		{
 			if (array[i] < array[i - 2] - array[i - 1])
-			{ 
+			{
 				cout << array[i] << ' ';
 				flag = 1;
 			}
 		}
-	else cout << "No such numbers"<<endl;
-	if (flag==0)
+	else cout << "No such numbers" << endl;
+	if (flag == 0)
 		cout << "No such numbers" << endl;
-	delete []array;
+	delete[]array;
+}
+
+void Max_subsequence()
+{
+	int size;
+	cout << "Enter size of array" << endl;
+	cin >> size;
+	int* array = new int[size];
+	for (int i = 0;i < size;i++)
+	{
+		cout << "a[" << i << "] = ";
+		cin >> array[i];
+	}
+	Array_print(array, size);
+	cout << Max_raw(array, size) << endl;
+	delete[]array;
 }
 
 int main()
@@ -79,6 +114,9 @@ int main()
 		break;
 	case 2:
 		Numbers_search();
+		break;
+	case 3:
+		Max_subsequence();
 		break;
 	}
 }
