@@ -5,6 +5,7 @@ void printArray(int* array, int length);
 int** initMatrix(int row, int column);
 void printMatrix(int** matrix, int row, int column);
 void positionOfTheNumber(int* array, int length, int number);
+int positionOfSubstring(string text, string partOfText);
 void lessThanPrevious(int*array,int length);
 void theLargestSequance(int* array, int length);
 int** firstTranspose(int** matrix, int row, int column);
@@ -44,6 +45,12 @@ int main()
     int** points = initMatrix(2, numberOfPoints);
     printMatrix(points, 2, numberOfPoints);
     cout << "Maximum distance between two points is " << maxDistance(points, numberOfPoints) << endl;
+    string text, partOfTheText;  //дополнительно
+    cout << "Enter string : ";
+    cin >> text;
+    cout << "Enter partOfTheText : ";
+    cin >> partOfTheText;
+    cout << "Position of substring in this string is " << positionOfSubstring(text, partOfTheText) << endl;
     delete[]array;
     for (int i = 0; i < row; i++) {
         delete[] matrix[i];
@@ -81,6 +88,22 @@ void positionOfTheNumber(int* array, int length, int number)
             break;
         }
     }
+}
+int positionOfSubstring(string text, string partOfTheText)
+{
+    for (int i = 0; i < text.length(); i++)
+    {
+        int j = 0;
+        while (j < partOfTheText.length() && i + j < text.length() && partOfTheText[j] == text[i + j])
+        {
+            j++;
+        }
+        if (j == partOfTheText.length())
+        {
+            return i;
+        }
+    }
+    return -1;
 }
 void lessThanPrevious(int*array,int length)
 {
