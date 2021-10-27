@@ -7,6 +7,8 @@ void SetArray(int, int*);
 void printArray(int, int*);
 void deleteArray(int*);
 int createarrayandfindnumb();
+int withDrawDifference();
+void findNumbDiffence(int, int*);
 int main()
 {
 	setlocale(LC_ALL, "RUS");
@@ -18,6 +20,10 @@ int main()
 	case 1:
 		cout << "ÇÀÄÀÍÈÅ ¹1" << endl;
 		createarrayandfindnumb();
+		break;
+	case 2:
+		cout << "ÇÀÄÀÍÈÅ ¹2" << endl;
+		withDrawDifference();
 		break;
 	}
 	return 0;
@@ -39,7 +45,7 @@ void printArray(int n, int* a)
 {
 	for (int i = 0; i < n; i++)
 	{
-		cout << a[i] << setw(5);
+		cout << setw(5) << a[i];
 
 	}
 
@@ -71,4 +77,26 @@ int createarrayandfindnumb()
 	deleteArray(save);
 	system("pause");
 	return a, N;
+}
+int withDrawDifference()
+{
+	int a;
+	cout << "Ââåäèòå ðàçìåð ìàññèâà ";
+	cin >> a;
+	int* save = CreateArray(a);
+	SetArray(a, save);
+	printArray(a, save);
+	cout << endl << endl;
+	findNumbDiffence(a, save);
+	deleteArray(save);
+	system("pause");
+	return a;
+
+}
+void findNumbDiffence(int n, int* a)
+{
+	for (int i = 2; i < n; i++)
+	{
+		if (a[i - 2] - a[i - 1] > a[i])cout << a[i] << endl;
+	}
 }
