@@ -1,5 +1,6 @@
 #include <iostream>
 #include <conio.h>
+#include <ctime>
 using std::cin;
 using std::cout;
 using std::max;
@@ -11,10 +12,13 @@ int findIndexOfSubstr(string parent, string child);
 double* getArray(int& array_size);
 void elementsArrayFind();
 void elementsStringFind();
+void findNumbersSmallerThanDifferencesOfPreviousTwo();
 
 int main() {
+  srand(time(NULL));
   elementsArrayFind();
   elementsStringFind();
+  findNumbersSmallerThanDifferencesOfPreviousTwo();
   return 0;
 }
 
@@ -26,7 +30,7 @@ void elementsArrayFind() {
   cout << "Enter value to find = ";
   cin >> find_value;
   int index_of_element = findElementFirstIndex(values, size, find_value);
-  if(index_of_element == -1) {
+  if (index_of_element == -1) {
     cout << "Element not found\n";
   } else {
     cout << "Element index = " << index_of_element << '\n';
@@ -45,7 +49,7 @@ void elementsStringFind() {
   getline(cin, find_string);
   int substring_index;
   substring_index = findIndexOfSubstr(parent_string, find_string);
-  if(substring_index == -1) {
+  if (substring_index == -1) {
     cout << "Substring not found\n";
   } else {
     cout << "Substring starts at index = " << substring_index << '\n';
@@ -132,4 +136,20 @@ double* getArray(int& array_size) {
     }
   }
   return array;
+}
+
+void findNumbersSmallerThanDifferencesOfPreviousTwo() {
+  cout << "Task 2: Find numbers smaller than" <<
+       "the differences of the previous two\n\n";
+  int values_size;
+  auto values = getArray(values_size);
+  cout << "Answer numbers:\n";
+  for(int index = 2; index < values_size; index++) {
+    if(values[index] < values[index - 2] - values[index - 1]) {
+      cout << values[index] << " ";
+    }
+  }
+  cout << "\n";
+  cout << "Task 2 is completed\n\n";
+  delete[] values;
 }
