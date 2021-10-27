@@ -108,5 +108,3 @@ int findLittleString()
     return answer;
 
 }
-
-// 
