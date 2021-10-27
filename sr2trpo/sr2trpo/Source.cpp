@@ -7,6 +7,14 @@ using namespace std;
 
 
 
+void deleteMatrix(int* arr[], int row);
+
+int** transponSecDiag(int* arr[], int row, int col);
+
+int** transponMainDiag(int* arr[], int row, int col);
+
+int** printMatrix(int row, int col);
+
 void deleteArray(int arr[]);
 
 void searchSubStringOfString(string mass, string searchMass);
@@ -106,7 +114,25 @@ int main() {
 		searchLongLine(printArray(col), col);
 		break;
 	}
+	case 4:
+	{
 
+		cout << "Введите размер матрицы" << endl;
+		cin >> row;
+
+		if (!cin)
+		{
+			return 1;
+		}
+
+		col = row;//забыл что только с квадратной работал,поэтому ввел 2 переменные.А после стало лень переписывать( ибо уже ночь
+
+
+
+		transponSecDiag(transponMainDiag(printMatrix(row, col), row, col), row, col);
+
+		break;
+	}
 
 	default:
 		break;
@@ -230,7 +256,6 @@ void* searchNums(int arr[], int col) {
 	return 0;
 }
 
-
 void searchLongLine(int arr[], int col) {
 
 	int Long = 1;
@@ -255,4 +280,118 @@ void searchLongLine(int arr[], int col) {
 
 	deleteArray(arr);
 
+}
+
+
+void deleteMatrix(int* arr[], int row) {
+
+	for (int i = 0; i < row; i++)
+	{
+		delete[] arr[i];
+	}
+
+	delete[] arr;
+}
+
+int** transponSecDiag(int* arr[], int row, int col) {
+
+	int a;
+	cout << endl;
+
+	cout << "Транспонированная относительно побочной диагонали" << endl;
+
+	for (int i = 0; i < row; i++)
+	{
+
+		for (int j = 0; j < col - i; j++)
+		{
+
+			swap(arr[i][j], arr[row - j - 1][col - i - 1]);
+
+		}
+	}
+
+
+	for (int i = 0; i < row; i++)
+	{
+
+		for (int j = 0; j < col; j++)
+		{
+
+			cout << arr[i][j] << " ";
+		}
+		cout << endl;
+	}
+
+	cout << endl;
+
+	return 0;
+
+	deleteMatrix(arr, row);
+
+
+
+}
+
+int** transponMainDiag(int* arr[], int row, int col) {
+
+	int a;
+
+	cout << "Транспонированная относительно глав диагонали" << endl;
+
+	for (int i = 0; i < row; i++)
+	{
+
+		for (int j = i; j < col; j++)
+		{
+			a = arr[j][i];
+			arr[j][i] = arr[i][j];
+			arr[i][j] = a;
+		}
+	}
+	cout << endl;
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < col; j++)
+		{
+
+			cout << arr[i][j] << " ";
+		}
+		cout << endl;
+	}
+
+
+	return arr;
+}
+
+int** printMatrix(int row, int col) {
+	int a;
+
+
+	int** arr = new int* [row];
+
+
+	for (int i = 0; i < row; i++)
+	{
+		arr[i] = new int[col];
+	}
+
+
+
+
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < col; j++)
+		{
+
+			arr[i][j] = (rand() % 20);
+			cout << arr[i][j] << ' ';
+		}
+		cout << endl;
+	}
+	cout << endl;
+
+
+
+	return arr;
 }
