@@ -1,0 +1,6 @@
+﻿  ConsoleApplication1.cpp
+C:\Users\Asus\Desktop\ср№2\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(19,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Asus\Desktop\ср№2\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(24,17): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Asus\Desktop\ср№2\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(40,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\Asus\Desktop\ср№2\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(106,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  ConsoleApplication1.vcxproj -> C:\Users\Asus\Desktop\ср№2\ConsoleApplication1\Debug\ConsoleApplication1.exe
