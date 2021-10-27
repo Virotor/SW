@@ -10,6 +10,7 @@ void Fill_Matrix(int**, int);
 void Show_Matrix(int**, int);
 void Transp_glav(int**, int);
 void Transp_poboch(int**, int);
+void longesDistanes(int);
 int main()
 {
 	setlocale(LC_ALL, "RUS");
@@ -45,6 +46,10 @@ int main()
 	Transp_glav(arr3, rows);
 	cout << endl;
 	Transp_poboch(arr3, rows);
+	int dots;
+	cout << "enter amount of points";
+	cin >> dots;
+	longesDistanes(dots);
 
 	delete[]arr;
 	delete[]arr2;
@@ -169,4 +174,36 @@ void Transp_poboch(int** arr3, int rows)
 		}
 		cout << endl;
 	}
+}
+void longesDistanes(int dots)
+{
+	double dist;
+	double maxDIST = 0;
+	int* arrayX = new int[dots];
+	int* arrayY = new int[dots];
+	for (int i = 0; i < dots; i++)
+	{
+		arrayX[i] = rand() % 21 - 10;
+		arrayY[i] = rand() % 21 - 10;
+	}
+	for (int i = 0; i < dots; i++)
+	{
+		cout << "(" << arrayX[i] << "," << arrayY[i] << ")" << endl;
+
+	}
+
+	for (int i = 0; i < dots; i++)
+	{
+		for (int k = 1; k < dots - 1; k++)
+		{
+			dist = sqrt((arrayX[i] - arrayX[k]) * (arrayX[i] - arrayX[k]) + (arrayY[i] - arrayY[k]) * (arrayY[i] - arrayY[k]));
+			if (dist > maxDIST)
+			{
+				maxDIST = dist;
+			}
+		}
+	}
+	cout << "Max dist = " << maxDIST << endl;
+	delete[]arrayY;
+	delete[]arrayX;
 }
