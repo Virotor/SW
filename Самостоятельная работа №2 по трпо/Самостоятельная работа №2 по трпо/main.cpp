@@ -1,4 +1,7 @@
 #include<iostream>
+#include<math.h>
+#include<string>
+#include<conio.h>
 using namespace std;
 void Fill_Array(int*, int);
 void Show_Array(int*, int);
@@ -11,6 +14,7 @@ void Show_Matrix(int**, int);
 void Transp_glav(int**, int);
 void Transp_poboch(int**, int);
 void longesDistanes(int);
+void substringInString();
 int main()
 {
 	setlocale(LC_ALL, "RUS");
@@ -50,6 +54,7 @@ int main()
 	cout << "enter amount of points";
 	cin >> dots;
 	longesDistanes(dots);
+	substringInString();
 
 	delete[]arr;
 	delete[]arr2;
@@ -206,4 +211,44 @@ void longesDistanes(int dots)
 	cout << "Max dist = " << maxDIST << endl;
 	delete[]arrayY;
 	delete[]arrayX;
+}
+void substringInString()
+{
+	cout << "Введите символы :" << endl;
+	string mainstring;
+	getline(cin, mainstring);
+	int lengthofMainstring;
+	lengthofMainstring = mainstring.length();
+	string substring;
+	cout << "Введите символы ,которые надо найти :" << endl;
+	getline(cin, substring);
+	int lengthofsubstring;
+	lengthofsubstring = substring.length();
+	int i1, j1, j2;
+	bool flag1 = false;
+	for (i1 = 0; i1 < lengthofMainstring; i1++)
+	{
+		if (mainstring[i1] == substring[0])
+		{
+			for (j1 = i1, j2 = 0; j2 < lengthofsubstring; j1++, j2++)
+			{
+				if (mainstring[j1] != substring[j2])
+				{
+					break;
+				}
+				if (j2 == lengthofsubstring - 1)
+				{
+					cout << "Номер = " << i1 << endl;
+					flag1 = true;
+				}
+			}
+		}
+		if (flag1 == true)
+			break;
+	}
+	if (flag1 == false)
+	{
+		cout << "Такой подстроки нет" << endl;
+	}
+
 }
