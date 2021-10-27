@@ -17,6 +17,14 @@ void elementsLessThanDifferenceOfTwoPrevious(int*, int);
 
 void maxLengthOfEqual(int*, int);
 
+void deleteMatrix(int**, int);
+
+int** showMatrix(int, int);
+
+void transportMatrixMainDiag(int**, int, int);
+
+void transportMatrixSideDiag(int**, int, int);
+
 int main() {
     int task;
     cout << "Номер задания: ";
@@ -59,6 +67,15 @@ int main() {
             showArray(array, size);
             maxLengthOfEqual(array, size);
             delete[] array;
+            break;
+        }
+        case 4:
+        {
+            cout << "Введите размер матрицы: ";
+            int row, col;
+            cin >> row >> col;
+            transportMatrixMainDiag(showMatrix(row, col), row, col);
+            transportMatrixSideDiag(showMatrix(row, col), row, col);
             break;
         }
     }
@@ -185,4 +202,81 @@ void maxLengthOfEqual(int *array, int size)
             }
         }
         cout << "Максимальная длина последовательности одинаковых чисел: " << count1 << endl;
+}
+
+void deleteMatrix(int** matrix,int row)
+{
+    for (int i = 0; i < row; i++)
+    {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
+}
+
+int **showMatrix(int row, int col)
+{
+    int** array = new int* [row];
+    for (int i = 0; i < row; i++)
+    {
+        array[i] = new int[col];
+    }
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < col; j++)
+        {
+            array[i][j] = -10 + rand() % 21;
+            cout << array[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    return array;
+}
+
+void transportMatrixMainDiag(int** matrix, int row, int col)
+{
+    int t;
+    for(int i = 0; i < row; i++)
+    {
+        for(int j = i; j < col; j++)
+        {
+            t = matrix[i][j];
+            matrix[i][j] = matrix[j][i];
+            matrix[j][i] = t;
+        }
+    }
+    for(int i = 0; i < row; i++)
+    {
+        for(int j = 0; j < col; j++)
+        {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    deleteMatrix(matrix, row);
+}
+
+void transportMatrixSideDiag(int** matrix, int row, int col)
+{
+    int t;
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < row - 1; j++)
+        {
+            t = matrix[i][j];
+            matrix[i][j] = matrix[row - j - 1][row - i - 1];
+            matrix[row - j - 1][row - i - 1] = t;
+        }
+    }
+    for(int i = 0; i < row; i++)
+    {
+        for(int j = 0; j < col; j++)
+        {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    deleteMatrix(matrix, row);
 }
