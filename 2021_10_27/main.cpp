@@ -10,12 +10,14 @@
 #include <conio.h>
 #include <iomanip>
 #include <ctime>
+#include <cmath>
 using std::cin;
 using std::cout;
 using std::max;
 using std::string;
 using std::getline;
 using std::setw;
+using std::swap;
 
 class matrix {
   double** values;
@@ -113,16 +115,6 @@ class matrix {
     if (row < 1 || col < 1) {
       return;
     }
-    /*
-     00 01 02 03
-     10 11 12 13
-     20 21 22 23
-
-     23 13 03
-     22 12 02
-     21 11 01
-     20 10 00
-     */
     matrix result;
     result.init(col, row);
     for (int row_index = 0; row_index < row; row_index++) {
@@ -158,7 +150,15 @@ class matrix {
     delete[] values;
   };
 };
+struct point {
+  double x;
+  double y;
+};
 
+template<typename T>
+T square(T value) {
+  return value * value;
+}
 int findElementFirstIndex(const double* array, int& size, double value);
 int findIndexOfSubstr(string parent, string child);
 double* getArray(int& array_size);
@@ -170,6 +170,8 @@ int largestSubsequence(const double* values,
                        double& largest_index);
 void findLargestSubsequence();
 void matrixTranspose();
+void findLargestDistance();
+point* getPointArray(int& size);
 
 int main() {
   srand(time(NULL));
@@ -177,8 +179,70 @@ int main() {
   // elementsStringFind();
   // findNumbersSmallerThanDifferencesOfPreviousTwo();
   // findLargestSubsequence();
-  matrixTranspose();
+  // matrixTranspose();
+  // findLargestDistance();
+  findLargestDistance();
   return 0;
+}
+
+point* getPointArray(int& size) {
+  cout << "Points count = ";
+  cin >> size;
+  while (size < 1) {
+    cout << "Error. Input number > 0\n";
+    cout << "Points count = ";
+    cin >> size;
+  }
+  double generate_interval_start;
+  double generate_interval_finish;
+  cout << "Enter generate intverval:\n";
+  cout << "Start value = ";
+  cin >> generate_interval_start;
+  cout << "End value = ";
+  cin >> generate_interval_finish;
+  if (generate_interval_start > generate_interval_finish) {
+    swap(generate_interval_start, generate_interval_finish);
+  }
+  point* point_values = new point[size];
+  int mod = generate_interval_finish - generate_interval_start;
+  if (mod < 2) {
+    mod += 2;
+  }
+  for (int points_index = 0; points_index < size; points_index++) {
+    point_values[points_index].x = rand() % mod + generate_interval_start;
+    point_values[points_index].y = rand() % mod + generate_interval_start;
+  }
+  return point_values;
+}
+
+void findLargestDistance() {
+  cout << "Task 5: find maximum distance from point to point\n\n";
+  int points_count;
+  point* point_values = getPointArray(points_count);
+  cout << "Points: ";
+  const int SPACE = 5;
+  for (int index = 0; index < points_count; index++) {
+    cout << setw(SPACE) << point_values[index].x << setw(SPACE)
+         << point_values[index].y << '\n';
+  }
+  double square_max_distance = 0;
+  double square_distance;
+  for (int first_points_index = 0; first_points_index < points_count;
+       ++first_points_index) {
+    for (int second_points_index = first_points_index + 1;
+         second_points_index < points_count;
+         ++second_points_index) {
+      square_distance = square((point_values[first_points_index].x
+          - point_values[second_points_index].x)) + square(
+          point_values[first_points_index].y
+              - point_values[second_points_index].y);
+      if(square_distance > square_max_distance) {
+        square_max_distance = square_distance;
+      }
+    }
+  }
+  cout << "Max distance = " << sqrt(square_max_distance) << "\n";
+  cout << "Task 5 is completed\n\n";
 }
 
 void matrixTranspose() {
