@@ -201,4 +201,50 @@ int LineOfEqualNumbers() //третье задание
 	cout << endl << counter1;
 	DeleteArray(arr3);
 	return size;
+}int TransFromMainLineTask()
+{
+	int matrixSize1, matrixSize2;
+	cout << "Введите размер матрицы:";
+	cin >> matrixSize1 >> matrixSize2;
+	int** Matrix = CreateMatrix(matrixSize1, matrixSize2);
+	FillInMatrix(matrixSize1, matrixSize2, Matrix);
+	CoutMatrix(matrixSize1, matrixSize2, Matrix);
+	cout << "По главной диагонали:" << endl;
+	TransFromMainLine(matrixSize1, matrixSize2, Matrix);
+	CoutMatrix(matrixSize1, matrixSize2, Matrix);
+	cout << "По побочной диагонали:" << endl;
+	TransFromOtherLine(matrixSize1, matrixSize2, Matrix);
+	CoutMatrix(matrixSize1, matrixSize2, Matrix);
+	DeleteMatrix(matrixSize1, Matrix);
+	return matrixSize1, matrixSize2;
+}
+
+int TransFromMainLine(int matrixSize1, int matrixSize2, int** Matrix)
+{
+	int swap;
+	for (int i = 0; i < matrixSize1 - 1; i++)
+	{
+		for (int j = i + 1; j < matrixSize2; j++)
+		{
+			swap = Matrix[i][j];
+			Matrix[i][j] = Matrix[j][i];
+			Matrix[j][i] = swap;
+		}
+	}
+	return 	swap;
+}
+
+int TransFromOtherLine(int matrixSize1, int matrixSize2, int** Matrix)
+{
+	int element;
+	for (int i = 0; i < matrixSize1; i++)
+	{
+		for (int j = 0; j < matrixSize1 - i - 1; ++j)
+		{
+			element = Matrix[i][j];
+			Matrix[i][j] = Matrix[matrixSize1 - j - 1][matrixSize1 - i - 1];
+			Matrix[matrixSize1 - j - 1][matrixSize1 - i - 1] = element;
+		}
+	}
+	return element;
 }
