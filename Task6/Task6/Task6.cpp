@@ -7,12 +7,14 @@ using namespace std;
 void PositionOfFirstEqualNumber();
 //MagicNumbers - числа, которые меньше разности двух предыдущих в массиве. Как их ещё лаконично назвать?
 void TaskWithMagicNumbers();
+void SubsequenceTask();
 
 int* CreateArray(int);
 void SetArray(int, int*);
 void PrintArray(int, int*);
 void SearchEqualElement(int, int, int*);
 string SearchMagicNumbers(int, int*);
+int CountGreatestSubsequence(int, int*);
 
 int main()
 {
@@ -32,7 +34,7 @@ int main()
 		TaskWithMagicNumbers();
 		break;
 	case 3:
-
+		SubsequenceTask();
 		break;
 	case 4:
 
@@ -79,6 +81,23 @@ void TaskWithMagicNumbers()
 	PrintArray(size, array);
 
 	cout << SearchMagicNumbers(size, array);
+
+	delete[]array;
+}
+
+void SubsequenceTask()
+{
+	int size;
+
+	cout << "Введите размер массива ";
+	cin >> size;
+	size = abs(size);
+
+	int* array = CreateArray(size);
+	SetArray(size, array);
+	PrintArray(size, array);
+
+	cout << CountGreatestSubsequence(size, array);
 
 	delete[]array;
 }
@@ -150,4 +169,34 @@ string SearchMagicNumbers(int size, int* array)
 	}
 
 	return hasNumbers ? magicNumbers : "В массиве нет таких чисел";
+}
+
+int CountGreatestSubsequence(int size, int* array)
+{
+	int i;
+	int totalSubsequence = 1; int greatestSubsequence = 1;
+
+	if (size == 1)
+	{
+		return greatestSubsequence;
+	}
+	else
+	{
+		for (i = 0; i < size; i++)
+		{
+			while (array[i] == array[i + 1])
+			{
+				totalSubsequence += 1;
+				i++;
+			}
+			if (totalSubsequence > greatestSubsequence)
+			{
+				greatestSubsequence = totalSubsequence;
+			}
+
+			i++;
+		}
+	}
+
+	return greatestSubsequence;
 }
