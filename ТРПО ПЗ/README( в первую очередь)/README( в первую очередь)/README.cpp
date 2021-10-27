@@ -2,8 +2,7 @@
 using namespace std;
 
 int main() {
-	setlocale(LC_ALL, "rus");
-	cout << "я опять по тупому сделал коммит :/";
+	cout << "I opayt' did commit like stupid-boy :/";
 
 	return 0;
 }
