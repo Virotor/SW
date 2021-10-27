@@ -21,6 +21,8 @@ void deleteArray(int*);
 
 void searchNumber(int*, int);
 
+void repeatElement(int* array, int size);
+
 int main()
 {
 	srand(time(NULL));
@@ -55,9 +57,17 @@ int main()
 	case '2':
 	{
 		int size;
-		cout << "Enter the size of the array";
+		cout << "Enter the size of the array ";
 		cin >> size;
 		searchNumber(createArray(size), size);
+		break;
+	}
+	case '3':
+	{
+		int size;
+		cout << "Enter the size of the array ";
+		cin >> size;
+		repeatElement(createArray(size), size);
 		break;
 	}
 	default:
@@ -160,7 +170,7 @@ void deleteArray(int* array)
 void searchNumber(int* array, int size)
 {
 	outArray(array, size);
-	cout << "The numbers" << endl;
+	cout << "The numbers " << endl;
 	for (i = 2; i < size;i++)
 	{
 		if (array[i] < array[i - 2] - array[i - 1])
@@ -173,5 +183,29 @@ void searchNumber(int* array, int size)
 		}
 	}
 	cout << endl;
+	deleteArray(array);
+}
+
+void repeatElement(int* array, int size)
+{
+	int num = 1, max = 0;
+	outArray(array, size);
+	for (i = 0;i < size;i++)
+	{
+		if (array[i] == array[i + 1])
+		{
+			num = 1;
+			for (j = i;array[j] == array[j + 1];j++)
+			{
+				num++;
+			}
+			if (num > max)
+			{
+				max = num;
+			}
+			i = j;
+		}
+	}
+	cout << "Maximum number of repetitions " << max << endl;
 	deleteArray(array);
 }
