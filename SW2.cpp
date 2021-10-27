@@ -166,3 +166,66 @@ int lenghtOfSeq() {
     }
 
 }
+
+
+/// TASK 4
+
+int** createMatrix(int rows, int columns){
+    int** array = new int* [rows];
+    for (int i = 0; i < row; i++)
+    {
+        array[i] = new int[columns];
+    }
+
+    return array;
+}
+
+
+void defineMatrixElem(int row, int column, int** array){
+
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < column; j++)
+            array[i][j] = rand() % 21 - 10;
+    }
+}
+
+void transposeMainDiagonal(int row, int column, int** array){
+    // сверху слева
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < column; j++)
+        {
+            std::cout << setw(4) << array[j][i];
+        }
+        std::cout << "\n";
+    }
+}
+
+void transposeSideDiagonal(int row, int column, int** array){
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < column; j++)
+        {
+            std::cout << setw(4) << array[row - 1 - j][column - 1 - i]; // may be here
+        }
+        std::cout << "\n";
+    }
+}
+
+void transposeMatrix(){
+    int size;
+
+    std::cout << "Введите размер для квадратной матрицы (n)" << endl;
+    std::cin >> size;
+
+    int** array = createMatrix(size, size);
+    defineMatrixElem(size, size, array);
+
+    std::cout << "Main" << endl;
+    transposeMainDiagonal(size, size, array);
+
+    std::cout << "Side" << endl;
+    transposeSideDiagonal(size, size, array);
+
+}
