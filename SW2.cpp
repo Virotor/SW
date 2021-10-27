@@ -1,23 +1,32 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 int* initArray(int length);
 void printArray(int* array, int length);
-int foundNumberIndex(int* array, int length, int number);
+int numberIndex(int* array, int length, int number);
 void printLessThenPreviousTwo(int* array, int length);
 int largestSequence(int* array, int length);
 int** second_transpose(int** matrix, int row, int column);
 int** transpose(int** matrix, int row, int column);
 void printMatrix(int** matrix, int row, int column);
 int** initMatrix(int row, int column);
-int foundMaxRange(int** matrix, int number_of_points);
+int maxRange(int** matrix, int number_of_points);
+int indexOfSubstring(string text, string substring);
+
+const string ERROR = "Error";
 
 int main()
 {
     int length, number;
     cout << "Enter length of array\n";
     cin >> length;
+    if (length < 1)
+    {
+        cout << ERROR;
+        return 0;
+    }
     srand(time(nullptr));
 
     int* array = initArray(length);
@@ -28,7 +37,15 @@ int main()
     cout << "\n\t --Task 1--\n";
     cout << "Enter number\n";
     cin >> number;
-    cout << "Position of the first element of the array equal to the entered number is " << foundNumberIndex(array, length, number) << endl;
+    cout << "Position of the first element of the array equal to the entered number is " << numberIndex(array, length, number) << endl;
+
+    cout << "\n\t --Additional task--\n";
+    string text, substring;
+    cout << "Enter string\n";
+    cin >> text;
+    cout << "Enter substring\n";
+    cin >> substring;
+    cout << "Index of substring in string is " << indexOfSubstring(text, substring) << endl;
 
     cout << "\n\t --Task 2--\n";
     cout << "Result array is ";
@@ -37,13 +54,23 @@ int main()
 
     cout << "\n\t --Task 3--\n";
     cout << "Length of largest sequence " << largestSequence(array, length) << endl;
-
+        
     cout << "\n\t --Task 4--\n";
     int row, column;
     cout << "Enter the number of rows\n";
     cin >> row;
+    if (row < 1)
+    {
+        cout << ERROR;
+        return 0;
+    }
     cout << "Enter the number of columns\n";
     cin >> column;
+    if (column < 1)
+    {
+        cout << ERROR;
+        return 0;
+    }
     int** matrix = initMatrix(row, column);
     cout << "\n\t --Matrix--\n";
     printMatrix(matrix, row, column);
@@ -54,13 +81,18 @@ int main()
     cout << "\t --Transposed matrix two--\n";
     printMatrix(second_result_matrix, column, row);
 
-    cout << "\n\t --Task 5--\n";
+    cout << "\t --Task 5--\n";
     int number_of_points;
     cout << "Enter number of point\n";
     cin >> number_of_points;
+    if (number_of_points < 1)
+    {
+        cout << ERROR;
+        return 0;
+    }
     int** points = initMatrix(2, number_of_points);
     printMatrix(points, 2, number_of_points);
-    cout << "Maximum distance between two points is " << foundMaxRange(points, number_of_points) << endl;
+    cout << "Maximum distance between two points is " << maxRange(points, number_of_points) << endl;
 }
 
 int* initArray(int length)
@@ -83,7 +115,7 @@ void printArray(int* array, int length)
     cout << endl;
 }
 
-int foundNumberIndex(int* array, int length, int number)
+int numberIndex(int* array, int length, int number)
 {
     for (int i = 0; i < length; i++)
     {
@@ -184,7 +216,7 @@ int** initMatrix(int row, int column)
     return matrix;
 }
 
-int foundMaxRange(int** matrix, int number_of_points)
+int maxRange(int** matrix, int number_of_points)
 {
     int max_range = 0, range;
     for (int i = 0; i < number_of_points; i++)
@@ -200,4 +232,19 @@ int foundMaxRange(int** matrix, int number_of_points)
     }
 
     return max_range;
+}
+
+int indexOfSubstring(string text, string substring)
+{
+    for (int i = 0; i < text.length(); i++) {
+        int j = 0;
+        while (j < substring.length() && i + j < text.length() && substring[j] == text[i + j] )
+        {
+            j++;
+        }
+        if (j == substring.length()) {
+            return i;
+        }
+    }
+    return -1;
 }
