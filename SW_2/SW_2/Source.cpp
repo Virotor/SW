@@ -69,7 +69,6 @@ void longestSequenceLength(int* sequenceArray, int size, int max, int min) {
 		}
 	}
 	cout << endl << " The length of the longest sequence of numbers: " << proverkaAmount << endl;
-	cout << endl;
 	delete[] sequenceArray;
 }
 
@@ -91,6 +90,7 @@ void inputMatrix(int** transMatrix, int rows, int cols, int minMatrix, int maxMa
 }
 
 void printMatrix(int** transMatrix, int rows, int cols) {
+	cout << " Your matrix " <<endl;
 	for (int i = 0; i < rows; i++) {
 		for (int j = 0; j < cols; j++) {
 			cout << setw(3) << transMatrix[i][j] << " ";
@@ -100,7 +100,7 @@ void printMatrix(int** transMatrix, int rows, int cols) {
 }
 
 void transposeMatrix(int** transMatrix, int rows, int cols) {
-	cout << " Your transposed matrix along the main diagonal" << endl;
+	cout << endl << " Your transposed matrix along the main diagonal" << endl;
 	for (int i = 0; i < cols; i++) {
 		for (int j = 0; j < rows; j++) {
 			cout << setw(3) << transMatrix[j][i] << " ";
@@ -132,7 +132,7 @@ int main() {
 	cout << " Input size of 'position' massive: "; cin >> size;
 	cout << " Input minimum of your random range: "; cin >> min;
 	cout << " Input maximum of your random range: "; cin >> max;
-	if (size > 0) {
+	if (size > 0 && min <= max) {
 		int* positionArray = new int[size];
 		inputArray(positionArray, size, max, min);
 		printArray(positionArray, size);
@@ -149,7 +149,7 @@ int main() {
 	cout << " Input size of 'previos' massive: "; cin >> size;
 	cout << " Input minimum of your random range: "; cin >> min;
 	cout << " Input maximum of your random range: "; cin >> max;
-	if (size > 0) {
+	if (size > 0 && min<=max) {
 		int* previosArray = new int[size];
 		inputArray(previosArray, size, max, min);
 		printArray(previosArray, size);
@@ -166,7 +166,7 @@ int main() {
 	cout << " Input size of 'sequence' massive: "; cin >> size;
 	cout << " Input minimum of your random range: "; cin >> min;
 	cout << " Input maximum of your random range: "; cin >> max;
-	if (size > 0) {
+	if (size > 0 && min <= max) {
 		int* sequenceArray = new int[size];
 		inputArray(sequenceArray, size, max, min);
 		printArray(sequenceArray, size);
