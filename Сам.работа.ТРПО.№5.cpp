@@ -8,15 +8,24 @@
 
 using namespace std;
 
+int* InitArray(int length) {
+	int* array = new int[length];
+	for (int i = 0; i < length; i++) {
+
+		array[i] = rand() % 20 - 10;
+
+	}
+
+	return array;
+}
+
 void ElementSearch(int size_of_array) {
 
 	srand(time(0));
 
-	int* array = new int[size_of_array];
+	int* array = InitArray(size_of_array);
 
 	for (int i = 0; i < size_of_array; i++) {
-
-		array[i] = rand() % 20 - 10;
 
 		cout << "array[" << i << "]: ";
 		cout << array[i] << endl;
@@ -46,7 +55,7 @@ void ElementSearch(int size_of_array) {
 
 void ElementByDeference(int size_of_array) {
 
-	int* array = new int[size_of_array];
+	int* array = InitArray(size_of_array);
 
 	for (int i = 0; i < size_of_array; i++) {
 
@@ -69,12 +78,10 @@ void ElementByDeference(int size_of_array) {
 
 void SequenceLength(int size_of_array) {
 
-	int* array = new int[size_of_array];
+	int* array = InitArray(size_of_array);
 	int sequence_search = 1;
 	int max_sequence = 1;
 	for (int i = 0; i < size_of_array; i++) {
-
-		array[i] = rand() % 20 - 10;
 
 		cout << "array[" << i << "]: ";
 		cout << array[i] << endl;
