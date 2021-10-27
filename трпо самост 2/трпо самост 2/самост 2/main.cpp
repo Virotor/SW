@@ -13,6 +13,8 @@ void positionOfElement(int*, int);
 
 void subsrtringInString();
 
+void elementsLessThanDifferenceOfTwoPrevious(int*, int);
+
 int main() {
     int task;
     cout << "Номер задания: ";
@@ -31,6 +33,18 @@ int main() {
             delete[] array;
             cin.ignore();
             subsrtringInString();
+            break;
+        }
+        case 2:
+        {
+            int size;
+            cout << "Размер массива: ";
+            cin >> size;
+            int *array = createArr(size);
+            fillArray(array, size);
+            showArray(array, size);
+            elementsLessThanDifferenceOfTwoPrevious(array, size);
+            delete[] array;
             break;
         }
     }
@@ -118,4 +132,21 @@ void subsrtringInString()
     }
     if (flag1 == false)
         cout << "Такой подстроки нет" << endl;
+}
+
+void elementsLessThanDifferenceOfTwoPrevious(int *array,int size)
+{
+    int i = 0, j = 1, k = 2;
+    cout << "Элементы, которые меньше разности двух предыдущих: ";
+    while (k < size)
+    {
+        if(array[k] < array[j] - array[i])
+        {
+            cout << array[k] << " ";
+        }
+        i++;
+        j++;
+        k++;
+    }
+    cout << endl;
 }
