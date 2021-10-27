@@ -23,7 +23,4 @@ void diffOfPrevNum() {
 			examination++;
 		}
 	}
-
-	delete[] arr;
-
 }
