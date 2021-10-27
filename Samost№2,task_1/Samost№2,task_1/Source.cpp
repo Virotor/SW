@@ -23,6 +23,16 @@ void searchNumber(int*, int);
 
 void repeatElement(int* array, int size);
 
+int** createMatrix(int rows, int cols);
+
+void fillMatrix(int** matrix, int rows, int cols);
+
+void deleteMatrix(int** matrix, int rows, int cols);
+
+void outMatrix(int** matrix, int rows, int cols);
+
+void transposeMatrix(int** matrix, int rows, int cols);
+
 int main()
 {
 	srand(time(NULL));
@@ -68,6 +78,14 @@ int main()
 		cout << "Enter the size of the array ";
 		cin >> size;
 		repeatElement(createArray(size), size);
+		break;
+	}
+	case '4':
+	{
+		cout << "Enter the dimensions of the matrix" << endl;
+		int rows, cols;
+		cin >> rows >> cols;
+		transposeMatrix(createMatrix(rows, cols), rows, cols);
 		break;
 	}
 	default:
@@ -208,4 +226,79 @@ void repeatElement(int* array, int size)
 	}
 	cout << "Maximum number of repetitions " << max << endl;
 	deleteArray(array);
+}
+
+void transposeMatrix(int** matrix, int rows, int cols)
+{
+	int num;
+	fillMatrix(matrix, rows, cols);
+	outMatrix(matrix, rows, cols);
+	int** trans_matrix = createMatrix(cols, rows);
+	for (i = 0;i < cols;i++)
+	{
+		for (j = 0;j < rows;j++)
+		{
+			trans_matrix[i][j] = matrix[j][i];
+		}
+	}
+	outMatrix(trans_matrix, cols, rows);
+	int** trans_matrix_2 = createMatrix(cols, rows);
+	for (i = 0;i < cols;i++)
+	{
+		for (j = 0;j < rows;j++)
+		{
+			trans_matrix_2[i][j] = matrix[cols - j - 1][rows - i - 1];
+		}
+	}
+	outMatrix(trans_matrix_2, cols, rows);
+	deleteMatrix(matrix, rows, cols);
+	deleteMatrix(trans_matrix_2, cols, rows);
+	deleteMatrix(trans_matrix, cols, rows);
+}
+
+int** createMatrix(int rows, int cols)
+{
+	int** matrix;
+	matrix = new int* [rows];
+	for (i = 0;i < rows;i++)
+	{
+		matrix[i] = new int[cols];
+	}
+	return matrix;
+}
+
+
+void fillMatrix(int** matrix, int rows, int cols)
+{
+	srand(time(NULL));
+	for (i = 0;i < rows;i++)
+	{
+		for (j = 0;j < cols;j++)
+		{
+			matrix[i][j] = rand() % (max_element - min_element + 1) + min_element;
+		}
+	}
+}
+
+void outMatrix(int** matrix, int rows, int cols)
+{
+	cout << "Matrix " << endl;
+	for (i = 0;i < rows;i++)
+	{
+		for (j = 0;j < cols;j++)
+		{
+			cout << matrix[i][j] << "\t";
+		}
+		cout << endl;
+	}
+
+}
+
+void deleteMatrix(int** matrix, int rows, int cols)
+{
+	for (i = 0;i < rows;i++)
+	{
+		delete[]matrix[i];
+	}
+	delete[]matrix;
 }
