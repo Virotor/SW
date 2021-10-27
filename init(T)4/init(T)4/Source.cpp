@@ -21,7 +21,7 @@ int main()
 	cout << "Высота: ";
 	cin >> visota_hole;
 	double paral[3] = { dlinna,shirina,visota };
-	double hole[3]{ dlinna_hole, shirina_hole, visota_hole };
+	double hole[3]={ dlinna_hole, shirina_hole, visota_hole };
 	sort(paral, paral + 3);
 	sort(hole, hole + 3);
 	if (paral[0] <= hole[0] and paral[1] <= hole[1] and paral[2] <= hole[2])
