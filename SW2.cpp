@@ -6,7 +6,7 @@ int* initArray(int length);
 void printArray(int* array, int length);
 int foundNumberIndex(int* array, int length, int number);
 void printLessThenPreviousTwo(int* array, int length);
-
+int largestSequence(int* array, int length);
 
 int main()
 {
@@ -28,7 +28,10 @@ int main()
     cout << "\t --Task 2--\n";
     cout << "Result array is ";
     printLessThenPreviousTwo(array, length);
+    cout << endl;
 
+    cout << "\t --Task 3--\n";
+    cout << "Length of largest sequence " << largestSequence(array, length) << endl;
 }
 
 int* initArray(int length)
@@ -55,11 +58,12 @@ int foundNumberIndex(int* array, int length, int number)
 {
     for (int i = 0; i < length; i++)
     {
-        if (number == array[i])
+        if (number == array[i] && i != length)
         {
             return i;
         }
     }
+    return -1;
 }
 
 void printLessThenPreviousTwo(int* array, int length)
@@ -73,4 +77,25 @@ void printLessThenPreviousTwo(int* array, int length)
             cout << array[i] << " ";
         }
     }
+}
+
+int largestSequence(int* array, int length)
+{
+    int count = 1, max_count = 1;
+    for (int i = 0; i < length - 1; i++)
+    {
+        if (array[i] == array[i + 1])
+        {
+            count++;
+            if (count > max_count)
+            {
+                max_count = count;
+            }
+        }
+        else
+        {
+            count = 1;
+        }
+    }
+    return max_count;
 }
