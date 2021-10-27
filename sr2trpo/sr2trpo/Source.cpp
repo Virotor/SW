@@ -72,6 +72,22 @@ int main() {
 
 		break;
 	}
+	case 2:
+	{
+
+
+
+		cout << "Введите размер массива " << endl;
+		cin >> col;
+
+		if (!cin)
+		{
+			return 1;
+		}
+		searchNums(printArray(col), col);
+
+		break;
+	}
 
 
 	default:
@@ -173,4 +189,25 @@ int* printArray(int col) {
 
 
 	return arr;
+}
+
+void* searchNums(int arr[], int col) {
+
+	cout << "Числа " << endl;
+
+	for (int i = 2; i < col; i++)
+	{
+
+		if (arr[i] < arr[i - 2] - arr[i - 1])
+		{
+
+			cout << arr[i] << " ";
+		}
+
+	}
+	cout << endl;
+
+	deleteArray(arr);
+
+	return 0;
 }
