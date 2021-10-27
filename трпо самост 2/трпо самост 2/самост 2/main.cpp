@@ -25,6 +25,8 @@ void transportMatrixMainDiag(int**, int, int);
 
 void transportMatrixSideDiag(int**, int, int);
 
+void longestDistance(int);
+
 int main() {
     int task;
     cout << "Номер задания: ";
@@ -77,6 +79,13 @@ int main() {
             transportMatrixMainDiag(showMatrix(row, col), row, col);
             transportMatrixSideDiag(showMatrix(row, col), row, col);
             break;
+        }
+        case 5:
+        {
+            int dots;
+            cout << "Введите число точек: ";
+            cin >> dots;
+            longestDistance(dots);
         }
     }
     return 0;
@@ -279,4 +288,32 @@ void transportMatrixSideDiag(int** matrix, int row, int col)
     }
     cout << endl;
     deleteMatrix(matrix, row);
+}
+
+void longestDistance(int dots)
+{
+    double dist = 0;
+    double maxDist = 0;
+    int *arrayX = createArr(dots);
+    int *arrayY = createArr(dots);
+    fillArray(arrayX, dots);
+    fillArray(arrayY, dots);
+    for (int i = 0; i < dots; i++)
+    {
+        cout << "(" << arrayX[i] << "," << arrayY[i] << ")" << endl;
+    }
+    for (int i = 0; i < dots; i++)
+    {
+        for (int j = 0; j < dots; j++)
+        {
+            dist = sqrt((arrayX[i] - arrayX[j]) * (arrayX[i] - arrayX[j]) + (arrayY[i] - arrayY[j]) * (arrayY[i] - arrayY[j]));
+            if (dist > maxDist)
+            {
+                maxDist = dist;
+            }
+        }
+    }
+    cout << "Максимальное расстоянние между точками: " << maxDist << endl;
+    delete[] arrayX;
+    delete[] arrayY;
 }
