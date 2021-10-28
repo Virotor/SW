@@ -96,3 +96,23 @@ void LessNumber(int* a, int size)
 
 	}
 }
+
+
+
+int Length(int* a, int size)
+{
+	int length = 1, h = 1;
+
+	for (int i = 0; i < size - 1; i++)
+		if (a[i] == a[i + 1])
+		{
+			length++;
+
+			if (length > h)
+				h = length;
+		}
+		else
+			length = 1;
+
+	return h;
+}
