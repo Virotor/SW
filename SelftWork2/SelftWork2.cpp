@@ -288,7 +288,7 @@ public:
 			Clear();
 		}
 
-		cout << "\nВведите размерность матрицы: ";
+		cout << "\nEnter matrix size: ";
 		cin >> SizeX;
 		cin >> SizeY;
 
@@ -309,7 +309,7 @@ public:
 			Clear();
 		}
 
-		cout << "\nВведите размерность матрицы: ";
+		cout << "\nEnter matrix size: ";
 		cin >> SizeX;
 		cin >> SizeY;
 
@@ -577,7 +577,7 @@ private:
 public:
 	static double Distance(Vector2 p1, Vector2 p2)
 	{
-		return sqrt((p1.x - p2.x) * (p1.x - p2.x) * (p1.y - p2.y) * (p1.y - p2.y));
+		return sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
 	}
 	void EnterPoint()
 	{
@@ -640,7 +640,7 @@ void CheckTask5()
 		cout << "\n";
 	}
 	
-	int Max = 0;
+	double Max = 0;
 	for (int i = 0; i < Count; i++)
 	{
 		for (int a = 0; a < Count; a++)
@@ -657,9 +657,55 @@ void CheckTask5()
 	cout << "Max distance between points is: " << Max;
 }
 
+void TaskChoose()
+{
+	int num = 0;
+	do {
+		cout << "\n\nEnter task num(0 - Exit): ";
+		cin >> num;
+		switch (num)
+		{
+		case 0:
+			{
+			cout << "\nExit...\n";
+			}
+			break;
+		case 1:
+		{
+			CheckTask1();
+		}
+		break;
+		case 2:
+		{
+			CheckTask2();
+		}
+		break;
+		case 3:
+		{
+			CheckTask3();
+		}
+		break;
+		case 4:
+		{
+			CheckTask4();
+		}
+		break;
+		case 5:
+		{
+			CheckTask5();
+		}
+		break;
+		default:
+			cout << "There is no task " << num;
+			break;
+		}
+	} while (num != 0);
+	
+}
+
 int main()
 {
     setlocale(LC_ALL, "rus");
 
-    CheckTask5();
+	TaskChoose();
 }
