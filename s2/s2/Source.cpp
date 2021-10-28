@@ -19,7 +19,7 @@ int main() {
 	int* arr = new int[sizeOfArray];
 	fillAndShowArray(arr, sizeOfArray);
 	searchingIndex(arr, sizeOfArray, number);
-	return 0;
+	return 0; 
 }
 void fillAndShowArray(int* arr, int sizeOfArray) {
 	for (int i = 0; i < sizeOfArray; i++) {
