@@ -1,5 +1,6 @@
 #include<iostream>
 #include<ctime>
+#include<math.h>
 using namespace std;
 
 
@@ -7,6 +8,7 @@ void duplicateArray(int* arr, int size, int interval, int min, int max);
 void translateArray(int* arr, int size, int interval, int min, int max);
 void inputArray(int* arr, int size, int min, int interval);
 void printArray(int* arr, int size);
+void distanceBetweenTwoPoints();
 void matrix();
 
 
@@ -166,7 +168,57 @@ void matrix() {
 			}
 		}
 	}
+	distanceBetweenTwoPoints();
 }
+
+void distanceBetweenTwoPoints() {
+
+	int row;
+	cout << "\n\nExercises 5:" << endl;
+	cout << "Enter the number of points: "; cin >> row;
+
+	int** matrix = new int* [row];
+	for (int i = 0; i < row; i++) {
+		matrix[i] = new int[2];
+	}
+
+	cout << "Matrix:\n";
+	for (int i = 0; i < row; i++) {
+		for (int j = 0; j < 2; j++) {
+			matrix[i][j] = rand() % 10;
+			cout << matrix[i][j] << "\t";
+		}
+		cout << endl;
+	}
+
+	bool checkX = false, checkY = false;
+	double distPoints, distSavePoints = -1;
+	int delX, delY;
+	for (int i = 0; i < row; i++) {
+		for (int k = 1; k < row; k++) {
+			for (int j = 0; j < 2; j++) {
+				if (j == 0) {
+					delX = 0;
+					delX = matrix[i][j] - matrix[k][j];
+					checkX = true;
+				}
+				if (j == 1) {
+					delY = 0;
+					delY = matrix[i][j] - matrix[k][j];
+					checkY = true;
+				}
+				if (checkY == true && checkX == true) {
+					distPoints = sqrt(pow(delX, 2) + pow(delY, 2));
+					if (distSavePoints < distPoints) distSavePoints = distPoints;
+				}
+
+			}
+		}
+	}
+
+	cout << "Max distance two points: " << distSavePoints;
+}
+
 
 void inputArray(int* arr, int size, int min, int interval) {
 	for (int i = 0; i < size; i++) {
@@ -180,3 +232,4 @@ void printArray(int* arr, int size) {
 		cout << arr[i] << " ";
 	}
 }
+
