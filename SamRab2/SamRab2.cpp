@@ -22,7 +22,6 @@ int* createArray(int& size) {
 	return array;
 }
 
-
 void position()
 {
 	cout << "Task 1:" << endl;
@@ -49,9 +48,26 @@ void position()
 	delete[] array;
 }
 
+void numbersLessThenTheDifference() {
+	cout << "Task 2:" << endl;
+	int size;
+	int* array = createArray(size);
+	cout << " elements which lower then the difference between the two previous elements: ";
+	for (int index = 2; index < size; index++)
+	{
+		if (array[index] < array[index - 2] - array[index - 1])
+		{
+			cout << array[index] << " ";
+		}
+	}
+	cout << endl << endl;
+	delete[] array;
+}
+
 int main()
 {
 	position();
+	numbersLessThenTheDifference();
 	srand(time(NULL));
 	return 0;
 }
