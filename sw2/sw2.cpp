@@ -57,6 +57,26 @@ int main()
 			}
 		}
 		break;
+	case 3:
+		cout << "Vvedite dlinu massiva :\n";
+		cin >> len;
+		a.resize(len);
+		fillMassive(a);
+		out_mass(a);
+
+
+		for (int i = 0; i < len - 1; i++)
+		{
+			z++;
+			if (a.at(i) != a.at(i + 1))
+			{
+				if (max_row < z)
+					max_row = z;
+				z = 0;
+			}
+		}
+		cout << "\nMax row lenth : " << max_row;
+		break;
 	}
 }
 
