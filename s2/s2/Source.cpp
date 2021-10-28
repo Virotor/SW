@@ -14,11 +14,13 @@ int main() {
 	cout << "Enter size of array" << endl;
 	cin >> sizeOfArray;
 	int number;
-	cout << "Enter number to search the index" << endl;
+	cout << "Enter element to search the index" << endl;
 	cin >> number;
 	int* arr = new int[sizeOfArray];
 	fillAndShowArray(arr, sizeOfArray);
 	searchingIndex(arr, sizeOfArray, number);
+	cout << "Elements in this array that are less than the difference between the two previous ones:" << endl;
+	lessThanDifferenceBetweenTwoPrevios(arr, sizeOfArray);
 	return 0;
 }
 void fillAndShowArray(int* arr, int sizeOfArray) {
@@ -27,10 +29,10 @@ void fillAndShowArray(int* arr, int sizeOfArray) {
 		cout << arr[i] << " ";
 	}
 }
-void searchingIndex(int* arr, int sizeOfArray, int number) {
+void searchingIndex(int* arr, int sizeOfArray, int element) {
 	bool flag = true;
 	for (int i = 0; i < sizeOfArray; i++) {
-		if (arr[i] == number) {
+		if (arr[i] == element) {
 			cout << "index = " << i << endl;
 			flag = false;
 			break;
