@@ -85,6 +85,38 @@ public:
             cout << "There are no such elements.";
         }
     }
+    void CountConsistency()
+    {
+        cout << "The bigger co sistency of equal numbers is: ";
+        if (Size > 0)
+        {
+            int max = 1;
+            int prevmax = 1;
+            int prev = Arr[0];
+            for (int i = 1; i < Size; i++)
+            {
+                if (Arr[i] == prev)
+                {
+                    prevmax++;
+                    max++;
+                }
+                else
+                {
+                    if (prevmax > max)
+                    {
+                        max = prevmax;
+                    }
+                    prevmax = 1;
+                    prev = Arr[i];
+                }
+            }
+            cout << max;
+        }
+        else
+        {
+            cout << "Error: Array empty!";
+        }
+    }
 
     Array()
     {
@@ -118,10 +150,18 @@ void CheckTask2()
     cout << "\n";
     arr1.SearchForDiff();
 }
+void CheckTask3()
+{
+    Array arr1(0);
+    arr1.Enter();
+    arr1.Print();
+    cout << "\n";
+    arr1.CountConsistency();
+}
 
 int main()
 {
     setlocale(LC_ALL, "rus");
 
-    CheckTask2();
+    CheckTask3();
 }
