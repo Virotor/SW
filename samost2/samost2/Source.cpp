@@ -8,6 +8,10 @@ void WriteArr(int, int*);
 void SearchElement(int, int, int*);
 void SearchSpecialNumbers(int, int*);
 void SearchTheLongestSequence(int, int*);
+int** CreateMatrix(int, int);
+void DeleteMatrix(int, int**);
+void PrintMatrix(int, int, int**);
+void TransposeMatrix(int, int, int**);
 void FindPosition() {
 	int size, element;
 	cout << "Enter the size of array: ";
@@ -41,6 +45,20 @@ void TheLongestSequence() {
 	SearchTheLongestSequence(size, arr);
 	delete[] arr;
 }
+void Transpositioning() {
+	int line, column;
+	cout << "Enter amount of columns: ";
+	cin >> column;
+	cout << "Enter amount of lines: ";
+	cin >> line;
+	cout << "Matrix:" << endl;
+	int** arr = CreateMatrix(line, column);
+	CreateMatrix(line, column);
+	PrintMatrix(line, column, arr);
+	cout << endl;
+	TransposeMatrix(line, column, arr);
+	DeleteMatrix(line, arr);
+}
 int main() {
 	srand(time(NULL));
 	int taskNumber;
@@ -53,6 +71,8 @@ int main() {
 		PrintSpecialNumbers(); break;
 	case 3:
 		TheLongestSequence(); break;
+	case 4:
+		Transpositioning(); break;
 	default: break;
 	}
 	return 0;
@@ -111,4 +131,64 @@ void SearchTheLongestSequence(int size, int* arr) {
 		}
 	}
 	cout << "The longest sequence is: " << maxLength + 1;
+}
+int** CreateMatrix(int line, int column) {
+	int** arr = new int* [line];
+	for (int counter = 0; counter < line; counter++) {
+		arr[counter] = new int[column];
+	}
+	for (int counter2 = 0; counter2 < line; counter2++) {
+		for (int counter3 = 0; counter3 < column; counter3++) {
+			arr[counter2][counter3] = rand() % 21 - 10;
+		}
+	}
+	return arr;
+}
+void DeleteMatrix(int line, int** arr) {
+	for (int counter = 0; counter < line; counter++) {
+		delete[] arr[counter];
+	}
+	delete[]arr;
+}
+void PrintMatrix(int line, int column, int** arr) {
+	for (int counter4 = 0; counter4 < line; counter4++) {
+		for (int counter5 = 0; counter5 < column; counter5++) {
+			cout << setw(5) << arr[counter4][counter5];
+		}
+		cout << endl;
+	}
+}
+void TransposeMatrix(int line, int column, int** arr) {
+	cout << "Main diagonal transposition: " << endl;
+	int** arr1 = new int* [column];
+	for (int counter6 = 0; counter6 < column; counter6++) {
+		arr1[counter6] = new int[line];
+	}
+	for (int counter = 0; counter < column; counter++) {
+		for (int counter2 = 0; counter2 < line; counter2++) {
+			arr1[counter][counter2] = arr[counter2][counter];
+			cout << setw(5) << arr1[counter][counter2];
+		}
+		cout << endl;
+	}
+	cout << "Side diagonal transposition: " << endl;
+	int** arr2 = new int* [column];
+	for (int counter7 = 0; counter7 < column; counter7++) {
+		arr2[counter7] = new int[line];
+	}
+	for (int counter3 = 0; counter3 < column; counter3++) {
+		for (int counter4 = 0; counter4 < line; counter4++) {
+			arr2[counter3][counter4] = arr[line - 1 - counter4][column - 1 - counter3];
+			cout << setw(5) << arr2[counter3][counter4];
+		}
+		cout << endl;
+	}
+	for (int counter8 = 0; counter8 < column; counter8++) {
+		delete[] arr1[counter8];
+	}
+	delete[]arr1;
+	for (int counter9 = 0; counter9 < column; counter9++) {
+		delete[] arr2[counter9];
+	}
+	delete[]arr2;
 }
