@@ -5,6 +5,7 @@
 void searchFirstSelectedElement();
 void searchSubstringInString();
 void searchElementLessThanDifference();
+void searchGreatestSequenceLength();
 
 
 //Функции массива
@@ -18,6 +19,7 @@ void main()
 	searchFirstSelectedElement();
 	searchSubstringInString();
 	searchElementLessThanDifference();
+	searchGreatestSequenceLength();
 }
 
 
@@ -92,6 +94,30 @@ void searchElementLessThanDifference()
 	clearArrayMem(array);
 }
 
+void searchGreatestSequenceLength()
+{
+	std::cout << "Enter array size: ";
+	int arraySize = 0;
+	std::cin >> arraySize;
+	int* array = initArray(arraySize);
+	printArray(array, arraySize);
+	int count = 0;
+	int maxCount = 0;
+	for (int i = 0; i < arraySize; i++)
+	{
+		if (array[i] == array[i + 1])
+			count++;
+		else if (count > maxCount)
+		{
+			maxCount = count + 1;
+			count = 0;
+		}
+		else
+			count = 0;
+	}
+	std::cout << "The greatest sequence length is " << maxCount << std::endl;
+	clearArrayMem(array);
+}
 
 //Функции массива
 int* initArray(int arraySize)
