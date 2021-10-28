@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <string>
+#include <iomanip>
 
 //Функции выполнения заданий
 void searchFirstSelectedElement();
@@ -7,6 +8,7 @@ void searchSubstringInString();
 void searchElementLessThanDifference();
 void searchGreatestSequenceLength();
 void matrixTransposition();
+void searchMaxDistance();
 
 
 //Функции массива
@@ -29,6 +31,7 @@ void main()
 	searchElementLessThanDifference();
 	searchGreatestSequenceLength();
 	matrixTransposition();
+	searchMaxDistance();
 }
 
 
@@ -127,6 +130,29 @@ void searchGreatestSequenceLength()
 	std::cout << "The greatest sequence length is " << maxCount << std::endl;
 	clearArrayMem(array);
 }
+
+void searchMaxDistance()
+{
+	std::cout << "Enter count of coordinates: ";
+	int row = 0, col = 2;
+	std::cin >> row;
+	int** coords = initMatrix(row, col);
+	std::cout << "x y" << std::endl;
+	printMatrix(coords, row, col);
+	double maxDistance = 0;
+	for (int i = 0; i < row - 1; i++)
+	{
+		for (int j = i + 1; j < row; j++)
+		{
+			double distance = sqrt((coords[i][0] - coords[j][0]) * (coords[i][0] - coords[j][0]) + (coords[i][1] - coords[j][1]) * (coords[i][1] - coords[j][1]));
+			if (distance > maxDistance)
+				maxDistance = distance;
+		}
+	}
+	std::cout << std::fixed << std::setprecision(3) << "Maximum distance is " << maxDistance;
+	clearMatrixMem(coords, row);
+}
+
 
 //Функции массива
 int* initArray(int arraySize)
