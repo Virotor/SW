@@ -68,6 +68,23 @@ public:
         }
         cout << "There is no " << num << " in array";
     }
+    void SearchForDiff()
+    {
+        cout << "Number, that less than sum of two previos: ";
+        int k = 0;
+        for (int i = 2; i < Size; i++)
+        {
+            if (Arr[i] < Arr[i - 1] + Arr[i - 2])
+            {
+                k++;
+                cout << Arr[i] << " ";
+            }
+        }
+        if (k == 0)
+        {
+            cout << "There are no such elements.";
+        }
+    }
 
     Array()
     {
@@ -93,10 +110,18 @@ void CheckTask1()
     cout << "\n";
     arr1.SearchFor();
 }
+void CheckTask2()
+{
+    Array arr1(0);
+    arr1.RandEnter();
+    arr1.Print();
+    cout << "\n";
+    arr1.SearchForDiff();
+}
 
 int main()
 {
     setlocale(LC_ALL, "rus");
 
-    CheckTask1();
+    CheckTask2();
 }
