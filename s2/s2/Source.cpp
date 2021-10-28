@@ -2,6 +2,25 @@
 #include <iostream>
 using namespace std;
 void fillAndShowArray(int*, int);
+void searchingIndex(int*, int, int);
+void lessThanDifferenceBetweenTwoPrevios(int*, int);
+int lengthOfTheLongestSequenceOfIdenticalNumbers(int*, int);
+void fillAndShowSquareMatrix(int**, int);
+void transpMain(int**, int);
+void transpPoboch(int**, int);
+int main() {
+	srand(time(0));
+	int sizeOfArray;
+	cout << "Enter size of array" << endl;
+	cin >> sizeOfArray;
+	int number;
+	cout << "Enter number to search the index" << endl;
+	cin >> number;
+	int* arr = new int[sizeOfArray];
+	fillAndShowArray(arr, sizeOfArray);
+	searchingIndex(arr, sizeOfArray, number);
+	return 0;
+}
 void fillAndShowArray(int* arr, int sizeOfArray) {
 	for (int i = 0; i < sizeOfArray; i++) {
 		arr[i] = rand() % 20 - 10;
@@ -39,7 +58,8 @@ int lengthOfTheLongestSequenceOfIdenticalNumbers(int* arr, int sizeOfArray) {
 	for (int i = 0; i < sizeOfArray - 1; i++) {
 		if (arr[i] == arr[i + 1]) {
 			n++;
-		} else {
+		}
+		else {
 			n = 1;
 		}
 		if (n > max) {
@@ -73,17 +93,4 @@ void transpPoboch(int** arr, int rowsAndCols) {
 		}
 		cout << endl;
 	}
-}
-int main() {
-	srand(time(0));
-	int sizeOfArray;
-	cout << "Enter size of array" << endl;
-	cin >> sizeOfArray;
-	int number;
-	cout << "Enter number to search the index" << endl;
-	cin >> number;
-	int* arr = new int[sizeOfArray];
-	fillAndShowArray(arr, sizeOfArray);
-	searchingIndex(arr, sizeOfArray, number);
-	return 0;
 }
