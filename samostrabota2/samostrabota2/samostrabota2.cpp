@@ -1,12 +1,14 @@
 #include<stdlib.h>
 #include<iostream>
 #include<conio.h>
+#include<string>
 
 using namespace std;
 
 void fillTheArrayWithRandomNumbers(int* array, int);
 void printTheArrayToTheScreen(int* array, int);
 int findThePositionOfTheFirstElement(int* array, int, int, int);
+int findSubstringInString(string, string);
 
 void fillTheArrayWithRandomNumbers(int* array, int size)
 {
@@ -41,6 +43,21 @@ int findThePositionOfTheFirstElement(int* array, int size, int number, int d)
 	return d;
 }
 
+int findSubstringInString(string string1, string substring)
+{
+	int position = 0;
+
+	if (substring == string1)
+	{
+		while (substring != string1)
+		{
+			position++;
+		}
+	}
+
+	return position;
+}
+
 void printThePositionOfTheFirstElementOfArray()
 {
 	int sizeOfArray, number, position = 0;
@@ -63,12 +80,28 @@ void printThePositionOfTheFirstElementOfArray()
 	delete[]array;
 }
 
+void toFindingSubstringInString()
+{
+	string string, substring;
+	int position = 0;
+
+	cout << "\nInput string:" << endl;
+	getline(cin, string);
+
+	cout << "\nInput substring:" << endl;
+	getline(cin, substring);
+
+	position = findSubstringInString(string, substring);
+	cout << "\nPosition is " << position << endl;
+}
+
 void main()
 {
 	cout << "Task 1 - press 1, dopolnitelno - press 2, task 2 - press 3,\ntask 3 - press 4, task 4 - press 5, task 5 - press 6 ..." << endl;
 
 	switch (_getch())
 	{
-	case'1': printThePositionOfTheFirstElementOfArray();break;
+	case'1': printThePositionOfTheFirstElementOfArray(); break;
+	case'2': toFindingSubstringInString(); break;
 	}
 }
