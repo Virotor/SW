@@ -78,7 +78,7 @@ int main()
 		cout << "\nMax row lenth : " << max_row;
 		break;
 	case 4:
-		cout << "Input vector row and col : \n";
+		cout << "Input vector row and col  : \n";
 		cin >> row >> col;
 		mat.assign(row, vector <int>(col));
 		fillMatr(mat, row, col);
