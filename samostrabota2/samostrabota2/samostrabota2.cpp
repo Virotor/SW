@@ -12,6 +12,10 @@ int findSubstringInString(string, string);
 void fillTheArrayWithNumbers(int* array, int);
 void findTheLongestSequenceLength(int* array, int);
 void findNumbers(int* array, int);
+void fillTheArrayWithRandomNumbers(int** array, int, int);
+void printTheArrayToTheScreen(int** array, int, int);
+void transposeArrayRelativeToTheMainDiagonal(int** array, int, int);
+void transposeArrayRelativeToTheSideDiagonal(int** array, int, int);
 
 void fillTheArrayWithRandomNumbers(int* array, int size)
 {
@@ -104,6 +108,91 @@ void findNumbers(int* array, int size)
 	cout << endl;
 }
 
+void fillTheArrayWithRandomNumbers(int** array, int numberOfLines, int numberOfColumns)
+{
+	srand(time(0));
+	for (int i = 0;i < numberOfLines; i++)
+		for (int j = 0; j < numberOfColumns; j++)
+		{
+			array[i][j] = rand() % 19 - 9;
+		}
+}
+
+void printTheArrayToTheScreen(int** array, int numberOfLines, int numberOfColumns)
+{
+	for (int i = 0;i < numberOfLines; i++)
+	{
+		cout << endl;
+
+		for (int j = 0; j < numberOfColumns; j++)
+		{
+			cout << array[i][j] << "\t";
+		}
+
+		cout << endl;
+	}
+
+	cout << endl;
+}
+
+void transposeArrayRelativeToTheMainDiagonal(int** array, int numberOfLines, int numberOfColumns)
+{
+	if (numberOfLines != numberOfColumns)
+		cout << "This array doesn't have the main diagonal" << endl;
+
+	for (int j = 0; j < numberOfColumns; j++)
+	{
+		int pr = 0;
+
+		for (int i = 0; i < j; i++)
+		{
+			pr = array[i][j];
+			array[i][j] = array[j][i];
+			array[j][i] = pr;
+		}
+	}
+
+	cout << endl;
+
+	cout << "Array transposed relative to the main diagonal:" << "\n\n";
+	for (int i = 0; i < numberOfLines; i++)
+	{
+		for (int j = 0; j < numberOfColumns; j++)
+			cout << array[i][j] << "\t";
+
+		cout << "\n\n";
+	}
+}
+
+void transposeArrayRelativeToTheSideDiagonal(int** array, int numberOfLines, int numberOfColumns)
+{
+	if (numberOfLines != numberOfColumns)
+		cout << "This array doesn't have the side diagonal" << endl;
+
+	for (int i = 0; i < numberOfLines;i++)
+	{
+		int pr = 0;
+
+		for (int j = 0; j < numberOfColumns - 1 - i; j++)
+		{
+			pr = array[i][j];
+			array[i][j] = array[numberOfColumns - 1 - j][numberOfLines - 1 - i];
+			array[numberOfColumns - 1 - j][numberOfLines - 1 - i] = pr;
+		}
+	}
+
+	cout << endl;
+
+	cout << "Array transposed relative to the side diagonal:" << "\n\n";
+	for (int i = 0; i < numberOfLines; i++)
+	{
+		for (int j = 0; j < numberOfColumns; j++)
+			cout << array[i][j] << "\t";
+
+		cout << "\n\n";
+	}
+}
+
 void printThePositionOfTheFirstElementOfArray()
 {
 	int sizeOfArray, number, position = 0;
@@ -145,7 +234,7 @@ void findAllNumbersInAnArrayThatAreLessThanTheDifferenceBetweenTheTwoPreviousOne
 {
 	int sizeOfArray, number;
 
-	cout << "Input size of array:" << endl;
+	cout << "\nInput size of array:" << endl;
 	cin >> sizeOfArray;
 
 	int* array = new int[sizeOfArray];
@@ -175,6 +264,30 @@ void findTheLengthOfTheLongestSequenceOfIdenticalNumbersInARow()
 	delete[]array;
 }
 
+void transposeArrayRelativeToTheSideAndMainDiagonals()
+{
+	int** array, n, k;
+	cout << "\nInput number of lines and number of columns:" << endl;
+	cin >> n >> k;
+	cout << "\n";
+
+	array = new int* [n];
+	for (int i = 0; i < n; i++)
+		array[i] = new int[k];
+
+	fillTheArrayWithRandomNumbers(array, n, k);
+
+	printTheArrayToTheScreen(array, n, k);
+
+	transposeArrayRelativeToTheMainDiagonal(array, n, k);
+
+	transposeArrayRelativeToTheSideDiagonal(array, n, k);
+
+	for (int i = 0; i < n; i++)
+		delete[n] array[i];
+	delete[] array;
+}
+
 void main()
 {
 	cout << "Task 1 - press 1, dopolnitelno - press 2, task 2 - press 3,\ntask 3 - press 4, task 4 - press 5, task 5 - press 6 ..." << endl;
@@ -183,7 +296,7 @@ void main()
 	{
 	case'1': printThePositionOfTheFirstElementOfArray(); break;
 	case'2': toFindingSubstringInString(); break;
-	case'3':findAllNumbersInAnArrayThatAreLessThanTheDifferenceBetweenTheTwoPreviousOnes();
+	case'3': findAllNumbersInAnArrayThatAreLessThanTheDifferenceBetweenTheTwoPreviousOnes(); break;
 	case'4': findTheLengthOfTheLongestSequenceOfIdenticalNumbersInARow(); break;
 	}
 }
