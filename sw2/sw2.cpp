@@ -1,0 +1,124 @@
+﻿#include <iostream>
+#include <vector>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+	void fillMassive(vector <int> &);
+	void fillMatr(vector <vector <int>> &, int, int);
+	void out_Matr(vector <vector <int>>, int, int);
+	void out_mass(vector <int> &);
+	int sq(int, int, int, int);
+
+	vector <int> a;
+	vector < vector <int> > mat, newMatr;
+	vector < vector <int> > cord;
+	int choice, len, row, col, max_row = 0, z = 0;
+	cout << "Choose a task 1-5 : \n";
+	cin >> choice;
+
+	switch (choice)
+	{
+
+	default:
+	case 1:
+		cout << "Vvedite dlinu massiva :\n";
+
+		cin >> len;
+		a.resize(len);
+		fillMassive(a);
+		out_mass(a);
+		cout << "\nWhat number do you want to find pos : \n";
+		int buff;
+		cin >> buff;
+		for (int i = 0; i < a.size(); i++)
+		{
+			if (a.at(i) == buff)
+			{
+				cout << "Position : " << i;
+				i = a.size();
+			}
+		}
+		break;
+	}
+}
+
+
+void fillMassive(vector <int>& a)
+{
+	int cho;
+	cout << "Manually or randomly? (1/2) :\n";
+	cin >> cho;
+	switch (cho)
+			default:
+			case 1:
+			{
+				for (int i = 0; i < a.size(); i++)
+				{
+					cout << i + 1 << " number : ";
+					cin >> a.at(i);
+					cout << "\n";
+				}
+				break;
+			case 2:
+				for (int i = 0; i < a.size(); i++)
+				{
+					a.at(i) = rand() % 10 + 1;
+				}
+
+			}
+}
+
+void fillMatr(vector <vector <int>>& matr, int row, int col)
+{
+	int cho;
+	cout << "Manually or randomly? (1/2) :\n";
+	cin >> cho;
+	switch (cho)
+			default:
+			case 1:
+			{
+				for (int i = 0; i < row; i++)
+					for (int j = 0; j < col; j++)
+					{
+						cout << i + 1 << " number : ";
+						cin >> matr[i][j];
+						cout << "\n";
+					}
+				break;
+			case 2:
+				for (int i = 0; i < row; i++)
+					for (int j = 0; j < col; j++)
+					{
+						matr[i][j] = rand() % 10 + 1;
+					}
+
+			}
+
+}
+
+
+void out_mass(vector <int>& a)
+{
+	copy(a.begin(), a.end(), ostream_iterator<int>(cout, " "));
+}
+void out_Matr(vector <vector <int>> matr, int row, int col)
+{
+	cout << "\nMatrix : \n";
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < col; j++)
+		{
+
+			cout << setw(3) << matr[i][j] << " ";
+		}
+		cout << "\n";
+	}
+
+}
+int sq(int x1, int x2, int y1, int y2)
+{
+	int ans = (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
+	return ans;
+}
