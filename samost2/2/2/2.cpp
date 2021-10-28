@@ -48,6 +48,27 @@ void raznNumb(int* arr, int size)
 	}
 	delete[] arr;
 }
+void lengthChainNumber(int* arr, int size)
+{
+	int max = 0;
+	int* k = new int[size];
+	for (int i = 0; i < size; i++)
+	{
+		k[i] = 0;
+		for (int j = i + 1; j < size; j++)
+		{
+			if (arr[i] == arr[j])
+			{
+				k[i]++;
+			}
+			else break;
+		}
+
+	}
+	for (int i = 0; i < size; i++)
+		if (max < k[i]) max = k[i];
+	cout << "Длина цепочки чисел равна: " << max + 1;
+}
 
 int main() {
 	setlocale(LC_ALL, "rus");
@@ -78,6 +99,18 @@ int main() {
 		arrayOutput(arr, size);
 		cout << endl;
 		raznNumb(arr, size);
+		break;
+	}
+	case 3:
+	{
+		int size;
+		cout << "Введите размерность массива: ";
+		cin >> size;
+		int* arr = new int[size];
+		fillingArray(arr, size);
+		arrayOutput(arr, size);
+		cout << endl;
+		lengthChainNumber(arr, size);
 		break;
 	}
 	}
