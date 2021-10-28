@@ -366,6 +366,60 @@ public:
 		}
 	};
 
+	void Transpanate(bool maindiagonale)
+	{
+		if (SizeX == 0 || SizeY == 0)
+		{
+			cout << "\nCan't transpanate matrix: matrix empty!\n";
+			return;
+		}
+		int tempX = SizeX;
+		int tempY = SizeY;
+
+		int** arr = new int* [tempX];
+		for (int x = 0; x < tempX; x++)
+		{
+			arr[x] = new int[tempY];
+		}
+		for (int x = 0; x < tempX; x++)
+		{
+			for (int y = 0; y < tempY; y++)
+			{
+				arr[x][y] = Array[x][y];
+			}
+		}
+		delete[] Array;
+		SizeX = tempY;
+		SizeY = tempX;
+
+		Array = new int* [SizeX];
+		for (int x = 0; x < SizeX; x++)
+		{
+			Array[x] = new int[SizeY];
+		}
+		
+		if (maindiagonale)
+		{
+			for (int x = 0; x < SizeX; x++)
+			{
+				for (int y = 0; y < SizeY; y++)
+				{
+					Array[x][y] = arr[y][x];
+				}
+			}
+		}
+		else
+		{
+			for (int x = 0; x < SizeX; x++)
+			{
+				for (int y = 0; y < SizeY; y++)
+				{
+					Array[x][SizeY - 1 - y] = arr[y][SizeX - 1 - x];
+				}
+			}
+		}
+	}
+
 	bool operator == (const Matrix& other)
 	{
 		if (SizeX == other.SizeY)
@@ -540,10 +594,23 @@ void CheckTask3()
     cout << "\n";
     arr1.CountConsistency();
 }
+void CheckTask4()
+{
+	Matrix matrix(0, 0);
+	matrix.EnterRandomMatrix();
+	Matrix matrixclone = matrix;
+	matrix.PrintMatrix();
+	cout << "\nTranspanate right\n";
+	matrix.Transpanate(true);
+	matrix.PrintMatrix();
+	cout << "\nTranspanate left\n";
+	matrixclone.Transpanate(false);
+	matrixclone.PrintMatrix();
+}
 
 int main()
 {
     setlocale(LC_ALL, "rus");
 
-    CheckTask3();
+    CheckTask4();
 }
