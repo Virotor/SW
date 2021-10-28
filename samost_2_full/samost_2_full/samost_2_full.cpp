@@ -61,3 +61,27 @@ void task2() {
 	}
 	cout << endl << "Task 2 completed" << endl << endl;
 }
+
+void task3() {
+	cout << "Task 3 start" << endl;
+	int n = enterNumber();
+	int* mass = createArr(n);
+	int length = 1;
+	int maxLength = 1;
+	for (int i = 0; i < n; i++) {
+		if (mass[i] == mass[i - 1] && i == n - 1) {
+			length++;
+			maxLength = length;
+			break;
+		}
+		if (mass[i] == mass[i - 1]) length++;
+		else {
+			if (length >= maxLength) {
+				maxLength = length;
+				length = 1;
+			}
+		}
+	}
+	cout << "Max length=" << maxLength << endl;
+	cout << "Task 3 completed" << endl << endl;
+}
