@@ -96,13 +96,18 @@ void searchElementLessThanDifference()
 	int arraySize = 0;
 	std::cin >> arraySize;
 	int* array = initArray(arraySize);
+	bool flag = false;
 	printArray(array, arraySize);
 	for (int i = 2; i < arraySize; i++)
 	{
 		if (array[i] < array[i - 2] - array[i - 1])
-			std::cout << array[i] << " ";
+		{
+			std::cout << array[i] << " " << std::endl;
+			flag = true;
+		}
 	}
-	std::cout << std::endl;
+	if (!flag)
+		std::cout << "There is no elements less than difference in array" << std::endl;
 	clearArrayMem(array);
 }
 
@@ -129,6 +134,45 @@ void searchGreatestSequenceLength()
 	}
 	std::cout << "The greatest sequence length is " << maxCount << std::endl;
 	clearArrayMem(array);
+}
+
+void matrixTransposition()
+{
+	std::cout << "Enter matrix size: ";
+	int row = 0, col = 0;
+	std::cin >> row >> col;
+	int** matrix = initMatrix(row, col);
+	printMatrix(matrix, row, col);
+	std::cout << "Choose a diagonal (1 - main, 2 - side): ";
+	int diagonal = 0;
+	std::cin >> diagonal;
+	if (diagonal == 1)
+	{
+		for (int i = 0; i < row; i++)
+		{
+			for (int j = i; j < col; j++)
+			{
+				int temp = matrix[i][j];
+				matrix[i][j] = matrix[j][i];
+				matrix[j][i] = temp;
+			}
+		}
+		printMatrix(matrix, row, col);
+	}
+	else if (diagonal == 2)
+	{
+		for (int i = 0; i < row; i++)
+		{
+			for (int j = 0; j < col - i - 1; j++)
+			{
+				int temp = matrix[i][j];
+				matrix[i][j] = matrix[col - j - 1][row - i - 1];
+				matrix[col - j - 1][row - i - 1] = temp;
+			}
+		}
+		printMatrix(matrix, row, col);
+	}
+	clearMatrixMem(matrix, row);
 }
 
 void searchMaxDistance()
