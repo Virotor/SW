@@ -8,7 +8,7 @@ void lessThanDifferenceBetweenTwoPrevios(int*, int);
 int lengthOfTheLongestSequenceOfIdenticalNumbers(int*, int);
 void fillAndShowSquareMatrix(int**, int);
 void transpMain(int**, int);
-void transpPoboch(int**, int);
+void transpSide(int**, int);
 int main() {
 	srand(time(0));
 	int sizeOfArray;
@@ -28,6 +28,19 @@ int main() {
 	cin >> sizeOfArray2;
 	keyboardFillAndShowArray(arr, sizeOfArray2);
 	cout << "The length of the longest sequence of identical numbers = " << lengthOfTheLongestSequenceOfIdenticalNumbers(arr, sizeOfArray2);
+	cout << endl << "Input rows = cols of square matrix" << endl;
+	int rowsAndCols;
+	cin >> rowsAndCols;
+	int** arr2 = new int* [rowsAndCols];
+	for (int i = 0; i < rowsAndCols; i++) {
+		arr2[i] = new int[rowsAndCols];
+	}
+	cout << "The matrix:" << endl;
+	fillAndShowSquareMatrix(arr2, rowsAndCols);
+	cout << "The transpose matrix relative to the main diagonal:" << endl;
+	transpMain(arr2, rowsAndCols);
+	cout << "The transpose matrix relative to the side diagonal:" << endl;
+	transpSide(arr2, rowsAndCols);
 	return 0;
 }
 void randFillAndShowArray(int* arr, int sizeOfArray) {
@@ -69,12 +82,11 @@ void lessThanDifferenceBetweenTwoPrevios(int* arr, int sizeOfArray) {
 }
 int lengthOfTheLongestSequenceOfIdenticalNumbers(int* arr, int sizeOfArray) {
 	int n = 1;
-	int max = 0;
+	int max = 1;
 	for (int i = 0; i < sizeOfArray - 1; i++) {
 		if (arr[i] == arr[i + 1]) {
 			n++;
-		}
-		else {
+		} else {
 			n = 1;
 		}
 		if (n > max) {
@@ -101,7 +113,7 @@ void transpMain(int** arr, int rowsAndCols) {
 		cout << endl;
 	}
 }
-void transpPoboch(int** arr, int rowsAndCols) {
+void transpSide(int** arr, int rowsAndCols) {
 	for (int i = 0; i < rowsAndCols; i++) {
 		for (int j = 0; j < rowsAndCols; j++) {
 			cout << arr[rowsAndCols - 1 - j][rowsAndCols - 1 - i] << " ";
