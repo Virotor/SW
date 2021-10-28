@@ -11,6 +11,7 @@ int findThePositionOfTheFirstElement(int* array, int, int, int);
 int findSubstringInString(string, string);
 void fillTheArrayWithNumbers(int* array, int);
 void findTheLongestSequenceLength(int* array, int);
+void findNumbers(int* array, int);
 
 void fillTheArrayWithRandomNumbers(int* array, int size)
 {
@@ -92,6 +93,17 @@ void findTheLongestSequenceLength(int* array, int size)
 	cout << "\nThe longest sequence length of the array is " << sequence1 << endl;
 }
 
+void findNumbers(int* array, int size)
+{
+	cout << "\n\nNumbers:" << endl;
+
+	for (int i = 2; i < size; ++i)
+		if (array[i] < (array[i - 2] - array[i - 1]))
+			cout << array[i] << "  ";
+
+	cout << endl;
+}
+
 void printThePositionOfTheFirstElementOfArray()
 {
 	int sizeOfArray, number, position = 0;
@@ -129,6 +141,24 @@ void toFindingSubstringInString()
 	cout << "\nPosition is " << position << endl;
 }
 
+void findAllNumbersInAnArrayThatAreLessThanTheDifferenceBetweenTheTwoPreviousOnes()
+{
+	int sizeOfArray, number;
+
+	cout << "Input size of array:" << endl;
+	cin >> sizeOfArray;
+
+	int* array = new int[sizeOfArray];
+
+	fillTheArrayWithRandomNumbers(array, sizeOfArray);
+
+	printTheArrayToTheScreen(array, sizeOfArray);
+
+	findNumbers(array, sizeOfArray);
+
+	delete[]array;
+}
+
 void findTheLengthOfTheLongestSequenceOfIdenticalNumbersInARow()
 {
 	int sizeOfArray;
@@ -153,6 +183,7 @@ void main()
 	{
 	case'1': printThePositionOfTheFirstElementOfArray(); break;
 	case'2': toFindingSubstringInString(); break;
+	case'3':findAllNumbersInAnArrayThatAreLessThanTheDifferenceBetweenTheTwoPreviousOnes();
 	case'4': findTheLengthOfTheLongestSequenceOfIdenticalNumbersInARow(); break;
 	}
 }
