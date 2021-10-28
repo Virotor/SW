@@ -569,6 +569,22 @@ public:
 		//Clear();
 	};
 };
+class Vector2
+{
+private:
+	int x;
+	int y;
+public:
+	static double Distance(Vector2 p1, Vector2 p2)
+	{
+		return sqrt((p1.x - p2.x) * (p1.x - p2.x) * (p1.y - p2.y) * (p1.y - p2.y));
+	}
+	void EnterPoint()
+	{
+		cout << "Enter x, y: ";
+		cin >> x >> y;
+	}
+};
 
 void CheckTask1()
 {
@@ -607,10 +623,43 @@ void CheckTask4()
 	matrixclone.Transpanate(false);
 	matrixclone.PrintMatrix();
 }
+void CheckTask5()
+{
+	int Count = 0;
+	cout << "Enter count of point: ";
+	cin >> Count;
+	if (Count < 2)
+	{
+		cout << "Enter at least 2 point\n";
+		return;
+	}
+	Vector2* Points = new Vector2[Count];
+	for (int i = 0; i < Count; i++)
+	{
+		Points[i].EnterPoint();
+		cout << "\n";
+	}
+	
+	int Max = 0;
+	for (int i = 0; i < Count; i++)
+	{
+		for (int a = 0; a < Count; a++)
+		{
+			if (a == i)
+				continue;
+			double Dst = Points->Distance(Points[i], Points[a]);
+			if (Dst > Max)
+			{
+				Max = Dst;
+			}
+		}
+	}
+	cout << "Max distance between points is: " << Max;
+}
 
 int main()
 {
     setlocale(LC_ALL, "rus");
 
-    CheckTask4();
+    CheckTask5();
 }
