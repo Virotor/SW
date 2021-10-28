@@ -16,6 +16,8 @@ void fillTheArrayWithRandomNumbers(int** array, int, int);
 void printTheArrayToTheScreen(int** array, int, int);
 void transposeArrayRelativeToTheMainDiagonal(int** array, int, int);
 void transposeArrayRelativeToTheSideDiagonal(int** array, int, int);
+void printTheArrayToTheScreen(char** array, int, int);
+double findMaxDistanceBetweenTwoPoints(char** array, int, int);
 
 void fillTheArrayWithRandomNumbers(int* array, int size)
 {
@@ -193,6 +195,42 @@ void transposeArrayRelativeToTheSideDiagonal(int** array, int numberOfLines, int
 	}
 }
 
+void printTheArrayToTheScreen(char** array, int numberOfLines, int numberOfColumns)
+{
+	for (int i = 0;i < numberOfLines; i++)
+	{
+		cout << endl;
+
+		for (int j = 0; j < numberOfColumns; j++)
+		{
+			cout << '.' << "\t";
+		}
+
+		cout << endl;
+	}
+
+	cout << endl;
+}
+
+double findMaxDistanceBetweenTwoPoints(char** array, int X, int Y)
+{
+	int x1, y1, x2, y2;
+	double distance;
+
+	cout << "\nInput coordinates of the first point:" << endl;
+	cin >> x1 >> y1;
+
+	cout << "\nInput coordinates of the second point:" << endl;
+	cin >> x2 >> y2;
+
+	distance = sqrt((pow(x1 - x2, 2) + pow(y1 - y2, 2)));
+
+	return distance;
+}
+
+
+
+
 void printThePositionOfTheFirstElementOfArray()
 {
 	int sizeOfArray, number, position = 0;
@@ -288,6 +326,32 @@ void transposeArrayRelativeToTheSideAndMainDiagonals()
 	delete[] array;
 }
 
+void findTheMaximumDistanceBetweenTwoPointsAmongASetOfPoints()
+{
+	char** array;
+	int X, Y;
+	double distance;
+
+	cout << "\nInput number of lines and number of columns:" << endl;
+	cin >> X >> Y;
+
+	array = new char* [X];
+	for (int i = 0; i < X; i++)
+		array[i] = new char[Y];
+
+	printTheArrayToTheScreen(array, X, Y);
+
+	distance = findMaxDistanceBetweenTwoPoints(array, X, Y);
+
+	cout << "\nDistance between two points is " << distance << endl;
+
+	for (int i = 0; i < X; i++)
+		delete[X] array[i];
+	delete[] array;
+}
+
+
+
 void main()
 {
 	cout << "Task 1 - press 1, dopolnitelno - press 2, task 2 - press 3,\ntask 3 - press 4, task 4 - press 5, task 5 - press 6 ..." << endl;
@@ -298,5 +362,7 @@ void main()
 	case'2': toFindingSubstringInString(); break;
 	case'3': findAllNumbersInAnArrayThatAreLessThanTheDifferenceBetweenTheTwoPreviousOnes(); break;
 	case'4': findTheLengthOfTheLongestSequenceOfIdenticalNumbersInARow(); break;
+	case'5': transposeArrayRelativeToTheSideAndMainDiagonals(); break;
+	case'6': findTheMaximumDistanceBetweenTwoPointsAmongASetOfPoints(); break;
 	}
 }
