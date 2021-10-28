@@ -9,6 +9,8 @@ void fillTheArrayWithRandomNumbers(int* array, int);
 void printTheArrayToTheScreen(int* array, int);
 int findThePositionOfTheFirstElement(int* array, int, int, int);
 int findSubstringInString(string, string);
+void fillTheArrayWithNumbers(int* array, int);
+void findTheLongestSequenceLength(int* array, int);
 
 void fillTheArrayWithRandomNumbers(int* array, int size)
 {
@@ -58,6 +60,38 @@ int findSubstringInString(string string1, string substring)
 	return position;
 }
 
+void fillTheArrayWithNumbers(int* array, int size)
+{
+	cout << "\nArray:" << "\n";
+
+	for (int i = 0; i < size; ++i)
+	{
+		cin >> array[i];
+	}
+}
+
+void findTheLongestSequenceLength(int* array, int size)
+{
+	int sequence1 = 0, sequence2 = 1;
+
+	for (int i = 0; i < size - 1; ++i)
+	{
+		if (array[i] == array[i + 1])
+			sequence2++;
+		else
+		{
+			if (sequence1 < sequence2)
+			{
+				sequence1 = sequence2;
+			}
+
+			sequence2 = 1;
+		}
+	}
+
+	cout << "\nThe longest sequence length of the array is " << sequence1 << endl;
+}
+
 void printThePositionOfTheFirstElementOfArray()
 {
 	int sizeOfArray, number, position = 0;
@@ -95,6 +129,22 @@ void toFindingSubstringInString()
 	cout << "\nPosition is " << position << endl;
 }
 
+void findTheLengthOfTheLongestSequenceOfIdenticalNumbersInARow()
+{
+	int sizeOfArray;
+
+	cout << "\nInput size of array:" << endl;
+	cin >> sizeOfArray;
+
+	int* array = new int[sizeOfArray];
+
+	fillTheArrayWithNumbers(array, sizeOfArray);
+
+	findTheLongestSequenceLength(array, sizeOfArray);
+
+	delete[]array;
+}
+
 void main()
 {
 	cout << "Task 1 - press 1, dopolnitelno - press 2, task 2 - press 3,\ntask 3 - press 4, task 4 - press 5, task 5 - press 6 ..." << endl;
@@ -103,5 +153,6 @@ void main()
 	{
 	case'1': printThePositionOfTheFirstElementOfArray(); break;
 	case'2': toFindingSubstringInString(); break;
+	case'4': findTheLengthOfTheLongestSequenceOfIdenticalNumbersInARow(); break;
 	}
 }
