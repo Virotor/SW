@@ -77,6 +77,37 @@ int main()
 		}
 		cout << "\nMax row lenth : " << max_row;
 		break;
+	case 4:
+		cout << "Input vector row and col : \n";
+		cin >> row >> col;
+		mat.assign(row, vector <int>(col));
+		fillMatr(mat, row, col);
+		out_Matr(mat, row, col);
+		newMatr.assign(col, vector <int>(row));
+		for (int i = 0; i < row; i++)
+			for (int j = 0; j < col; j++)
+			{
+				newMatr[j][i] = mat[i][j];
+			}
+		cout << "Main diagonal : \n";
+		out_Matr(newMatr, col, row);
+		newMatr.clear();
+		newMatr.assign(row, vector <int>(col));
+		for (int i = 0; i < row; i++)
+			for (int j = 0; j < col; j++)
+			{
+				newMatr[i][j] = mat[i][mat[0].size() - 1 - j];
+			}
+		cout << "secondary diagonal : \n";
+		mat.clear();
+		mat.assign(col, vector <int>(row));
+		for (int i = 0; i < row; i++)
+			for (int j = 0; j < col; j++)
+			{
+				mat[j][i] = newMatr[i][j];
+			}
+		out_Matr(mat, col, row);
+		break;
 	}
 }
 
