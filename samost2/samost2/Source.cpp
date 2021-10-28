@@ -12,6 +12,7 @@ int** CreateMatrix(int, int);
 void DeleteMatrix(int, int**);
 void PrintMatrix(int, int, int**);
 void TransposeMatrix(int, int, int**);
+double DistanceSearch(int, int**);
 void FindPosition() {
 	int size, element;
 	cout << "Enter the size of array: ";
@@ -59,6 +60,20 @@ void Transpositioning() {
 	TransposeMatrix(line, column, arr);
 	DeleteMatrix(line, arr);
 }
+void Distance() {
+	int colCoord, line = 2;
+
+	do {
+		cout << "Enter amount of dots: ";
+		cin >> colCoord;
+	} while (colCoord < 2);
+	int** arr = CreateMatrix(line, colCoord);
+	CreateMatrix(line, colCoord);
+	PrintMatrix(line, colCoord, arr);
+	double maxDistance = DistanceSearch(colCoord, arr);
+	cout << "Distance is: " << maxDistance;
+	DeleteMatrix(line, arr);
+}
 int main() {
 	srand(time(NULL));
 	int taskNumber;
@@ -73,6 +88,8 @@ int main() {
 		TheLongestSequence(); break;
 	case 4:
 		Transpositioning(); break;
+	case 5:
+		Distance(); break;
 	default: break;
 	}
 	return 0;
@@ -191,4 +208,21 @@ void TransposeMatrix(int line, int column, int** arr) {
 		delete[] arr2[counter9];
 	}
 	delete[]arr2;
+}
+double DistanceSearch(int column, int** arr) {
+
+	double xDistance, yDistance, totalDistance, maxDist = 0;
+	for (int index = 0; index < column - 1; index++) {
+		int index2 = 1;
+		while (index + index2 < column) {
+			xDistance = (arr[0][index] - arr[0][index + index2]) * (arr[0][index] - arr[0][index + index2]);
+			yDistance = (arr[1][index] - arr[1][index + index2]) * (arr[1][index] - arr[1][index + index2]);
+			totalDistance = sqrt(xDistance + yDistance);
+			if (totalDistance > maxDist) {
+				maxDist = totalDistance;
+			}
+			index2++;
+		}
+	}
+	return maxDist;
 }
