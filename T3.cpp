@@ -7,10 +7,11 @@ using namespace std;
 
 int main()
 {
+	setlocale(LC_ALL, "rus");
 	int n, k;
-	cout << "Введите n: " << endl;
+	cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ n: " << endl;
 	cin >> n;
-	cout << "Введите k: " << endl;
+	cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ k: " << endl;
 	cin >> k;
 	k = to_string(n).length() - k;
 	n = n / pow(10, k);
