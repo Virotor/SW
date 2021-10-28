@@ -41,6 +41,22 @@ int main()
 			}
 		}
 		break;
+	case 2:
+		cout << "Vvedite dlinu massiva :\n";
+
+		cin >> len;
+		a.resize(len);
+		fillMassive(a);
+		out_mass(a);
+		cout << "\n\nNumbers : ";
+		for (int i = 0; i < a.size() - 2; i++)
+		{
+			if (a.at(i + 2) < a.at(i) - a.at(i + 1))
+			{
+				cout << a.at(i + 2) << " ";
+			}
+		}
+		break;
 	}
 }
 
