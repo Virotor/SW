@@ -9,6 +9,7 @@ int lengthOfTheLongestSequenceOfIdenticalNumbers(int*, int);
 void fillAndShowSquareMatrix(int**, int);
 void transpMain(int**, int);
 void transpSide(int**, int);
+void longestDistance(int);
 void substringInString(string, string);
 int main() {
 	srand(time(0));
@@ -42,9 +43,10 @@ int main() {
 	transpMain(arr2, rowsAndCols);
 	cout << "The transpose matrix relative to the side diagonal:" << endl;
 	transpSide(arr2, rowsAndCols);
-	/*int dots;
+	int points;
 	cout << "Enter amount of points" << endl;
-	cin >> dots;*/
+	cin >> points;
+	longestDistance(points);
 	cout << "Input string:" << endl;
 	string sstring;
 	cin.ignore();
@@ -54,11 +56,16 @@ int main() {
 	cin.clear();
 	getline(cin, substring);
 	substringInString(sstring, substring);
+	delete[] arr;
+	for (int i = 0; i < rowsAndCols; i++) {
+		delete[i] arr2;
+	}
+	delete[] arr2;
 	return 0;
 }
 void randFillAndShowArray(int* arr, int sizeOfArray) {
 	for (int i = 0; i < sizeOfArray; i++) {
-		arr[i] = rand() % 20 - 10;
+		arr[i] = rand() % 21 - 10;
 		cout << arr[i] << " ";
 	}
 }
@@ -112,7 +119,7 @@ int lengthOfTheLongestSequenceOfIdenticalNumbers(int* arr, int sizeOfArray) {
 void fillAndShowSquareMatrix(int** arr, int rowsAndCols) {
 	for (int i = 0; i < rowsAndCols; i++) {
 		for (int j = 0; j < rowsAndCols; j++) {
-			arr[i][j] = rand() % 20 - 10;
+			arr[i][j] = rand() % 21 - 10;
 			cout << arr[i][j] << " ";
 		}
 		cout << endl;
@@ -134,6 +141,60 @@ void transpSide(int** arr, int rowsAndCols) {
 		}
 		cout << endl;
 	}
+}
+void longestDistance(int points) {
+	int arr[10][10];
+	for (int i = 0; i < 10; i++) {
+		for (int j = 0; j < 10; j++) {
+			arr[i][j] = 0;
+		}
+	}
+	int* arrX = new int[points];
+	int* arrY = new int[points];
+	cout << "(x,y)" << endl;
+	for (int k = 0; k < points; k++) {
+		int j = rand() % 10;
+		arrX[k] = j + 1;
+		int i = rand() % 10;
+		arrY[k] = i + 1;
+		cout << "(" << arrX[k] << "," << arrY[k] << ")" << endl;
+		arr[i][j] = 1;
+	}
+	cout << "the coordinates of the points can be the same" << endl;
+	for (int i = 0; i < 10; i++) {
+		for (int j = 0; j < 10; j++) {
+			if (arr[i][j] == 0) {
+				cout << ". ";
+			}
+			if (arr[i][j] == 1) {
+				cout << "* ";
+			}
+		}
+		cout << endl;
+	}
+	double dist;
+	double maxDist = 0;
+	for (int i = 0; i < points; i++) {
+		for (int k = 0; k < points; k++) {
+			if (arrX[i] == arrX[k]) {
+				dist = fabs(arrY[i] - arrY[k]);
+			} 
+			else {
+				if (arrY[i] == arrY[k]) {
+					dist = fabs(arrX[i] - arrX[k]);
+				}
+				else {
+					dist = sqrt((fabs(arrX[i] - arrX[k]) + 1) * (fabs(arrX[i] - arrX[k]) + 1) + (fabs(arrY[i] - arrY[k]) + 1) * (fabs(arrY[i] - arrY[k]) + 1));
+				}
+			}
+			if (dist > maxDist) {
+				maxDist = dist;
+			}
+		}
+	}
+	cout << "Max dist = " << maxDist << endl;
+	delete[]arrY;
+	delete[]arrX;
 }
 void substringInString(string sstring, string substring) {
 	int lengthOfSstring;
