@@ -45,3 +45,19 @@ void task1() {
 	}
 	cout << "Task 1 completed" << endl << endl;
 }
+
+void task2() {
+	cout << "Task 2 start" << endl;
+	int n = enterNumber();
+	int* arr = createArr(n);
+	for (int i = 2; i < n; i++) {
+		if (arr[i] < arr[i - 1] - arr[i - 2]) {
+			cout << arr[i] << " ";
+		}
+		if (i == n - 1 && arr[i] >= arr[i - 1] - arr[i - 2]) {
+			cout << "No that elements";
+			break;
+		}
+	}
+	cout << endl << "Task 2 completed" << endl << endl;
+}
