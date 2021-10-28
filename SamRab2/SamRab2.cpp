@@ -94,12 +94,63 @@ void transposition() {
 	cout << "Sorry, Idont know how to do it :(" << endl << endl;
 }
 
+int* createArrayPoints(int& size) {
+	if (size == 0)
+	{
+		cout << "enter Size: ";
+		cin >> size;
+	}
+	int* array = new int[size];
+	cout << "enter generation range: ";
+	int first, last;
+	cin >> first >> last;
+	for (int index = 0; index < size; index++)
+	{
+		array[index] = rand() % (last - first) + first;
+	}
+	return array;
+}
+
+int toSquare(int x) {
+	return x * x;
+}
+
+void maxDistance() {
+	cout << "Task 5:" << endl;
+	int size = 0;
+	cout << "Array for X" << endl;
+	int* arrayOfX = createArrayPoints(size);
+	cout << "Array for Y" << endl;
+	int* arrayOfY = createArrayPoints(size);
+	for (int index = 0; index < size; index++)
+	{
+		cout << "(" << arrayOfX[index] << " , " << arrayOfY[index] << ")";
+	}
+	int distance;
+	int max_distance = 0;
+	for (int index = 0; index < size; index++)
+	{
+		for (int index1 = index + 1; index1 < size; index1++)
+		{
+			distance = toSquare(arrayOfX[index] - arrayOfX[index1]) + toSquare(arrayOfY[index] - arrayOfY[index1]);
+			if (distance > max_distance) {
+				max_distance = distance;
+			}
+		}
+	}
+	double real_distance = sqrt(max_distance);
+	cout << "max distance: " << real_distance << endl << endl;
+	delete[] arrayOfX;
+	delete[] arrayOfY;
+}
+
 int main()
 {
 	position();
 	numbersLessThenTheDifference();
 	maxSubsequence();
 	transposition();
+	maxDistance();
 	srand(time(NULL));
 	return 0;
 }
