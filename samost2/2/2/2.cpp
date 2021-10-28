@@ -17,13 +17,6 @@ void fillingArray(int* arr, int size)
 		arr[i] = rand() % (2 * k + 1) - k;
 	}
 }
-
-
-
-
-
-
-
 void arrayOutput(int* arr, int size)
 {
 	for (int i = 0; i < size; i++)
@@ -31,8 +24,6 @@ void arrayOutput(int* arr, int size)
 		cout << arr[i] << " ";
 	}
 }
-
-
 void findNumb(int* arr, int size, int numb)
 {
 	for (int i = 0; i <= (size - 1); i++)
@@ -46,15 +37,17 @@ void findNumb(int* arr, int size, int numb)
 		else continue;
 	}
 }
-
-
-
-
-
-
-
-
-
+void raznNumb(int* arr, int size)
+{
+	for (int i = 2; i < size; i++)
+	{
+		if ((arr[i - 2] - arr[i - 1]) > arr[i])
+		{
+			cout << arr[i] << " ";
+		}
+	}
+	delete[] arr;
+}
 
 int main() {
 	setlocale(LC_ALL, "rus");
@@ -73,6 +66,18 @@ int main() {
 		cout << "\nВведите число, номер которого хотите найти: ";
 		cin >> numb;
 		findNumb(arr, size, numb);
+		break;
+	}
+	case 2:
+	{
+		int size;
+		cout << "Введите размерность массива: ";
+		cin >> size;
+		int* arr = new int[size];
+		fillingArray(arr, size);
+		arrayOutput(arr, size);
+		cout << endl;
+		raznNumb(arr, size);
 		break;
 	}
 	}
