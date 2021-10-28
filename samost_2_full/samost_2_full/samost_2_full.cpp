@@ -85,3 +85,49 @@ void task3() {
 	cout << "Max length=" << maxLength << endl;
 	cout << "Task 3 completed" << endl << endl;
 }
+
+void task4() {
+	cout << "Task 4 start" << endl;
+	int column; cout << "Enter number of columns="; cin >> column;
+	int str; cout << "Enter number of strings="; cin >> str;
+	if (column <= 0 || str <= 0) {
+		cout << "Error" << endl;
+		exit(0);
+	}
+
+	int min; cout << "Enter min element="; cin >> min;
+	int max; cout << "Enter max element="; cin >> max;
+	if (min > max) {
+		cout << "Error" << endl;
+		exit(0);
+	}
+
+	int** matrix = new int* [str];
+	for (int i = 0; i < str; i++) {
+		matrix[i] = new int[column];
+		for (int j = 0; j < column; j++) {
+			matrix[i][j] = rand() % (max - min + 1) + min;
+			cout << setw(4) << matrix[i][j];
+		}
+		cout << endl;
+	}
+	cout << endl;
+
+	cout << "Trans matrix along main diagonal:" << endl << endl;
+	for (int i = 0; i < column; i++) {
+		for (int j = 0; j < str; j++) {
+			cout << setw(4) << matrix[j][i];
+		}
+		cout << endl;
+	}
+	cout << endl;
+
+	cout << "Trans matrix along side diagonal:" << endl << endl;
+	for (int i = column - 1; i >= 0; i--) {
+		for (int j = str - 1; j >= 0; j--) {
+			cout << setw(4) << matrix[j][i];
+		}
+		cout << endl;
+	}
+	cout << endl << "Task 4 completed" << endl << endl;
+}
