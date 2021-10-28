@@ -45,6 +45,34 @@ int main()
 		}
 		break;
 
+	case 2:
+		cout << "Задание 2: Элементы массива, которые меньше разности двух предыдущих." << endl << endl;
+		void Task2();
+		{
+			int as, k = 0;
+			cout << "Введите размерность массива: ";
+			cin >> as;
+			int* arr = array_gen(as);
+			cout << endl << "Подходящие под условия числа: ";
+			for (int i = 2; i < as; i++)
+			{
+				if (arr[i] < (arr[i - 2] - arr[i - 1]))
+				{
+					cout << arr[i] << " ";
+				}
+				else
+				{
+					k++;
+				}
+			}
+			if (k == as - 2)
+			{
+				cout << "таких чисел в массиве не существует." << endl;
+			}
+			delete[] arr;
+		}
+		break;
+
 	default:
 		cout << "Неверный номер. Попробуйте ещё раз: ";
 		goto tryagain;
