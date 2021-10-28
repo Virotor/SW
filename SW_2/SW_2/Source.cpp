@@ -124,6 +124,38 @@ void transposeMatrix(int** transMatrix, int rows, int cols) {
 	delete[] transMatrix;
 }
 
+void coordinatePlane(int** coordPlane, int rows, int cols, int minMatrix, int maxMatrix) {
+	int pointX, pointY, checkX, checkY;
+	double  maxDistance = 0, checkDistance = 0;
+
+	for (int i = 0; i < rows; i++) {
+		for (int k = i + 1; k < rows; k++) {
+			checkX = 0;
+			checkY = 0;
+			for (int j = 0; j < 2; j++) {
+				if (j == 0) {
+					pointX = 0;
+					pointX = coordPlane[i][j] - coordPlane[k][j];
+					checkX++;
+				}
+				if (j == 1) {
+					pointY = 0;
+					pointY = coordPlane[i][j] - coordPlane[k][j];
+					checkY++;
+				}
+				if (checkX == 1 && checkY == 1) {
+					checkDistance = sqrt(pow(pointX, 2) + pow(pointY, 2));
+					if (maxDistance < checkDistance) {
+						maxDistance = checkDistance;
+					}
+				}
+			}
+		}
+	}
+
+	cout << " The maximum distance between two points = " << maxDistance << endl;
+}
+
 int main() {
 	srand(time(0));
 	int size, min, max, rows, cols, minMatrix, maxMatrix;
@@ -196,6 +228,29 @@ int main() {
 	}
 	else if (rows <= 0 || cols <= 0) {
 		cout << "Rows and columns must be natural numbers  " << endl;
+	}
+
+	cout << endl << " Task 5 " << endl;
+	cout << " Input the number of pairs of dots: "; cin >> rows;
+	cols = 2;
+	cout << " Input minimum of your random range: "; cin >> minMatrix;
+	cout << " Input maximum of your random range: "; cin >> maxMatrix;
+	if (rows > 1 && minMatrix <= maxMatrix) {
+		cout << "  x   y " << endl;
+		int** coordPlane;
+		coordPlane = creatureMatrix(rows, cols);
+		inputMatrix(coordPlane, rows, cols, minMatrix, maxMatrix);
+		printMatrix(coordPlane, rows, cols);
+		coordinatePlane(coordPlane, rows, cols, minMatrix, maxMatrix);
+	}
+	else if (minMatrix > maxMatrix) {
+		cout << " Minimum more than maximum " << endl;
+	}
+	else if (rows <= 0) {
+		cout << " Pairs of dots must be natural numbers  " << endl;
+	}
+	else if (rows == 1) {
+		cout << " Dots have two arguments " << endl;
 	}
 	system("pause");
 	return 0;
