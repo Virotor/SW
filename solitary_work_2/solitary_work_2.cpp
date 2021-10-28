@@ -108,6 +108,63 @@ int main()
 		}
 		break;
 
+	case 4:
+		cout << "Задание 4: Транспонирование матрицы." << endl << endl;
+		void Task4();
+		{
+			srand(time(0));
+			int column, line;
+			cout << "Введите число строк: ";
+			cin >> line;
+			cout << "Введите число столбцов: ";
+			cin >> column;
+			cout << "Полученная матрица:" << endl;
+			int** mat = new int* [line];
+			for (int i = 0; i < line; i++)
+			{
+				mat[i] = new int[column];
+				for (int j = 0; j < column; j++)
+				{
+					mat[i][j] = rand() % 19 - 9;
+				}
+			}
+			for (int i = 0; i < line; i++)
+			{
+				for (int j = 0; j < column; j++)
+				{
+					if (mat[i][j] >= 0) cout << " ";
+					cout << mat[i][j] << "  ";
+				}
+				cout << endl << endl;
+			}
+			cout << "Транспонирование по главной диагонали: " << endl;
+			for (int i = 0; i < column; i++)
+			{
+				for (int j = 0; j < line; j++)
+				{
+					if (mat[j][i] >= 0) cout << " ";
+					cout << mat[j][i] << "  ";
+				}
+				cout << endl << endl;
+			}
+			cout << "Транспонирование по побочной диагонали: " << endl;
+			for (int i = column - 1; i > -1; i--)
+			{
+				for (int j = line - 1; j > -1; j--)
+				{
+					if (mat[j][i] >= 0) cout << " ";
+					cout << mat[j][i] << "  ";
+				}
+				cout << endl << endl;
+			}
+			for (int i = 0; i < line; i++)
+			{
+				delete[] mat[i];
+			}
+			delete[] mat;
+		}
+		break;
+
 	default:
 		cout << "Неверный номер. Попробуйте ещё раз: ";
 		goto tryagain;
