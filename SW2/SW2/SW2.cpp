@@ -6,6 +6,7 @@ void searchFirstSelectedElement();
 void searchSubstringInString();
 void searchElementLessThanDifference();
 void searchGreatestSequenceLength();
+void matrixTransposition();
 
 
 //Функции массива
@@ -14,12 +15,20 @@ void printArray(int*, int);
 void clearArrayMem(int*);
 
 
+//Функции для матрицы
+int** initMatrix(int, int);
+int** initEmptyMatrix(int, int);
+void printMatrix(int**, int, int);
+void clearMatrixMem(int**, int);
+
+
 void main()
 {
 	searchFirstSelectedElement();
 	searchSubstringInString();
 	searchElementLessThanDifference();
 	searchGreatestSequenceLength();
+	matrixTransposition();
 }
 
 
@@ -144,4 +153,43 @@ void printArray(int* array, int arrSize)
 void clearArrayMem(int* array)
 {
 	delete[]array;
+}
+
+
+//Функции для матрицы
+int** initMatrix(int row, int col)
+{
+	srand(time(0));
+	int** matrix = new int* [row];
+	std::cout << "Enter range of random: ";
+	int minValue = -20, maxValue = 40;
+	std::cin >> minValue >> maxValue;
+	for (int i = 0; i < row; i++)
+	{
+		matrix[i] = new int[col];
+		for (int j = 0; j < col; j++)
+		{
+			matrix[i][j] = rand() % (maxValue - minValue + 1) + minValue;
+		}
+	}
+	return matrix;
+}
+
+void printMatrix(int** matrix, int row, int col)
+{
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < col; j++)
+		{
+			std::cout << matrix[i][j] << " ";
+		}
+		std::cout << std::endl;
+	}
+}
+
+void clearMatrixMem(int** matrix, int row)
+{
+	for (int i = 0; i < row; i++)
+		delete[] matrix[i];
+	delete[] matrix;
 }
