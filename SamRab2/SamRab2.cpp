@@ -89,11 +89,17 @@ void maxSubsequence() {
 	delete[] array;
 }
 
+void transposition() {
+	cout << "Task 4:" << endl;
+	cout << "Sorry, Idont know how to do it :(" << endl << endl;
+}
+
 int main()
 {
 	position();
 	numbersLessThenTheDifference();
 	maxSubsequence();
+	transposition();
 	srand(time(NULL));
 	return 0;
 }
