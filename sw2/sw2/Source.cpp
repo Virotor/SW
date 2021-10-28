@@ -174,20 +174,31 @@ void transponateMatrix(int** matrix, int row, int column)
 	int** matrix2 = matrix;
 
 	int num;
-	int i = 1;
 	for (int j = 0; j < row; j++)
 	{
 		
-		for (i; i < column; i++)
+		for (int i = j; i < column; i++)
 		{
 			num = matrix[j][i];
-			if (j != i) matrix1[j][i] = matrix1[i][j]; matrix1[i][j] = num;
+			matrix1[j][i] = matrix1[i][j];
+			matrix1[i][j] = num;
 		}
-		i++;
 	}
-
-	
 	readMatrix(matrix1, row, column);
+
+	int num2;
+	for (int j = 0; j < row; j++)
+	{
+
+		for (int i = 0; i < column-j-1; i++)
+		{
+			num2 = matrix[j][i];
+			matrix1[j][i] = matrix1[column-i-1][row-j-1];
+			matrix1[column-i-1][row-j-1] = num2;
+		}
+	}
+	readMatrix(matrix2, row, column);
+
 }
 
 
