@@ -7,6 +7,7 @@ void SetArr(int, int*);
 void WriteArr(int, int*);
 void SearchElement(int, int, int*);
 void SearchSpecialNumbers(int, int*);
+void SearchTheLongestSequence(int, int*);
 void FindPosition() {
 	int size, element;
 	cout << "Enter the size of array: ";
@@ -29,6 +30,17 @@ void PrintSpecialNumbers() {
 	SearchSpecialNumbers(size, arr);
 	delete[] arr;
 }
+void TheLongestSequence() {
+	int size, element;
+	cout << "Enter the size of array: ";
+	cin >> size;
+	size = abs(size);
+	int* arr = CreateArr(size);
+	SetArr(size, arr);
+	WriteArr(size, arr);
+	SearchTheLongestSequence(size, arr);
+	delete[] arr;
+}
 int main() {
 	srand(time(NULL));
 	int taskNumber;
@@ -39,6 +51,8 @@ int main() {
 		FindPosition(); break;
 	case 2:
 		PrintSpecialNumbers(); break;
+	case 3:
+		TheLongestSequence(); break;
 	default: break;
 	}
 	return 0;
@@ -81,4 +95,20 @@ void SearchSpecialNumbers(int size, int* arr) {
 			cout << arr[counter2] << " ";
 		}
 	cout << endl;
+}
+void SearchTheLongestSequence(int size, int* arr) {
+	int counter = 0;
+	int length = 0;
+	int maxLength = 0;
+	for (counter; counter < size; counter++) {
+		length = 0;
+		while (arr[counter] == arr[counter + 1]) {
+			length += 1;
+			arr[counter] += 1;
+		}
+		if (length > maxLength) {
+			maxLength = length;
+		}
+	}
+	cout << "The longest sequence is: " << maxLength + 1;
 }
