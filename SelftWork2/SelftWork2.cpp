@@ -133,6 +133,388 @@ public:
         Clear();
     }
 };
+class Matrix
+{
+private:int** Array;
+	   int SizeX, SizeY;
+
+public:
+	int** GetArray()
+	{
+		return Array;
+	}
+	void SetArray(int x, int y, int* value)
+	{
+		Array[x, y] = value;
+	}
+	int Sum()
+	{
+		if (SizeX > 0 && SizeY > 0)
+		{
+			int sum = 0;
+			for (int y = 0; y < SizeY; y++)
+			{
+				for (int x = 0; x < SizeX; x++)
+				{
+					sum += Array[x][y];
+				}
+			}
+			return sum;
+		}
+		else
+		{
+			return 0;
+			cout << "\nНевозможно найти сумму элементов: матрица пустая\n";
+		}
+	}
+	int Median()
+	{
+		int result = 0;
+		if (SizeX * SizeY > 0)
+		{
+			int size = SizeX * SizeY;
+			int* arr = new int[size];
+			for (int i = 0, y = 0; y < SizeY; y++)
+			{
+				for (int x = 0; x < SizeX; x++)
+				{
+					arr[i] = Array[x][y];
+					i++;
+				}
+			}
+			for (int i = 0; i < size - 1; i++)
+			{
+				for (int a = 0; a < size - i - 1; a++)
+				{
+					if (arr[a] > arr[a + 1])
+					{
+						int temp = arr[a];
+						arr[a] = arr[a + 1];
+						arr[a + 1] = temp;
+					}
+				}
+			}
+			cout << "\n";
+			int da = ceil((double)(size - 1) / 2);
+			result = arr[da];
+			delete[] arr;
+		}
+		else
+		{
+			cout << "\nНевозможно найти медиану матрицы: матрица пустая\n";
+		}
+
+		return result;
+	}
+	double Average()
+	{
+		if (SizeX > 0 && SizeY > 0)
+		{
+			int sum = 0;
+			for (int y = 0; y < SizeY; y++)
+			{
+				for (int x = 0; x < SizeX; x++)
+				{
+					sum += Array[x][y];
+				}
+			}
+			return (double)sum / (double)(SizeX * SizeY);
+		}
+		else
+		{
+			return 0;
+			cout << "\nНевозможно среднее арифметическое элементов матрицы: матрица пустая\n";
+		}
+	}
+	int Min()
+	{
+		if (SizeX > 0 && SizeY > 0)
+		{
+			int tempMin = Array[0][0];
+			for (int y = 0; y < SizeY; y++)
+			{
+				for (int x = 0; x < SizeX; x++)
+				{
+					if (Array[x][y] < tempMin)
+					{
+						tempMin = Array[x][y];
+					}
+				}
+			}
+			return tempMin;
+		}
+		else
+		{
+			return 0;
+			cout << "\nНевозможно найти минимальный элемент: матрица пустая\n";
+		}
+	}
+	int Max()
+	{
+		if (SizeX > 0 && SizeY > 0)
+		{
+			int tempMax = Array[0][0];
+			for (int y = 0; y < SizeY; y++)
+			{
+				for (int x = 0; x < SizeX; x++)
+				{
+					if (Array[x][y] > tempMax)
+					{
+						tempMax = Array[x][y];
+					}
+				}
+			}
+			return tempMax;
+		}
+		else
+		{
+			return 0;
+			cout << "\nНевозможно найти максимальный элемент: матрица пустая\n";
+		}
+	}
+	int GetSizeX()
+	{
+		return SizeX;
+	}
+	int GetSizeY()
+	{
+		return SizeY;
+	}
+
+	void EnterMatrix(bool ClearPrev = false)
+	{
+		if (ClearPrev)
+		{
+			Clear();
+		}
+
+		cout << "\nВведите размерность матрицы: ";
+		cin >> SizeX;
+		cin >> SizeY;
+
+		InitMatrix(SizeX, SizeY);
+
+		for (int y = 0; y < SizeY; y++)
+		{
+			for (int x = 0; x < SizeX; x++)
+			{
+				cin >> Array[x][y];
+			}
+		}
+	}
+	void EnterRandomMatrix(bool ClearPrev = false)
+	{
+		if (ClearPrev)
+		{
+			Clear();
+		}
+
+		cout << "\nВведите размерность матрицы: ";
+		cin >> SizeX;
+		cin >> SizeY;
+
+		InitMatrix(SizeX, SizeY);
+
+		int from = 0;
+		int to = 0;
+
+		for (int y = 0; y < SizeY; y++)
+		{
+			for (int x = 0; x < SizeX; x++)
+			{
+				Array[x][y] = rand() % 20 - 10;
+			}
+		}
+	}
+	void PrintMatrix(bool ClearMatrix = false)
+	{
+		cout << "\n-------------------\n";
+		for (int y = 0; y < SizeY; y++)
+		{
+			for (int x = 0; x < SizeX; x++)
+			{
+				cout << Array[x][y] << ' ';
+			}
+			cout << '\n';
+		}
+		cout << "--------------------\n";
+		if (ClearMatrix)
+		{
+			Clear();
+		}
+	}
+
+	void InitMatrix(int x, int y)
+	{
+		SizeX = x;
+		SizeY = y;
+
+		Array = new int* [SizeX];
+		for (int x = 0; x < SizeX; x++)
+		{
+			Array[x] = new int[SizeY];
+		}
+	}
+	void Clear()
+	{
+		if (Array != nullptr)
+		{
+			for (int x = 0; x < SizeX; x++)
+			{
+				delete[] Array[x];
+			}
+		}
+	};
+
+	bool operator == (const Matrix& other)
+	{
+		if (SizeX == other.SizeY)
+		{
+			for (int y = 0; y < other.SizeY; y++)
+			{
+				for (int x = 0; x < SizeX; x++)
+				{
+					if (Array[x][y] != other.Array[x][y])
+						return false;
+				}
+			}
+			return true;
+		}
+		return false;
+	}
+	bool operator != (const Matrix& other)
+	{
+		if (SizeX == other.SizeY)
+		{
+			for (int y = 0; y < other.SizeY; y++)
+			{
+				for (int x = 0; x < SizeX; x++)
+				{
+					if (Array[x][y] != other.Array[x][y])
+						return true;
+				}
+			}
+			return false;
+		}
+		return true;
+	}
+	Matrix& operator = (const Matrix& other)
+	{
+		this->SizeX = other.SizeX;
+		this->SizeY = other.SizeY;
+
+		Clear();
+		this->Array = new int* [SizeX];
+		for (int y = 0; y < SizeY; y++)
+		{
+			this->Array[y] = new int[SizeY];
+		}
+		for (int y = 0; y < SizeY; y++)
+		{
+			for (int x = 0; x < SizeX; x++)
+			{
+				this->Array[x][y] = other.Array[x][y];
+			}
+		}
+
+		return *this;
+	}
+	Matrix& operator * (const Matrix& other)
+	{
+		int resultX = other.SizeX;
+		int resultY = SizeY;
+
+		Matrix* result = new Matrix(0, 0);
+		if (SizeX == other.SizeY)
+		{
+			result->InitMatrix(resultX, resultY);
+			for (int y = 0; y < resultY; y++)
+			{
+				for (int x = 0; x < resultX; x++)
+				{
+					int sum = 0;
+					for (int i = 0; i < SizeX; i++)
+					{
+						sum += this->Array[i][y] * other.Array[x][i];
+					}
+					result->Array[x][y] = sum;
+				}
+			}
+		}
+		else
+		{
+			cout << "\n" << "Матрица неопределена" << "\n";
+		}
+
+		return *result;
+	}
+	Matrix& operator * (const int& other)
+	{
+		int resultX = SizeX;
+		int resultY = SizeY;
+		Matrix* result = new Matrix(resultX, resultY);
+
+		for (int y = 0; y < resultY; y++)
+		{
+			for (int x = 0; x < resultX; x++)
+			{
+				int sum = Array[x][y] * other;
+				result->Array[x][y] = sum;
+			}
+		}
+
+		return *result;
+	}
+	Matrix& operator + (const Matrix& other)
+	{
+		int resultX = other.SizeX;
+		int resultY = SizeY;
+
+		Matrix* result = new Matrix(0, 0);
+		if (SizeX == other.SizeX && SizeY == other.SizeY)
+		{
+			result->InitMatrix(resultX, resultY);
+			for (int y = 0; y < resultY; y++)
+			{
+				for (int x = 0; x < resultX; x++)
+				{
+					int sum = this->Array[x][y] + other.Array[x][y];
+					result->Array[x][y] = sum;
+				}
+			}
+		}
+		else
+		{
+			cout << "\n" << "Матрица неопределена" << "\n";
+		}
+
+		return *result;
+	}
+
+	Matrix(const Matrix& other)
+	{
+		this->InitMatrix(other.SizeX, other.SizeY);
+		for (int y = 0; y < SizeY; y++)
+		{
+			for (int x = 0; x < SizeX; x++)
+			{
+				this->Array[x][y] = other.Array[x][y];
+			}
+		}
+	}
+	Matrix(int x, int y)
+	{
+		InitMatrix(x, y);
+	};
+	Matrix()
+	{
+		InitMatrix(0, 0);
+	};
+	~Matrix()
+	{
+		//Clear();
+	};
+};
 
 void CheckTask1()
 {
