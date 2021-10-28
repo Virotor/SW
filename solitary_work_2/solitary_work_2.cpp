@@ -73,6 +73,41 @@ int main()
 		}
 		break;
 
+	case 3:
+		cout << "Задание 3: Наибольшая последовательность одинаковых чисел, идущих подряд." << endl << endl;
+		void Task3();
+		{
+			int as;
+			int equals = 1, k = 1;
+			cout << "Введите размер массива: ";//Рекомендую сразу вводить большую размерность массива
+			cin >> as;
+			int* arr = array_gen(as);
+			for (int i = 1; i < as; i++)
+			{
+				if (arr[i] == arr[i - 1] and arr[i] == arr[i + 1])
+					k++;
+				else if (arr[i] == arr[i - 1] and arr[i] != arr[i + 1])
+				{
+					k++;
+					if (k > equals)
+					{
+						equals = k;
+						k = 1;
+					}
+				}
+			}
+			if (equals == 1)
+			{
+				cout << endl << "В массиве нет ряда одикаковых чисел" << endl;
+			}
+			else
+			{
+				cout << endl << "Длина наибольшей последовательности: " << equals << endl;
+				delete[] arr;
+			}
+		}
+		break;
+
 	default:
 		cout << "Неверный номер. Попробуйте ещё раз: ";
 		goto tryagain;
