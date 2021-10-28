@@ -6,6 +6,7 @@ int* CreateArr(int);
 void SetArr(int, int*);
 void WriteArr(int, int*);
 void SearchElement(int, int, int*);
+void SearchSpecialNumbers(int, int*);
 void FindPosition() {
 	int size, element;
 	cout << "Enter the size of array: ";
@@ -18,6 +19,16 @@ void FindPosition() {
 	SearchElement(size, element, arr);
 	delete[] arr;
 }
+void PrintSpecialNumbers() {
+	int size, element;
+	cout << "Enter the size of array: ";
+	cin >> size;
+	int* arr = CreateArr(size);
+	SetArr(size, arr);
+	WriteArr(size, arr);
+	SearchSpecialNumbers(size, arr);
+	delete[] arr;
+}
 int main() {
 	srand(time(NULL));
 	int taskNumber;
@@ -26,6 +37,8 @@ int main() {
 	switch (taskNumber) {
 	case 1:
 		FindPosition(); break;
+	case 2:
+		PrintSpecialNumbers(); break;
 	default: break;
 	}
 	return 0;
@@ -60,4 +73,12 @@ void SearchElement(int size, int element, int* arr) {
 	else {
 		cout << "There is no such an element in this array ";
 	}
+}
+void SearchSpecialNumbers(int size, int* arr) {
+	int counter2 = 2;
+	for (counter2; counter2 < size; counter2++)
+		if (arr[counter2] < arr[counter2 - 2] - arr[counter2 - 1]) {
+			cout << arr[counter2] << " ";
+		}
+	cout << endl;
 }
