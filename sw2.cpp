@@ -64,3 +64,16 @@ void ArrThree(int* a, int size)
 }
 
 
+
+void numfinder(int num, int* arr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (arr[i] == num)
+
+			cout << i << " ";
+	}
+
+	cout << endl;
+}
+
