@@ -3,6 +3,7 @@
 
 //Функции выполнения заданий
 void searchFirstSelectedElement();
+void searchSubstringInString();
 
 
 //Функции массива
@@ -14,6 +15,7 @@ void clearArrayMem(int*);
 void main()
 {
 	searchFirstSelectedElement();
+	searchSubstringInString();
 }
 
 
@@ -39,6 +41,37 @@ void searchFirstSelectedElement()
 	}
 	std::cout << "There is no selected element here!" << std::endl;
 	clearArrayMem(array);
+}
+
+void searchSubstringInString()
+{
+	std::cout << "Enter string: ";
+	std::string string;
+	std::cin >> string;
+	std::cout << "Enter substring: ";
+	std::string subString;
+	std::cin >> subString;
+	int i = 0;
+	bool flag = false;
+	while (i < string.length())
+	{
+		int k = 0;
+		while (string[i] == subString[k] && k < subString.length() && i < string.length())
+		{
+			i++;
+			k++;
+			flag = true;
+		}
+		if (k == subString.length())
+		{
+			std::cout << "Substring starts with " << i - k << " number" << std::endl;
+			return;
+		}
+		else if (!flag)
+			i++;
+		flag = false;
+	}
+	std::cout << "There is no substring in string" << std::endl;
 }
 
 
