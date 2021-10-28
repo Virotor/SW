@@ -52,7 +52,22 @@ public:
         }
     }
 
-    
+    void SearchFor()
+    {
+        int num = 0;
+        cout << "Enter number to find: ";
+        cin >> num;
+
+        for (int i = 0; i < Size; i++)
+        {
+            if (Arr[i] == num)
+            {
+                cout << "Position of first " << num << " is " << i;
+                return;
+            }
+        }
+        cout << "There is no " << num << " in array";
+    }
 
     Array()
     {
@@ -70,7 +85,18 @@ public:
     }
 };
 
+void CheckTask1()
+{
+    Array arr1(0);
+    arr1.RandEnter();
+    arr1.Print();
+    cout << "\n";
+    arr1.SearchFor();
+}
+
 int main()
 {
     setlocale(LC_ALL, "rus");
+
+    CheckTask1();
 }
