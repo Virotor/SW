@@ -5,6 +5,71 @@
 
 #include<iostream>
 using namespace std;
+void matrixSideDiagonal(int** arr, int cols, int rows)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < rows - 1; j++)
+		{
+			int tmp = arr[i][j];
+			arr[i][j] = arr[rows - j - 1][rows - i - 1];
+			arr[rows - j][rows - i] = tmp;
+		}
+	}
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			cout << arr[i][j] << "\t";
+		}
+		cout << endl;
+	}
+}
+void matrixMainDiagonal(int** arr, int cols, int rows)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < i; j++)
+		{
+			int tmp = arr[i][j];
+			arr[i][j] = arr[j][i];
+			arr[j][i] = tmp;
+		}
+	}
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			cout << arr[i][j] << "\t";
+		}
+		cout << endl;
+	}
+}
+void fillingMatrix(int** arr, int cols, int rows)
+{
+	int k;
+	cout << "Введите диапазон значений элемента матрицы: ";
+	cin >> k;
+	srand(time(NULL));
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			arr[i][j] = rand() % (2 * k + 1) - k;
+		}
+	}
+}
+void matrixOutput(int** arr, int cols, int rows)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			cout << arr[i][j] << "\t";
+		}
+		cout << endl;
+	}
+}
 
 void fillingArray(int* arr, int size)
 {
@@ -112,6 +177,37 @@ int main() {
 		cout << endl;
 		lengthChainNumber(arr, size);
 		break;
+	}
+	case 4:
+	{   int rows, cols;
+	cout << "Введите количество строк: ";
+	cin >> rows;
+	cout << "Введите количество столбцов: ";
+	cin >> cols;
+	int** arr = new int* [rows];
+	for (int i = 0; i < rows; i++)
+	{
+		arr[i] = new int[cols];
+	}
+	fillingMatrix(arr, cols, rows);
+	matrixOutput(arr, cols, rows);
+	cout << endl;
+	cout << "Транспонированная матрица относительно главной диагонали: \n";
+	matrixMainDiagonal(arr, cols, rows);
+	cout << endl;
+	cout << "Транспонированная матрица относительно побочной диагонали: \n";
+	matrixSideDiagonal(arr, cols, rows);
+	for (int i = 0; i < rows; i++)
+	{
+		delete[] arr[i];
+	}
+
+	delete[] arr;
+	break;
+	}
+	default:
+	{
+
 	}
 	}
 }
