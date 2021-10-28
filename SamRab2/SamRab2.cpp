@@ -64,10 +64,36 @@ void numbersLessThenTheDifference() {
 	delete[] array;
 }
 
+void maxSubsequence() {
+	cout << "Task 3:" << endl;
+	int size;
+	int* array = createArray(size);
+	int max_lenght = 1;
+	int current_length = 1;
+	for (int index = 1; index < size; index++)
+	{
+		if (array[index] == array[index - 1]) {
+			current_length++;
+		}
+		else {
+			if (current_length > max_lenght) {
+				max_lenght = current_length;
+			}
+			current_length = 1;
+		}
+	}
+	if (current_length > max_lenght) {
+		max_lenght = current_length;
+	}
+	cout << "max lenght: " << max_lenght << endl << endl;
+	delete[] array;
+}
+
 int main()
 {
 	position();
 	numbersLessThenTheDifference();
+	maxSubsequence();
 	srand(time(NULL));
 	return 0;
 }
