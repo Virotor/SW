@@ -92,8 +92,8 @@ int main()
 					if (k > equals)
 					{
 						equals = k;
-						k = 1;
 					}
+					k = 1;
 				}
 			}
 			if (equals == 1)
