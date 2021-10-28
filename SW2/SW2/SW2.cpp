@@ -4,6 +4,7 @@
 //Функции выполнения заданий
 void searchFirstSelectedElement();
 void searchSubstringInString();
+void searchElementLessThanDifference();
 
 
 //Функции массива
@@ -16,6 +17,7 @@ void main()
 {
 	searchFirstSelectedElement();
 	searchSubstringInString();
+	searchElementLessThanDifference();
 }
 
 
@@ -72,6 +74,22 @@ void searchSubstringInString()
 		flag = false;
 	}
 	std::cout << "There is no substring in string" << std::endl;
+}
+
+void searchElementLessThanDifference()
+{
+	std::cout << "Enter array size: ";
+	int arraySize = 0;
+	std::cin >> arraySize;
+	int* array = initArray(arraySize);
+	printArray(array, arraySize);
+	for (int i = 2; i < arraySize; i++)
+	{
+		if (array[i] < array[i - 2] - array[i - 1])
+			std::cout << array[i] << " ";
+	}
+	std::cout << std::endl;
+	clearArrayMem(array);
 }
 
 
