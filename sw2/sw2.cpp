@@ -23,7 +23,7 @@ int main()
 
 	default:
 	case 1:
-		cout << "Vvedite dlinu massiva :\n";
+		cout << "Input massive length massiva :\n";
 
 		cin >> len;
 		a.resize(len);
@@ -42,7 +42,7 @@ int main()
 		}
 		break;
 	case 2:
-		cout << "Vvedite dlinu massiva :\n";
+		cout << "Input massive length :\n";
 
 		cin >> len;
 		a.resize(len);
@@ -58,7 +58,7 @@ int main()
 		}
 		break;
 	case 3:
-		cout << "Vvedite dlinu massiva :\n";
+		cout << "Input massive length :\n";
 		cin >> len;
 		a.resize(len);
 		fillMassive(a);
@@ -111,9 +111,9 @@ int main()
 	case 5:
 		int toch;
 		int max_hyp = 0, hyp;
-		cout << "Vvedite colichestvo tochek : \n";
+		cout << "Input number of dots : \n";
 		cin >> toch;
-		cout << "\nVvedite x,y : \n";
+		cout << "\nInput x, y: ";
 		cord.assign(toch, vector <int>(2));
 		for (int i = 0; i < toch; i++)
 			for (int j = 0; j < 2; j++)
@@ -153,7 +153,7 @@ void fillMassive(vector <int>& a)
 			case 2:
 				for (int i = 0; i < a.size(); i++)
 				{
-					a.at(i) = rand() % 10 + 1;
+					a.at(i) = rand() % 20 - 10
 				}
 
 			}
@@ -180,7 +180,7 @@ void fillMatr(vector <vector <int>>& matr, int row, int col)
 				for (int i = 0; i < row; i++)
 					for (int j = 0; j < col; j++)
 					{
-						matr[i][j] = rand() % 10 + 1;
+						matr[i][j] = rand() % 20 - 10;
 					}
 
 			}
