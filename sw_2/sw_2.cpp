@@ -81,6 +81,37 @@ int main()
 		}
 		cout << "\nMax row lenth : " << max_row;
 		break;
+	case 4:
+		cout << "Input vector row and col : \n";
+		cin >> row >> col;
+		mat = new int* [row];
+		for (int i = 0; i < row; i++)
+			mat[i] = new int[col];
+
+		fillMatr(mat, row, col);
+		out_Matr(mat, row, col);
+
+		mat2 = new int* [col];
+		for (int i = 0; i < col; i++)
+			mat2[i] = new int[row];
+
+		cout << "Main diagonal : \n";
+		transp(mat, mat2, row, col);
+		out_Matr(mat2, col, row);
+
+		cout << "secondary diagonal : \n";
+
+		transpV(mat, mat2, col, row);
+		out_Matr(mat2, col, row);
+
+		for (int i = 0; i < row; i++)
+			delete[] mat2[i];
+		delete[]mat2;
+
+		for (int i = 0; i < row; i++)
+			delete[] mat[i];
+		delete[]mat;
+		break;
 	}
 	return 0;
 }
