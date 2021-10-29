@@ -61,6 +61,26 @@ int main()
 		}
 		delete[]a;
 		break;
+	case 3:
+		cout << "Input massive length :\n";
+		cin >> len;
+		a = new int[len];
+		fillMassive(a, len);
+		out_mass(a, len);
+
+
+		for (int i = 0; i < len - 1; i++)
+		{
+			z++;
+			if (a[i] != a[i + 1])
+			{
+				if (max_row < z)
+					max_row = z;
+				z = 0;
+			}
+		}
+		cout << "\nMax row lenth : " << max_row;
+		break;
 	}
 	return 0;
 }
