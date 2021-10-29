@@ -112,6 +112,31 @@ int main()
 			delete[] mat[i];
 		delete[]mat;
 		break;
+	case 5:
+		int toch;
+		int max_hyp = 0, hyp;
+		cout << "Input cout of dots : \n";
+		cin >> toch;
+
+		cord = new int* [toch];
+		for (int i = 0; i < toch; i++)
+			cord[i] = new int[2];
+		fillMatr(cord, toch, 2);
+		cout << "Cords : \n";
+		out_Matr(cord, toch, 2);
+		for (int l = 0; l < toch; l++)
+			for (int i = 0; i < toch - 1; i++)
+			{
+				hyp = sq(cord[l][0], cord[i + 1][0], cord[l][1], cord[i + 1][1]);
+				if (max_hyp < hyp)
+					max_hyp = hyp;
+			}
+		int lnt = sqrt(max_hyp);
+		cout << "\nMax lenth : " << lnt;
+		for (int i = 0; i < toch; i++)
+			delete[] cord[i];
+		delete[]cord;
+		break;
 	}
 	return 0;
 }
