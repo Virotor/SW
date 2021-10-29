@@ -44,7 +44,23 @@ int main()
 		}
 		delete[]a;
 		break;
-	
+	case 2:
+		cout << "Input massive size :\n";
+
+		cin >> len;
+		a = new int[len];
+		fillMassive(a, len);
+		out_mass(a, len);
+		cout << "\n\nNumbers : ";
+		for (int i = 0; i < len - 2; i++)
+		{
+			if (a[i + 2] < a[i] - a[i + 1])
+			{
+				cout << a[i + 2] << " ";
+			}
+		}
+		delete[]a;
+		break;
 	}
 	return 0;
 }
