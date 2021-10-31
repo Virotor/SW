@@ -119,3 +119,59 @@ int main()
     delete[] length;
     return 0;
 }
+#include <iostream>
+#include <ctime>
+#include <iomanip>
+using namespace std;
+int main()
+{
+    system("color F0");
+    srand(time(NULL));
+    int size = 0, i, j;
+    int A = -9;
+    int B = 9;
+    cout << "ENTER SIZE PLEASE ^-^: "; cin >> size;
+    cout << "----------------------------------------------------";
+    cout << "\nMatrix: " << endl;
+    cout << "----------------------------------------------------\n";
+    int** mass = new int* [size];
+    for (int i = 0; i < size; i++)
+    {
+        mass[i] = new int[size];
+    }
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            mass[i][j] = A + rand() % ((B + 1) - A);
+            cout << setw(2) << mass[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << "----------------------------------------------------";
+    cout << "\nThe transposed matrix along the MAIN diagonal:" << endl;
+    cout << "----------------------------------------------------\n";
+    for (i = 0; i < size; i++)
+    {
+        for (j = 0; j < size; j++)
+            cout << setw(2) << mass[j][i] << " ";
+        cout << endl;
+    }
+    cout << "----------------------------------------------------";
+    cout << "\nThe transposed matrix along the SIDE diagonal:" << endl;
+    cout << "----------------------------------------------------\n";
+    for (i = 0; i < size; i++)
+    {
+        for (j = 0; j < size; j++)
+            cout << setw(2) << mass[size - 1 - j][size - 1 - i] << " ";
+        cout << endl;
+    }
+    cout << endl;
+
+    for (int i = 0; i < size; i++)
+    {
+        delete[]mass[i];
+    }
+    delete[] mass;
+    return 0;
+}
