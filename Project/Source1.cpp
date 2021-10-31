@@ -175,3 +175,54 @@ int main()
     delete[] mass;
     return 0;
 }
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+
+    int size = 0, c1 = 0, c2 = 1;
+    double** mass = 0;
+    cout << "Enter the number of points: "; cin >> size;
+
+    if (size < 2)
+        return 1;
+
+    mass = new double* [size];
+
+    for (int i = 0; i < size; i++)
+        mass[i] = new double[2];
+
+    cout << endl;
+
+    for (int i = 0; i < size; i++)
+    {
+        cout << "Enter the x coordinate of " << i + 1 << " point: ";
+        cin >> mass[i][0];
+        cout << "Enter the y coordinate of " << i + 1 << " point: ";
+        cin >> mass[i][1];
+    }
+
+    cout << endl;
+
+    double d = abs(sqrt(pow((mass[0][0] - mass[1][0]), 2) + pow((mass[0][1] - mass[1][1]), 2)));
+
+    for (int i = 0; i < size; i++)
+        for (int j = i + 1; j < size; j++)
+        {
+            double temp = abs(sqrt(pow(mass[i][0] - mass[j][0], 2) + pow(mass[i][1] - mass[j][1], 2)));
+
+            if (temp > d)
+            {
+                d = temp;
+                c1 = i + 1;
+                c2 = j + 1;
+            }
+            delete[] mass[i];
+        }
+    delete[] mass;
+    cout << "Maximum distance between points " << d << endl;
+    cout << endl;
+    return 0;
+}
