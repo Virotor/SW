@@ -8,6 +8,14 @@ void DeleteArray(int*);
 int NumberOfElement1();
 int DifferenceBetweenElements();
 int LineOfEqualNumbers();
+int** CreateMatrix(int, int);
+void FillInMatrix(int, int, int**);
+void CoutMatrix(int, int, int**);
+void DeleteMatrix(int, int**);
+int TransFromMainLineTask();
+int TransFromMainLine(int, int, int**);
+int TransFromOtherLine(int, int, int**);
+
 using namespace std;
 int main()
 {
@@ -28,7 +36,7 @@ int main()
 		LineOfEqualNumbers();
 		break;
 	case 4:
-		//TransFromMainLineTask();
+		TransFromMainLineTask();
 		break;
 	case 5:
 		//SpaceBetweenDots();
@@ -154,4 +162,93 @@ int LineOfEqualNumbers() //третье задание
 	cout << endl << counter1;
 	DeleteArray(arr3);
 	return size;
+}
+
+int** CreateMatrix(int size, int arr)
+{
+	int** a = new int* [size];
+	for (int i = 0; i < size; i++)
+	{
+		a[i] = new int[arr];
+	}
+	return a;
+}
+void FillInMatrix(int matrixSize1, int matrixSize2, int** Matrix)
+{
+	srand(time(0));
+	for (int i = 0; i < matrixSize1; i++)
+	{
+		for (int j = 0; j < matrixSize2; j++)
+		{
+			Matrix[i][j] = rand() % 21 - 10;
+		}
+	}
+}
+void CoutMatrix(int matrixSize1, int matrixSize2, int** Matrix)
+{
+	for (int i = 0; i < matrixSize1; i++)
+	{
+		for (int j = 0; j < matrixSize2; j++)
+		{
+			cout << setw(5) << Matrix[i][j];
+		}
+		cout << endl << endl;
+	}
+
+}
+void DeleteMatrix(int matrixSize1, int** Matrix)
+{
+	for (int i = 0; i < matrixSize1; i++)
+	{
+		delete[] Matrix[i];
+	}
+	delete[] Matrix;
+}
+
+int TransFromMainLineTask()
+{
+	int matrixSize1, matrixSize2;
+	cout << "Введите размер матрицы:";
+	cin >> matrixSize1 >> matrixSize2;
+	int** Matrix = CreateMatrix(matrixSize1, matrixSize2);
+	FillInMatrix(matrixSize1, matrixSize2, Matrix);
+	CoutMatrix(matrixSize1, matrixSize2, Matrix);
+	cout << "По главной диагонали:" << endl;
+	TransFromMainLine(matrixSize1, matrixSize2, Matrix);
+	CoutMatrix(matrixSize1, matrixSize2, Matrix);
+	cout << "По побочной диагонали:" << endl;
+	TransFromOtherLine(matrixSize1, matrixSize2, Matrix);
+	CoutMatrix(matrixSize1, matrixSize2, Matrix);
+	DeleteMatrix(matrixSize1, Matrix);
+	return matrixSize1, matrixSize2;
+}
+
+int TransFromMainLine(int matrixSize1, int matrixSize2, int** Matrix)
+{
+	int swap;
+	for (int i = 0; i < matrixSize1 - 1; i++)
+	{
+		for (int j = i + 1; j < matrixSize2; j++)
+		{
+			swap = Matrix[i][j];
+			Matrix[i][j] = Matrix[j][i];
+			Matrix[j][i] = swap;
+		}
+	}
+	return 	swap;
+}
+
+int TransFromOtherLine(int matrixSize1, int matrixSize2, int** Matrix)
+{
+	int element;
+	for (int i = 0; i < matrixSize1; i++)
+	{
+		for (int j = 0; j < matrixSize1 - i - 1; ++j)
+		{
+			element = Matrix[i][j];
+			Matrix[i][j] = Matrix[matrixSize1 - j - 1][matrixSize1 - i - 1];
+			Matrix[matrixSize1 - j - 1][matrixSize1 - i - 1] = element;
+		}
+	}
+	return element;
 }
