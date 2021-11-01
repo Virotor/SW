@@ -6,6 +6,7 @@ void FillInArray(int, int*);
 void CoutArray(int, int*);
 void DeleteArray(int*);
 int NumberOfElement1();
+int DifferenceBetweenElements();
 using namespace std;
 int main()
 {
@@ -20,7 +21,7 @@ int main()
 		NumberOfElement1();
 		break;
 	case 2:
-		//DifferenceBetweenElements();
+		DifferenceBetweenElements();
 		break;
 	case 3:
 		//LineOfEqualNumbers();
@@ -95,4 +96,29 @@ int NumberOfElement1()
 	else cout << "неть такого элемента :(" << endl;
 	DeleteArray(arr);
 	return size, number;
+}
+
+
+int DifferenceBetweenElements()
+{
+	int size, counterincycle = 0;
+	cout << "Введите размер массива" << endl;
+	cin >> size;
+	int* arr2 = CreateNewArray(size);
+	FillInArray(size, arr2);
+	CoutArray(size, arr2);
+	cout << endl;
+	for (int counter = 0; counter < size - 2; counter++)
+	{
+
+		if (arr2[counter] - arr2[counter + 1] > arr2[counter + 2])
+		{
+			cout << arr2[counter + 2] << endl;
+			counterincycle = counterincycle++;
+		}
+	}
+	if (counterincycle == 0)
+		cout << "таких чисель неть" << endl;
+	DeleteArray(arr2);
+	return size;
 }
