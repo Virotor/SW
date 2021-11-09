@@ -165,7 +165,8 @@ int main() {
 	//printPosOfElemInArray();
 	//diffOfPrevNum();
 	//greatConsistensy();
-
+	//matrixTransposition();
+	//distanceBetweenPoints();
 	system("pause");
 	return 0;
 }
