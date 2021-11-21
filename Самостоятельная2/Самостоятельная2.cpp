@@ -220,7 +220,7 @@ void printMatrix(int n, int k, int** a)
 		}
 		cout << endl << endl;
 	}
-
+	
 }
 void deleteMatrix(int n, int** a)
 {
@@ -255,7 +255,8 @@ int transpMatrixMainDiagon(int n, int k, int** a)
 				a[i][j] = a[n - j - 1][n - i - 1];
 				a[n - j - 1][n - i - 1] = e;
 			}
-			
-		
 		return e;
+
+
+
 	}
