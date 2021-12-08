@@ -1,0 +1,3 @@
+﻿  SW3.cpp
+D:\трпо\SW3\SW3\SW3.cpp(79,11): warning C4244: инициализация: преобразование "std::streamoff" в "int", возможна потеря данных
+  SW3.vcxproj -> D:\трпо\SW3\Debug\SW3.exe
