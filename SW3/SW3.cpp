@@ -90,6 +90,7 @@ int main()
 	fille.close();
 
 	cout << "Size of Exam.txt = " << getFileSize("Exam.txt") << " bytes" << endl;
+	cout << "Size of ExamEdited.txt = " << getFileSize("ExamEdited.txt") << " bytes" << endl;
 
 	ofstream numberRows("NumberOfRows.txt");
 	if (!numberRows)
@@ -98,7 +99,7 @@ int main()
 		return 0;
 	}
 	else {
-		numberRows << numberOfRows;
+		numberRows <<"Number of rows in Exam.txt is " << numberOfRows;
 		cout << endl;
 	}
 
