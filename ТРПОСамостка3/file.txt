@@ -1,0 +1,4 @@
+1 1 23 gh
+2 2 34 ght
+3 3 ggg uitt
+4 4 hhh tly

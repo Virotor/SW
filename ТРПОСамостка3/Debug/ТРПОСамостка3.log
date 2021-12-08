@@ -1,0 +1,3 @@
+﻿  Functions.cpp
+C:\Users\ASUS\source\repos\ТРПОСамостка3\ТРПОСамостка3\Functions.cpp(75,11): warning C4244: инициализация: преобразование "std::streamoff" в "int", возможна потеря данных
+  ТРПОСамостка3.vcxproj -> C:\Users\ASUS\source\repos\ТРПОСамостка3\Debug\ТРПОСамостка3.exe
