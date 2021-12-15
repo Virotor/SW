@@ -59,15 +59,17 @@ int main()
 	}
 	else
 	{
-		while (infFromExam)
+		if (infFromExam.is_open())
 		{
-			getline(infFromExam, strInput);
-			if (!infFromExam.eof()) {
+			while (getline(infFromExam, strInput))
+			{
+				cout << strInput << endl;
 				numberOfRows++;
 			}
 		}
 		cout << "Number of rows: " << numberOfRows << endl;
 	}
+
 	ofstream fille("ExamEdited.txt");
 
 
