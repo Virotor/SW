@@ -58,3 +58,28 @@ void size(string file_path)
 	cout << endl;
 	cout << "Size: " << size << endl;
 }
+void readInf(int counter, string file_path, student* students_info)
+{
+	ifstream file(file_path, ios::in);
+	for (int i = 0; i < counter; i++)
+	{
+		file >> students_info[i].surname
+			>> students_info[i].group
+			>> students_info[i].mark
+			>> students_info[i].rating;
+	}
+	file.close();
+}
+
+void writeInf(int score, string file_path, student* students_info)
+{
+	ofstream file(file_path, ios::trunc);
+	for (int i = score - 1; i >= 0; i--)
+	{
+		file << students_info[i].surname << " "
+			<< students_info[i].group << " "
+			<< students_info[i].mark << " "
+			<< students_info[i].rating << endl;
+	}
+	file.close();
+}
