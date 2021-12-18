@@ -83,3 +83,18 @@ void writeInf(int score, string file_path, student* students_info)
 	}
 	file.close();
 }
+void sortInf(int score, student* students_info)
+{
+	cout << endl;
+	cout << "Sorting : " << endl;
+	for (int i = 0; i < score - 1; i++)
+	{
+		for (int j = 0; j < score - 1; j++)
+		{
+			if (students_info[j].surname.at(0) > students_info[j + 1].surname.at(0))
+			{
+				swap(students_info[j + 1], students_info[j]);
+			}
+		}
+	}
+}
