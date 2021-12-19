@@ -1,100 +1,170 @@
 #include <iostream>
-#include <fstream>
 #include <string>
-using namespace std;
+#include <fstream>
 
-struct student
-{
-	int group;
-	double mark;
-	string surname;
-	int rating;
-} *students_info;
 
-void showInf(int score);
-void size(string path);
-void readInf(int score, string file_path, student* students_info);
-void writeInf(int score, string file_path, student* students_info);
-void sortInf(int score, student* students_info);
+struct File {
+	int mark;
+	int digitOfGroup;
+	std::string surname;
+	std::string nameOfSubject;
+};
+
+
+void readFile(File* student, int countLine);
+void reverseToNewFile(File* student, int countLine);
+void sortFileByLine(File* student, int countLine);
+void rewriteToNewFile(File* student, int countLine);
+std::streampos sizeOfFile();
+int calculateLineInFile();
+
 
 int main()
 {
-	string file_path = "studentInfo.txt";
-	int score = 0;
-	ifstream file(file_path, ios::in);
-	string check;
-	while (!file.eof())
-	{
-		getline(file, check);
-		score++;
+
+
+	std::ifstream fin;
+	fin.open("file.txt");
+	if (fin.is_open()) {
+
+		int countLine = calculateLineInFile();
+
+		File* student = new File[countLine];
+		readFile(student, countLine);
+		reverseToNewFile(student, countLine);
+		sortFileByLine(student, countLine);
+		rewriteToNewFile(student, countLine);
+		std::cout << "Size of file is -> " << sizeOfFile() << std::endl;
+
 	}
-	cout << score << "\n";
-	file.close();
-	students_info = new student[score];
-	readInf(score, "studentInfo.txt", students_info);
-	showInf(score);
-	writeInf(score, "studentInfo.txt", students_info);
-	size("studentInfo.txt");
-	sortInf(score, students_info);
-	showInf(score);
+	else std::cout << "File is absent!" << std::endl;
+	fin.close();
+
+	return 0;
+
 }
 
-void showInf(int counter)
+
+int calculateLineInFile()
 {
-	for (int i = 0; i < counter; i++)
+	std::ifstream fin;
+	fin.open("file.txt");
+
+	int countLine = 0;
+	if (fin.is_open())
 	{
-		cout << students_info[i].surname << " "
-			<< students_info[i].group << " "
-			<< students_info[i].mark << " "
-			<< students_info[i].rating << endl;
+		std::string str;
+		while (getline(fin, str)) countLine++;
 	}
+	else std::cout << "File is absent!" << std::endl;
+
+	fin.close();
+	return countLine;
 }
 
-void size(string file_path)
-{
-	ifstream file_size(file_path, ios::binary | ios::ate);
-	int size = file_size.tellg();
-	file_size.close();
-	cout << endl;
-	cout << "Size: " << size << endl;
-}
-void readInf(int counter, string file_path, student* students_info)
-{
-	ifstream file(file_path, ios::in);
-	for (int i = 0; i < counter; i++)
-	{
-		file >> students_info[i].surname
-			>> students_info[i].group
-			>> students_info[i].mark
-			>> students_info[i].rating;
-	}
-	file.close();
-}
 
-void writeInf(int score, string file_path, student* students_info)
+void reverseToNewFile(File* student, int countLine)
 {
-	ofstream file(file_path, ios::trunc);
-	for (int i = score - 1; i >= 0; i--)
+	std::ofstream fout;
+	fout.open("newFile.txt");
+
+	if (fout.is_open())
 	{
-		file << students_info[i].surname << " "
-			<< students_info[i].group << " "
-			<< students_info[i].mark << " "
-			<< students_info[i].rating << endl;
-	}
-	file.close();
-}
-void sortInf(int score, student* students_info)
-{
-	cout << endl;
-	cout << "Sorting : " << endl;
-	for (int i = 0; i < score - 1; i++)
-	{
-		for (int j = 0; j < score - 1; j++)
+		int index = countLine - 1;
+		for (index; index > -1; index--)
 		{
-			if (students_info[j].surname.at(0) > students_info[j + 1].surname.at(0))
+			fout << student[index].mark << " ";
+			fout << student[index].digitOfGroup << " ";
+			fout << student[index].surname << " ";
+			fout << student[index].nameOfSubject << std::endl;
+		}
+	}
+	else std::cout << "File is absent!" << std::endl;
+
+	fout.close();
+}
+
+
+void rewriteToNewFile(File* student, int countLine)
+{
+	std::ofstream fout;
+	fout.open("newFile.txt");
+
+	if (fout.is_open())
+	{
+		for (int index = 0; index < countLine; index++)
+		{
+			fout << student[index].mark << " ";
+			fout << student[index].digitOfGroup << " ";
+			fout << student[index].surname << " ";
+			fout << student[index].nameOfSubject << std::endl;
+		}
+	}
+	else std::cout << "File is absent!" << std::endl;
+
+	fout.close();
+}
+
+
+void readFile(File* student, int countLine)
+{
+
+	std::string str;
+	std::string result;
+
+	std::ifstream fin;
+	fin.open("file.txt");
+
+	if (fin.is_open())
+	{
+
+		int index = 0;
+		while (index < countLine)
+		{
+			fin >> student[index].mark;
+			fin >> student[index].digitOfGroup;
+			fin >> student[index].nameOfSubject;
+			fin >> student[index].surname;
+			index++;
+		}
+
+	}
+	fin.close();
+}
+
+
+void sortFileByLine(File* student, int countLine)
+{
+
+	std::string resultStr;
+	for (int i = 0; i < countLine - 1; i++) {
+		for (int j = i + 1; j < countLine; j++)
+		{
+			if (student[j].mark < student[i].mark)
 			{
-				swap(students_info[j + 1], students_info[j]);
+				student[i].mark -= student[j].mark;
+				student[j].mark += student[i].mark;
+				student[i].mark = student[j].mark - student[i].mark;
+
+				student[i].digitOfGroup -= student[j].digitOfGroup;
+				student[j].digitOfGroup += student[i].digitOfGroup;
+				student[i].digitOfGroup = student[j].digitOfGroup - student[i].digitOfGroup;
+
+				resultStr = student[j].surname;
+				student[j].surname = student[i].surname;
+				student[i].surname = resultStr;
+
+				resultStr = student[j].nameOfSubject;
+				student[j].nameOfSubject = student[i].nameOfSubject;
+				student[i].nameOfSubject = resultStr;
 			}
 		}
 	}
+}
+
+
+std::streampos sizeOfFile()
+{
+	std::ifstream fin("newFile.txt", std::ios::binary | std::ios::ate);
+	return fin.tellg();
 }
