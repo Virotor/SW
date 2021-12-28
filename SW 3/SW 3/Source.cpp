@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <algorithm>
 
 using std::cout;
 using std::cin;
