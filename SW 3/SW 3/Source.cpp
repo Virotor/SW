@@ -3,12 +3,7 @@
 #include <string>
 #include <algorithm>
 
-using std::cout;
-using std::cin;
-using std::endl;
-using std::string;
-using std::ifstream;
-using std::ofstream;
+using namespace std;
 
 struct exam
 {
@@ -29,10 +24,13 @@ int main()
 	string fileName = "examData.txt";
 	int sizeOfFile = 0;
 	exam* data = ReadDataFromFile(fileName, sizeOfFile);
-	WriteDataInFile(fileName, data, sizeOfFile);
 	WriteDataInReverse(fileName, data, sizeOfFile);
+	WriteDataInFile(fileName, data, sizeOfFile);
 	int fileSize = getFileSize(fileName);
-	cout << "Size of file:" << fileName;
+	cout << "Size of file:" << fileSize<<"  ";
+	cout << data[1].mark;
+	system("pause");
+	return 0;
 }
 
 int getFileSize(string fileName)
@@ -41,15 +39,14 @@ int getFileSize(string fileName)
 	if (!file.is_open())
 		return 0;
 	int fileSize = 0;
-	file.seekg(0,ios_base::end);
+	file.seekg(0, ios_base::end);
 	fileSize = file.tellg();
 	file.close();
 	return fileSize;
 }
-
 void WriteDataInFile(string fileName, exam* data, int size)
 {
-	ofstream file(fileName);
+	ofstream file(fileName, ios_base::app);
 	if (!file.is_open())
 	{
 		cout << "We can't open file";
@@ -64,15 +61,16 @@ void WriteDataInFile(string fileName, exam* data, int size)
 
 void WriteDataInReverse(string fileName, exam* data, int sizeOfFile)
 {
-	ofstream file(fileName);
+	ofstream file(fileName,ios_base::app);
 	if (!file.is_open())
 	{
 		cout << "We can't open file";
 		return;
 	}
-	for (int i = sizeOfFile; i > -1; i--)
+	for (int i = 1; i > -1; i--)
 	{
-		file << data[i].mark << " " << data[i].averageMarkLabs << " " << data[i].nameOfExam << " " << data[i].studentId << endl;
+		file << data[i].studentId << " " << data[i].nameOfExam << " " << data[i].averageMarkLabs << " " << data[i].mark << endl;
+		cout << data[i].mark;
 	}
 	file.close();
 }
