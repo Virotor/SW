@@ -40,7 +40,7 @@ int getFileSize(string fileName)
 	if (!file.is_open())
 		return 0;
 	int fileSize = 0;
-	file.seekg(0);
+	file.seekg(0,ios_base::end);
 	fileSize = file.tellg();
 	file.close();
 	return fileSize;
